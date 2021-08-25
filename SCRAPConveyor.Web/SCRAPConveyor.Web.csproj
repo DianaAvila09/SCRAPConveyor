@@ -2161,7 +2161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SCRAPConveyor.Negocio\SCRAPConveyor.Negocio.csproj">
-      <Project>{d7358353-1f23-4646-a8a2-6fe21b4840f4}</Project>
+      <Project>{b4bd01be-cd56-461f-8056-b71815327282}</Project>
       <Name>SCRAPConveyor.Negocio</Name>
     </ProjectReference>
   </ItemGroup>

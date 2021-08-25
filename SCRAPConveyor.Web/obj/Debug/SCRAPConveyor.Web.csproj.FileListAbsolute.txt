@@ -72,7 +72,6 @@ D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\System.Web.WebP
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\Newtonsoft.Json.xml
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\Antlr3.Runtime.pdb
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConveyor.Web.csprojAssemblyReference.cache
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConveyor.Web.csproj.CoreCompileInputs.cache
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConveyor.Web.csproj.CopyComplete
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConveyor.Web.dll
@@ -80,3 +79,4 @@ D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConv
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\SCRAPConveyor.Negocio.dll
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\SCRAPConveyor.Negocio.pdb
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\bin\SCRAPConveyor.Negocio.dll.config
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Web\obj\Debug\SCRAPConveyor.Web.csprojAssemblyReference.cache
