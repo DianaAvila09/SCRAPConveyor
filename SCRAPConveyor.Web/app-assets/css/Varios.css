@@ -1,4 +1,10 @@
-﻿
+﻿.tablebgimage {    
+    background-image: url('../images/pages/bg-cajas-trailers.jpg');
+    margin:auto;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;

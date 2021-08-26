@@ -1289,6 +1289,7 @@
     <Content Include="app-assets\images\pages\auth-bg-dark.jpg" />
     <Content Include="app-assets\images\pages\auth-bg.jpg" />
     <Content Include="app-assets\images\pages\bank.png" />
+    <Content Include="app-assets\images\pages\bg-cajas-trailers.jpg" />
     <Content Include="app-assets\images\pages\comingsoon.png" />
     <Content Include="app-assets\images\pages\content-img-1.jpg" />
     <Content Include="app-assets\images\pages\content-img-2.jpg" />
