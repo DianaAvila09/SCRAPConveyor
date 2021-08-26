@@ -8,10 +8,13 @@ namespace SCRAPConveyor.Web.Controllers
 {
     public class HomeController : Controller
     {
-        Security.cls_Security Security = new Security.cls_Security();
+        
+        Operacion.cls_Operacion Operacion = new Operacion.cls_Operacion();
         public ActionResult Index()
         {
-            //string usr = Security.Encripta("User=userBTS;Password=userBTS_01");
+            var resultado = Operacion.get_TrailerInformation("");
+            //Security.cls_Security Security = new Security.cls_Security();
+            //string usr = Security.Encripta("User=userBTS;Password=userBTS_01");            
             return View();
         }
 

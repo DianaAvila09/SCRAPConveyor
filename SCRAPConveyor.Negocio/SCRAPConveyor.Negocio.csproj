@@ -56,12 +56,18 @@
   <ItemGroup>
     <Compile Include="AccessDB\cls_Base_de_Datos.cs" />
     <Compile Include="AccessDB\cls_Security.cs" />
+    <Compile Include="General\cls_Errores.cs" />
+    <Compile Include="General\cls_Mensajes.cs" />
+    <Compile Include="Operacion\cls_Operacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -75,5 +81,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
