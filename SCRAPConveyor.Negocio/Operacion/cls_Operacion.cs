@@ -35,17 +35,18 @@ namespace Operacion
         /// </summary>
         /// <param name="pCode">Code a Utilizar</param>       
         /// <returns>Registro(s)</returns>
-        public DataSet Sel_TrailerInformation(string pCode)
+        public DataSet Sel_TrailerInformation(string pCode = "", int pTrailerNumber = 0)
         {
             BD.SetCommand("SP_SelTrailerInformation");
             if (pCode != "") BD.CreateParameter("@Code", pCode, 10);
+            if (pTrailerNumber != 0) BD.CreateParameter("@TrailerNumber", pTrailerNumber);
             return BD.getDataSet();
         }
 
-        public List<TrailerInformation> get_TrailerInformation(string pCode)
+        public List<TrailerInformation> get_TrailerInformation(string pCode = "", int pTrailerNumber = 0)
         {
             List<TrailerInformation> lTrailerInformation = new List<TrailerInformation>();
-            oDs = Sel_TrailerInformation(pCode);
+            oDs = Sel_TrailerInformation(pCode, pTrailerNumber);
             
 
             try

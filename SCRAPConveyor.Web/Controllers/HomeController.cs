@@ -11,8 +11,7 @@ namespace SCRAPConveyor.Web.Controllers
         
         Operacion.cls_Operacion Operacion = new Operacion.cls_Operacion();
         public ActionResult Index()
-        {
-            var resultado = Operacion.get_TrailerInformation("");
+        {            
             //Security.cls_Security Security = new Security.cls_Security();
             //string usr = Security.Encripta("User=userBTS;Password=userBTS_01");            
             return View();
