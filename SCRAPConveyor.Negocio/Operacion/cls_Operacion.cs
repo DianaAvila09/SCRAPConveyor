@@ -10,6 +10,7 @@ namespace Operacion
     public class cls_Operacion
     {
         public cls_Coneccion BD = new cls_Coneccion();
+        public RepositorioSQL.cls_RepositorioSQL cls_RepositorioSQL = new RepositorioSQL.cls_RepositorioSQL();
         DataSet oDs = new DataSet();
 
         public cls_Operacion()
@@ -30,23 +31,12 @@ namespace Operacion
 
         }
 
-        /// <summary>
-        /// Selecciona de cualquier catalogo todos sus registros o uno en particular
-        /// </summary>
-        /// <param name="pCode">Code a Utilizar</param>       
-        /// <returns>Registro(s)</returns>
-        public DataSet Sel_TrailerInformation(string pCode = "", int pTrailerNumber = 0)
-        {
-            BD.SetCommand("SP_SelTrailerInformation");
-            if (pCode != "") BD.CreateParameter("@Code", pCode, 10);
-            if (pTrailerNumber != 0) BD.CreateParameter("@TrailerNumber", pTrailerNumber);
-            return BD.getDataSet();
-        }
+        
 
         public List<TrailerInformation> get_TrailerInformation(string pCode = "", int pTrailerNumber = 0)
         {
             List<TrailerInformation> lTrailerInformation = new List<TrailerInformation>();
-            oDs = Sel_TrailerInformation(pCode, pTrailerNumber);
+            oDs = cls_RepositorioSQL.Sel_TrailerInformation(pCode, pTrailerNumber);
             
 
             try

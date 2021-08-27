@@ -58,6 +58,7 @@
     <Compile Include="AccessDB\cls_Security.cs" />
     <Compile Include="General\cls_Errores.cs" />
     <Compile Include="General\cls_Mensajes.cs" />
+    <Compile Include="AccessDB\cls_RepositorioSQL.cs" />
     <Compile Include="Operacion\cls_Operacion.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,3 +4,4 @@ D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug\SCRAP
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug\SCRAPConveyor.Negocio.pdb
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.dll
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.pdb
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.csprojAssemblyReference.cache
