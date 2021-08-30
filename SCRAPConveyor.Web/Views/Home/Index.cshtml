@@ -11,6 +11,150 @@
 </script>
 <script src="~/app-assets/js/core/libraries/jquery.min.js"></script>
 <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+       Activar();
+       //var pIdLinea = 0;
+       //if ($('#IdLinea').val() != "")
+       //    pIdLinea = $('#IdLinea').val();
+            $.ajax({
+            type: 'GET',
+            url: '@Url.Action("Views", "Home")',
+            dataType: 'json',
+                data: {},
+                   success: function (data) {
+                       var newHtml = '';
+                       var i;
+                       $("#llenar_T1").empty();
+
+                       for (i = 0; i < data.length; i++) {
+                           var pattern = /Date\(([^)]+)\)/;
+                           //var results = pattern.exec(data[i].INICIO);
+                           //var dt = new Date(parseFloat(results[1]));
+                           //var INICIO = dt.toLocaleTimeString();
+
+                           var trailerNumber = 0;
+                           if (data[i].trailerNumber != null)
+                               trailerNumber = data[i].trailerNumber;
+
+                           if (trailerNumber == 1) {
+
+                               var releaseMaterial_1 = false;
+                               if (data[i].releaseMaterial != null)
+                                   releaseMaterial_1 = data[i].releaseMaterial;
+
+                               var color_1_1 = 'gray';
+                               if (releaseMaterial_1)
+                                   color_1_1 = 'green';
+
+                               var materialOnTheWay_1 = false;
+                               if (data[i].materialOnTheWay != null)
+                                   materialOnTheWay_1 = data[i].materialOnTheWay;
+
+                               var color_1_2 = 'gray';
+                               if (materialOnTheWay_1)
+                                   color_1_2 = 'green';
+
+                               var mixedMaterial_1 = false;
+                               if (data[i].mixedMaterial != null)
+                                   mixedMaterial_1 = data[i].mixedMaterial;
+
+                               var color_1_3 = 'gray';
+                               if (mixedMaterial_1)
+                                   color_1_3 = 'green';
+
+                               var reqTrailerExchange_1 = false;
+                               if (data[i].reqTrailerExchange != null)
+                                   reqTrailerExchange_1 = data[i].reqTrailerExchange;
+
+                               var color_1_4 = 'gray';
+                               if (reqTrailerExchange_1)
+                                   color_1_4 = 'green';
+
+                               var fillingLevel_1 = 0;
+                               if (data[i].fillingLevel != null)
+                                   fillingLevel_1 = data[i].fillingLevel;
+
+                               var code_1 = "";
+                               if (data[i].code != null)
+                                   code_1 = data[i].code;
+
+                               newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
+
+                               $('#llenar_T1').html(newHtml);
+
+                           }    
+                          
+                       }
+
+                       
+                       Desactivar();
+
+
+            },
+            error: function (ex) {
+                Desactivar();
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+
+
+
+
+     });
+
+
+    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel) {
+        var newHtml = '';
+
+        newHtml = '<tr>'
+        newHtml += '    <td colspan = "2" align = "center" > <b>material type</b></td>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td colspan="2"><b>state:</b></td>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td>';
+        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_1 + '.svg" />';
+        newHtml += '    </td>';
+        newHtml += '    <td>&nbsp;release material</td>';
+        newHtml += '</tr>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td>';
+        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_2 + '.svg" />';
+        newHtml += '    </td>';
+        newHtml += '    <td>&nbsp;material on the way</td>';
+        newHtml += '</tr>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td>';
+        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_3 + '.svg" />';
+        newHtml += '    </td>';
+        newHtml += '    <td>&nbsp;mixed material</td>';
+        newHtml += '</tr>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td>';
+        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_4 + '.svg" />';
+        newHtml += '    </td>';
+        newHtml += '    <td>&nbsp;req. trailer exchange</td>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td height="10px"></td>';
+        newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td colspan="2" align="center">filling level ' + fillingLevel + '[%]</td>';
+        newHtml += '</tr>';
+
+        return newHtml;
+    }
+
 </script>
 <div class="content-wrapper">
     <div id="contenido" class="content-body">
@@ -33,9 +177,23 @@
                             </div>
                             <div class="table-responsive">
                                 <!-- table start -->
-
-                                <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0 tablebgimage" style="width:942px;height:665px;">
-                                    <tbody id="llenar">                                        
+                                <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
+                                    <thead>
+                                        <tr style="height:514px;">
+                                            <th colspan="3"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:45px;height:108px;"></td>
+                                            <td style="width:110px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T1">                                                        
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <br />
@@ -46,13 +204,15 @@
                     </div>
                 </div>
             </div>
-            
+
         </section>
     </div>
 </div>
 <script>
-    var IdLinea = "" + @ViewBag.IdLinea;
+    @*var IdLinea = "" + @ViewBag.IdLinea;
     if (IdLinea != 0)
-        document.getElementById("IdLinea").value = IdLinea;
+        document.getElementById("IdLinea").value = IdLinea;*@
 </script>
+
+
 

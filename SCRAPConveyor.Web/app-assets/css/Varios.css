@@ -109,10 +109,6 @@ table {
     overflow: hidden;
 }
 
-tr:hover {
-    background-color: #ffa;
-}
-
 td, th {
     position: relative;
 }
@@ -120,8 +116,7 @@ td, th {
     td:hover::after,
     th:hover::after {
         content: "";
-        position: absolute;
-        background-color: #ffa;
+        position: absolute;        
         left: 0;
         top: -5000px;
         height: 10000px;

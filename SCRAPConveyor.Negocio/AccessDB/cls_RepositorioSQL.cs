@@ -14,7 +14,7 @@ namespace RepositorioSQL
         }
 
         /// <summary>
-        /// Selecciona de cualquier catalogo todos sus registros o uno en particular
+        /// Selecciona todos sus registros o uno en particular
         /// </summary>
         /// <param name="pCode">Code a Utilizar</param>
         /// <param name="pTrailerNumber">Numero de Trailer</param>
