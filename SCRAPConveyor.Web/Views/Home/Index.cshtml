@@ -82,6 +82,52 @@
 
                                $('#llenar_T1').html(newHtml);
 
+                           } else if (trailerNumber == 2) {
+
+                               var releaseMaterial_2 = false;
+                               if (data[i].releaseMaterial != null)
+                                   releaseMaterial_2 = data[i].releaseMaterial;
+
+                               var color_2_1 = 'gray';
+                               if (releaseMaterial_2)
+                                   color_2_1 = 'green';
+
+                               var materialOnTheWay_2 = false;
+                               if (data[i].materialOnTheWay != null)
+                                   materialOnTheWay_2 = data[i].materialOnTheWay;
+
+                               var color_2_2 = 'gray';
+                               if (materialOnTheWay_1)
+                                   color_2_2 = 'green';
+
+                               var mixedMaterial_2 = false;
+                               if (data[i].mixedMaterial != null)
+                                   mixedMaterial_2 = data[i].mixedMaterial;
+
+                               var color_2_3 = 'gray';
+                               if (mixedMaterial_1)
+                                   color_2_3 = 'green';
+
+                               var reqTrailerExchange_2 = false;
+                               if (data[i].reqTrailerExchange != null)
+                                   reqTrailerExchange_2 = data[i].reqTrailerExchange;
+
+                               var color_2_4 = 'gray';
+                               if (reqTrailerExchange_1)
+                                   color_2_4 = 'green';
+
+                               var fillingLevel_2 = 0;
+                               if (data[i].fillingLevel != null)
+                                   fillingLevel_2 = data[i].fillingLevel;
+
+                               var code_2 = "";
+                               if (data[i].code != null)
+                                   code_2 = data[i].code;
+
+                               newHtml = CreaHTML(code_2, color_2_1, color_2_2, color_2_3, color_2_4, fillingLevel_2);
+
+                               $('#llenar_T2').html(newHtml);
+
                            }    
                           
                        }
@@ -179,16 +225,51 @@
                                 <!-- table start -->
                                 <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
                                     <thead>
-                                        <tr style="height:514px;">
+                                        <tr style="height:513px;">
                                             <th colspan="3"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="width:45px;height:108px;"></td>
-                                            <td style="width:110px;" valign="top">
+                                            <td style="width:43px;height:108px;"></td>
+                                            <td style="width:117px;" valign="top">
                                                 <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T1">                                                        
+                                                    <tbody id="llenar_T1">
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td style="width:29px;"></td>
+                                            <td style="width:117px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T2">
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td style="width:30px;"></td>
+                                            <td style="width:117px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T3">
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td style="width:36px;"></td>
+                                            <td style="width:117px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T4">                                                        
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td style="width:33px;"></td>
+                                            <td style="width:117px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T5">                                                        
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td style="width:37px;"></td>
+                                            <td style="width:117px;" valign="top">
+                                                <table width="100%" style="margin:3px;" border="0">
+                                                    <tbody id="llenar_T6">                                                        
                                                     </tbody>
                                                 </table>
                                             </td>
