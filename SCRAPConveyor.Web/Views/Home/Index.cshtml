@@ -257,98 +257,79 @@
 </script>
 <div class="content-wrapper">
     <div id="contenido" class="content-body">
-        <section id="dashboard-ecommerce" style="margin-top:150px;">
-            <div class="row">
-                <div class="col">
-                    <div class="col-xl-12 " style="position: relative;
-                                top: -150px;
-                                color: black;">
-                        <div class="card marketing-campaigns">
-                            <div class="card-header d-flex justify-content-between  pb-1">
-                                <div class="card-header">
-                                    <!-- head -->
-                                    <div>
-                                        <h5 class="card-title">SCRAP Conveyor</h5>
-                                    </div>
-                                    <!-- Filtros -->
-                                    <div class="heading-elements">
-                                        <ul class="list-inline mb-0">
-                                            <li>
-                                                <fieldset class="has-icon-left">                                                    
-                                                    @Html.ActionLink("Historial", "History", "Home", new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
-                                                </fieldset>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Filtros -->
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <!-- table start -->
-                                <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
-                                    <thead>
-                                        <tr style="height:513px;">
-                                            <th colspan="3"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:43px;height:108px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T1">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td style="width:29px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T2">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td style="width:30px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T3">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td style="width:36px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T4">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td style="width:33px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T5">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td style="width:37px;"></td>
-                                            <td style="width:117px;" valign="top">
-                                                <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T6">
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <br />
-                                <br />
-                                <!-- table ends -->
-                            </div>
+
+        <div class="col-xl-12 " style="position: relative;color: black;top: -20px">
+            <div class="card marketing-campaigns">
+                <div class="table-responsive" style="overflow:hidden">
+                    <!-- table start -->
+                    <div class="row">
+                        <div class="col-1" style="position: relative; top: 10px; left:10px; ">
+                            @Html.ActionLink("Historial", "History", "Home", new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+                        </div>
+                        <div class="col-10">
+                            <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
+                                <thead>
+                                    <tr style="height:513px;">
+                                        <th colspan="3"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="width:43px;height:108px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T1">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="width:29px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T2">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="width:30px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T3">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="width:36px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T4">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="width:33px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T5">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="width:37px;"></td>
+                                        <td style="width:117px;" valign="top">
+                                            <table width="100%" style="margin:3px;" border="0">
+                                                <tbody id="llenar_T6">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                    <!-- table ends -->
                 </div>
-            </div>
 
-        </section>
+
+
+            </div>
+        </div>
     </div>
 </div>
 <script>
