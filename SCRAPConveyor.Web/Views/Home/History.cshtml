@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "History Page";
+}
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        pantalla = document.getElementById("screen");
+    }
+</script>
+<script src="~/app-assets/js/core/libraries/jquery.min.js"></script>
+<script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+       Activar();
+       //var pIdLinea = 0;
+       //if ($('#IdLinea').val() != "")
+       //    pIdLinea = $('#IdLinea').val();
+            $.ajax({
+            type: 'GET',
+            url: '@Url.Action("HistoryViews", "Home")',
+            dataType: 'json',
+                data: {},
+                   success: function (data) {
+                       var newHtml = '';
+                       var i;
+                       $("#llenar_T1").empty();
+
+                       for (i = 0; i < data.length; i++) {
+                           var pattern = /Date\(([^)]+)\)/;
+
+                           // Para Fechas
+                           
+
+                           var material = 0;
+                           if (data[i].material != null)
+                               material = data[i].material;
+
+                           var tolvaNumber = 0;
+                           if (data[i].tolvaNumber != null)
+                               tolvaNumber = data[i].tolvaNumber;
+
+                           var releaseMaterial = false;
+                           if (data[i].releaseMaterial != null)
+                               releaseMaterial = data[i].releaseMaterial;
+
+                           var materialOnTheWay = false;
+                           if (data[i].materialOnTheWay != null)
+                               materialOnTheWay = data[i].materialOnTheWay;
+                           
+                           var mixedMaterial = false;
+                           if (data[i].mixedMaterial != null)
+                               mixedMaterial = data[i].mixedMaterial;
+                           
+                           var reqTrailerExchange = false;
+                           if (data[i].reqTrailerExchange != null)
+                               reqTrailerExchange = data[i].reqTrailerExchange;
+
+                           var fillingLevel = 0;
+                           if (data[i].fillingLevel != null)
+                               fillingLevel = data[i].fillingLevel;
+
+
+                           var r_startDate = pattern.exec(data[i].startDate);
+                           var dt_startDate = new Date(parseFloat(r_startDate[1]));
+                           var startDate = dt_startDate.getDate() + "/" + (dt_startDate.getMonth() + 1) + "/" + dt_startDate.getFullYear()  + " " + dt_startDate.toLocaleTimeString();
+
+                           
+
+                           var r_endDate = pattern.exec(data[i].endDate);
+                           var dt_endDate = new Date(parseFloat(r_endDate[1]));
+                           var endDate = dt_endDate.getDate() + "/" + (dt_endDate.getMonth() + 1) + "/" + dt_endDate.getFullYear() + " " + dt_endDate.toLocaleTimeString();
+
+                           var r_startPlant = pattern.exec(data[i].startPlant);
+                           var dt_startPlant = new Date(parseFloat(r_startPlant[1]));
+                           var startPlant = dt_startPlant.getDate() + "/" + (dt_startPlant.getMonth() + 1) + "/" + dt_startPlant.getFullYear() + " " + dt_startPlant.toLocaleTimeString();
+
+                           var endPlant = "";
+                           var r_endPlant = pattern.exec(data[i].endPlant);                           
+                           if (r_endPlant != null) {
+                               var dt_endPlant = new Date(parseFloat(r_endPlant[1]));
+                               endPlant = dt_endPlant.getDate() + "/" + (dt_endPlant.getMonth() + 1) + "/" + dt_endPlant.getFullYear() + " " + dt_endPlant.toLocaleTimeString();
+                           }
+
+                           var startWeight = 0;
+                           if (data[i].startWeight != null)
+                               startWeight = data[i].startWeight;
+
+                           var endWeight = 0;
+                           if (data[i].endWeight != null)
+                               endWeight = data[i].endWeight;
+
+                           var r_creationDate = pattern.exec(data[i].creationDate);
+                           var dt_creationDate = new Date(parseFloat(r_creationDate[1]));
+                           var creationDate = dt_creationDate.getDate() + "/" + (dt_creationDate.getMonth() + 1) + "/" + dt_creationDate.getFullYear() + " " +  dt_creationDate.toLocaleTimeString();
+
+                           var code = "";
+                           if (data[i].code != null)
+                               code = data[i].code;
+                           
+                           newHtml += CreaHTML(material, tolvaNumber, releaseMaterial, materialOnTheWay, mixedMaterial, reqTrailerExchange, fillingLevel, startDate, endDate, startPlant, startWeight, endPlant, endWeight, creationDate, code);                           
+                           
+                       }
+                       
+                       $('#llenar_T').html(newHtml);
+                       Desactivar();
+            },
+            error: function (ex) {
+                Desactivar();
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+
+
+
+
+     });
+
+
+    function CreaHTML(material, tolvaNumber, releaseMaterial, materialOnTheWay, mixedMaterial, reqTrailerExchange, fillingLevel, startDate, endDate, startPlant, startWeight, endPlant, endWeight, creationDate, code) {
+        var newHtml = '';
+
+        newHtml = '<tr>'        
+        newHtml += '    <td align="center">' + material + '</td>';
+        newHtml += '    <td align="center">' + tolvaNumber + '</td>';
+        newHtml += '    <td align="center">' + releaseMaterial + '</td>';
+        newHtml += '    <td align="center">' + materialOnTheWay + '</td>';
+        newHtml += '    <td align="center">' + mixedMaterial + '</td>';
+        newHtml += '    <td align="center">' + reqTrailerExchange + '</td>';
+        newHtml += '    <td align="center">' + fillingLevel + '[%]</td>';
+        newHtml += '    <td align="center">' + startDate + '</td>';
+        newHtml += '    <td align="center">' + endDate + '</td>';
+        newHtml += '    <td align="center">' + startPlant + '</td>';
+        newHtml += '    <td align="right">' + startWeight + '</td>';
+        newHtml += '    <td align="center">' + endPlant + '</td>';
+        newHtml += '    <td align="right">' + endWeight + '</td>';
+        newHtml += '    <td align="center">' + creationDate + '</td>';
+        newHtml += '    <td align="center">' + code + '</td>';
+        newHtml += '</tr>';
+
+        return newHtml;
+    }
+
+</script>
+<div class="content-wrapper">
+    <div id="contenido" class="content-body">
+        <section id="dashboard-ecommerce" style="margin-top:150px;">
+            <div class="row">
+                <div class="col">
+                    <div class="col-xl-12 " style="position: relative;
+                                top: -150px;
+                                color: black;">
+                        <div class="card marketing-campaigns">
+                            <div class="card-header d-flex justify-content-between  pb-1">
+                                <div class="card-header">
+                                    <!-- head -->
+                                    <div>
+                                        <h5 class="card-title">Trailer Information History</h5>
+                                    </div>
+                                    <!-- Filtros -->
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li>
+                                                <fieldset class="has-icon-left">                                                    
+                                                    @Html.ActionLink("Regresar", "Index", "Home", new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+                                                </fieldset>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- Filtros -->
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- table start -->
+                                <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
+                                    <thead>
+                                        <tr style="font-size:10px;">
+                                            <th class="text-center">material</th>
+                                            <th class="text-center">tolvaNumber</th>
+                                            <th class="text-center">releaseMaterial</th>
+                                            <th class="text-center">materialOnTheWay</th>
+                                            <th class="text-center">mixedMaterial</th>
+                                            <th class="text-center">reqTrailerExchange</th>
+                                            <th class="text-center">fillingLevel</th>
+                                            <th class="text-center">startDate</th>
+                                            <th class="text-center">endDate</th>
+                                            <th class="text-center">startPlant</th>
+                                            <th class="text-center">startWeight</th>
+                                            <th class="text-center">endPlant</th>
+                                            <th class="text-center">endWeight</th>
+                                            <th class="text-center">creationDate</th>
+                                            <th class="text-center">code</th>
+                                        </tr>
+                                    </thead>                                    
+                                    <tbody id="llenar_T">
+                                    </tbody>
+                                </table>     
+                                <br />
+                                <br />
+                                <!-- table ends -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+<script>
+    @*var IdLinea = "" + @ViewBag.IdLinea;
+    if (IdLinea != 0)
+        document.getElementById("IdLinea").value = IdLinea;*@
+</script>
+
+
+

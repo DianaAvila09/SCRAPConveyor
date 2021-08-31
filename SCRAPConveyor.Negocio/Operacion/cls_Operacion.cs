@@ -25,7 +25,7 @@ namespace Operacion
             public bool materialOnTheWay { get; set; }
             public bool mixedMaterial { get; set; }
             public bool reqTrailerExchange { get; set; }
-            public double fillingLevel { get; set; }
+            public decimal fillingLevel { get; set; }
             public int trailerNumber { get; set; }
             public string code { get; set; }
 
@@ -54,7 +54,7 @@ namespace Operacion
                                     materialOnTheWay = Convert.ToBoolean(row["materialOnTheWay"]),
                                     mixedMaterial = Convert.ToBoolean(row["mixedMaterial"]),
                                     reqTrailerExchange = Convert.ToBoolean(row["reqTrailerExchange"]),
-                                    fillingLevel = Convert.ToDouble(row["fillingLevel"].ToString()),
+                                    fillingLevel = Convert.ToDecimal(row["fillingLevel"].ToString()),
                                     trailerNumber = Convert.ToInt32(row["trailerNumber"].ToString()),
                                     code = row["code"].ToString()
                                 }).ToList();
@@ -66,10 +66,6 @@ namespace Operacion
             {
                 throw ex;
             }
-
-            var js = new JavaScriptSerializer();
-            //Context.Response.Write(js.Serialize(json));
-
 
             return lTrailerInformation;
 

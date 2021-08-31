@@ -2130,6 +2130,7 @@
     <Content Include="src\scss\plugins\ui\_breakpoints.scss" />
     <Content Include="src\scss\themes\dark-layout.scss" />
     <Content Include="src\scss\themes\semi-dark-layout.scss" />
+    <Content Include="Views\Home\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

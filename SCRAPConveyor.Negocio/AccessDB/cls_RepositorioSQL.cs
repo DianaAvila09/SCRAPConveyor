@@ -27,5 +27,15 @@ namespace RepositorioSQL
             return BD.getDataSet();
         }
 
+        /// <summary>
+        /// Selecciona todos sus registros
+        /// </summary>        
+        /// <returns>Registro(s)</returns>
+        public DataSet Sel_HistoryTrailerInformation()
+        {
+            BD.SetCommand("SP_SelHistoryTrailerInformation");           
+            return BD.getDataSet();
+        }
+
     }
 }

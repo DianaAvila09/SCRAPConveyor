@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index Page";
 }
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -36,106 +36,64 @@
                            if (data[i].trailerNumber != null)
                                trailerNumber = data[i].trailerNumber;
 
+                           var releaseMaterial_1 = false;
+                           if (data[i].releaseMaterial != null)
+                               releaseMaterial_1 = data[i].releaseMaterial;
+
+                           var color_1_1 = 'gray';
+                           if (releaseMaterial_1)
+                               color_1_1 = 'green';
+
+                           var materialOnTheWay_1 = false;
+                           if (data[i].materialOnTheWay != null)
+                               materialOnTheWay_1 = data[i].materialOnTheWay;
+
+                           var color_1_2 = 'gray';
+                           if (materialOnTheWay_1)
+                               color_1_2 = 'green';
+
+                           var mixedMaterial_1 = false;
+                           if (data[i].mixedMaterial != null)
+                               mixedMaterial_1 = data[i].mixedMaterial;
+
+                           var color_1_3 = 'gray';
+                           if (mixedMaterial_1)
+                               color_1_3 = 'green';
+
+                           var reqTrailerExchange_1 = false;
+                           if (data[i].reqTrailerExchange != null)
+                               reqTrailerExchange_1 = data[i].reqTrailerExchange;
+
+                           var color_1_4 = 'gray';
+                           if (reqTrailerExchange_1)
+                               color_1_4 = 'green';
+
+                           var fillingLevel_1 = 0;
+                           if (data[i].fillingLevel != null)
+                               fillingLevel_1 = data[i].fillingLevel;
+
+                           var code_1 = "";
+                           if (data[i].code != null)
+                               code_1 = data[i].code;
+
+                           newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
+
                            if (trailerNumber == 1) {
-
-                               var releaseMaterial_1 = false;
-                               if (data[i].releaseMaterial != null)
-                                   releaseMaterial_1 = data[i].releaseMaterial;
-
-                               var color_1_1 = 'gray';
-                               if (releaseMaterial_1)
-                                   color_1_1 = 'green';
-
-                               var materialOnTheWay_1 = false;
-                               if (data[i].materialOnTheWay != null)
-                                   materialOnTheWay_1 = data[i].materialOnTheWay;
-
-                               var color_1_2 = 'gray';
-                               if (materialOnTheWay_1)
-                                   color_1_2 = 'green';
-
-                               var mixedMaterial_1 = false;
-                               if (data[i].mixedMaterial != null)
-                                   mixedMaterial_1 = data[i].mixedMaterial;
-
-                               var color_1_3 = 'gray';
-                               if (mixedMaterial_1)
-                                   color_1_3 = 'green';
-
-                               var reqTrailerExchange_1 = false;
-                               if (data[i].reqTrailerExchange != null)
-                                   reqTrailerExchange_1 = data[i].reqTrailerExchange;
-
-                               var color_1_4 = 'gray';
-                               if (reqTrailerExchange_1)
-                                   color_1_4 = 'green';
-
-                               var fillingLevel_1 = 0;
-                               if (data[i].fillingLevel != null)
-                                   fillingLevel_1 = data[i].fillingLevel;
-
-                               var code_1 = "";
-                               if (data[i].code != null)
-                                   code_1 = data[i].code;
-
-                               newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
-
                                $('#llenar_T1').html(newHtml);
-
                            } else if (trailerNumber == 2) {
-
-                               var releaseMaterial_2 = false;
-                               if (data[i].releaseMaterial != null)
-                                   releaseMaterial_2 = data[i].releaseMaterial;
-
-                               var color_2_1 = 'gray';
-                               if (releaseMaterial_2)
-                                   color_2_1 = 'green';
-
-                               var materialOnTheWay_2 = false;
-                               if (data[i].materialOnTheWay != null)
-                                   materialOnTheWay_2 = data[i].materialOnTheWay;
-
-                               var color_2_2 = 'gray';
-                               if (materialOnTheWay_1)
-                                   color_2_2 = 'green';
-
-                               var mixedMaterial_2 = false;
-                               if (data[i].mixedMaterial != null)
-                                   mixedMaterial_2 = data[i].mixedMaterial;
-
-                               var color_2_3 = 'gray';
-                               if (mixedMaterial_1)
-                                   color_2_3 = 'green';
-
-                               var reqTrailerExchange_2 = false;
-                               if (data[i].reqTrailerExchange != null)
-                                   reqTrailerExchange_2 = data[i].reqTrailerExchange;
-
-                               var color_2_4 = 'gray';
-                               if (reqTrailerExchange_1)
-                                   color_2_4 = 'green';
-
-                               var fillingLevel_2 = 0;
-                               if (data[i].fillingLevel != null)
-                                   fillingLevel_2 = data[i].fillingLevel;
-
-                               var code_2 = "";
-                               if (data[i].code != null)
-                                   code_2 = data[i].code;
-
-                               newHtml = CreaHTML(code_2, color_2_1, color_2_2, color_2_3, color_2_4, fillingLevel_2);
-
                                $('#llenar_T2').html(newHtml);
+                           } else if (trailerNumber == 3) {
+                               $('#llenar_T3').html(newHtml);
+                           } else if (trailerNumber == 4) {
+                               $('#llenar_T4').html(newHtml);
+                           } else if (trailerNumber == 5) {
+                               $('#llenar_T5').html(newHtml);
+                           } else if (trailerNumber == 6) {
+                               $('#llenar_T6').html(newHtml);
+                           }
 
-                           }    
-                          
                        }
-
-                       
                        Desactivar();
-
-
             },
             error: function (ex) {
                 Desactivar();
@@ -218,6 +176,15 @@
                                         <h5 class="card-title">SCRAP Conveyor</h5>
                                     </div>
                                     <!-- Filtros -->
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li>
+                                                <fieldset class="has-icon-left">                                                    
+                                                    @Html.ActionLink("Historial", "History", "Home", new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+                                                </fieldset>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <!-- Filtros -->
                                 </div>
                             </div>
@@ -255,21 +222,21 @@
                                             <td style="width:36px;"></td>
                                             <td style="width:117px;" valign="top">
                                                 <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T4">                                                        
+                                                    <tbody id="llenar_T4">
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td style="width:33px;"></td>
                                             <td style="width:117px;" valign="top">
                                                 <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T5">                                                        
+                                                    <tbody id="llenar_T5">
                                                     </tbody>
                                                 </table>
                                             </td>
                                             <td style="width:37px;"></td>
                                             <td style="width:117px;" valign="top">
                                                 <table width="100%" style="margin:3px;" border="0">
-                                                    <tbody id="llenar_T6">                                                        
+                                                    <tbody id="llenar_T6">
                                                     </tbody>
                                                 </table>
                                             </td>
