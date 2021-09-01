@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Historico.cls_Historico.HistoryTrailerInformation>
+
+@{
     ViewBag.Title = "History Page";
 }
 
@@ -11,140 +13,9 @@
 </script>
 <script src="~/app-assets/js/core/libraries/jquery.min.js"></script>
 <script language="javascript" type="text/javascript">
-     $(document).ready(function () {
-       Activar();
-       //var pIdLinea = 0;
-       //if ($('#IdLinea').val() != "")
-       //    pIdLinea = $('#IdLinea').val();
-            $.ajax({
-            type: 'GET',
-            url: '@Url.Action("HistoryViews", "Home")',
-            dataType: 'json',
-                data: {},
-                   success: function (data) {
-                       var newHtml = '';
-                       var i;
-                       $("#llenar_T1").empty();
-
-                       for (i = 0; i < data.length; i++) {
-                           var pattern = /Date\(([^)]+)\)/;
-
-                           // Para Fechas
-                           
-
-                           var material = 0;
-                           if (data[i].material != null)
-                               material = data[i].material;
-
-                           var tolvaNumber = 0;
-                           if (data[i].tolvaNumber != null)
-                               tolvaNumber = data[i].tolvaNumber;
-
-                           var releaseMaterial = false;
-                           if (data[i].releaseMaterial != null)
-                               releaseMaterial = data[i].releaseMaterial;
-
-                           var materialOnTheWay = false;
-                           if (data[i].materialOnTheWay != null)
-                               materialOnTheWay = data[i].materialOnTheWay;
-                           
-                           var mixedMaterial = false;
-                           if (data[i].mixedMaterial != null)
-                               mixedMaterial = data[i].mixedMaterial;
-                           
-                           var reqTrailerExchange = false;
-                           if (data[i].reqTrailerExchange != null)
-                               reqTrailerExchange = data[i].reqTrailerExchange;
-
-                           var fillingLevel = 0;
-                           if (data[i].fillingLevel != null)
-                               fillingLevel = data[i].fillingLevel;
 
 
-                           var r_startDate = pattern.exec(data[i].startDate);
-                           var dt_startDate = new Date(parseFloat(r_startDate[1]));
-                           var startDate = dt_startDate.getDate() + "/" + (dt_startDate.getMonth() + 1) + "/" + dt_startDate.getFullYear()  + " " + dt_startDate.toLocaleTimeString();
-
-                           
-
-                           var r_endDate = pattern.exec(data[i].endDate);
-                           var dt_endDate = new Date(parseFloat(r_endDate[1]));
-                           var endDate = dt_endDate.getDate() + "/" + (dt_endDate.getMonth() + 1) + "/" + dt_endDate.getFullYear() + " " + dt_endDate.toLocaleTimeString();
-
-                           var r_startPlant = pattern.exec(data[i].startPlant);
-                           var dt_startPlant = new Date(parseFloat(r_startPlant[1]));
-                           var startPlant = dt_startPlant.getDate() + "/" + (dt_startPlant.getMonth() + 1) + "/" + dt_startPlant.getFullYear() + " " + dt_startPlant.toLocaleTimeString();
-
-                           var endPlant = "";
-                           var r_endPlant = pattern.exec(data[i].endPlant);                           
-                           if (r_endPlant != null) {
-                               var dt_endPlant = new Date(parseFloat(r_endPlant[1]));
-                               endPlant = dt_endPlant.getDate() + "/" + (dt_endPlant.getMonth() + 1) + "/" + dt_endPlant.getFullYear() + " " + dt_endPlant.toLocaleTimeString();
-                           }
-
-                           var startWeight = 0;
-                           if (data[i].startWeight != null)
-                               startWeight = data[i].startWeight;
-
-                           var endWeight = 0;
-                           if (data[i].endWeight != null)
-                               endWeight = data[i].endWeight;
-
-                           var r_creationDate = pattern.exec(data[i].creationDate);
-                           var dt_creationDate = new Date(parseFloat(r_creationDate[1]));
-                           var creationDate = dt_creationDate.getDate() + "/" + (dt_creationDate.getMonth() + 1) + "/" + dt_creationDate.getFullYear() + " " +  dt_creationDate.toLocaleTimeString();
-
-                           var code = "";
-                           if (data[i].code != null)
-                               code = data[i].code;
-                           
-                           newHtml += CreaHTML(material, tolvaNumber, releaseMaterial, materialOnTheWay, mixedMaterial, reqTrailerExchange, fillingLevel, startDate, endDate, startPlant, startWeight, endPlant, endWeight, creationDate, code);                           
-                           
-                       }
-                       
-                       $('#llenar_T').html(newHtml);
-                       Desactivar();
-            },
-            error: function (ex) {
-                Desactivar();
-                var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
-            }
-        });
-
-
-
-
-     });
-
-
-    function CreaHTML(material, tolvaNumber, releaseMaterial, materialOnTheWay, mixedMaterial, reqTrailerExchange, fillingLevel, startDate, endDate, startPlant, startWeight, endPlant, endWeight, creationDate, code) {
-        var newHtml = '';
-
-        newHtml = '<tr>'        
-        newHtml += '    <td align="center">' + material + '</td>';
-        newHtml += '    <td align="center">' + tolvaNumber + '</td>';
-        newHtml += '    <td align="center">' + releaseMaterial + '</td>';
-        newHtml += '    <td align="center">' + materialOnTheWay + '</td>';
-        newHtml += '    <td align="center">' + mixedMaterial + '</td>';
-        newHtml += '    <td align="center">' + reqTrailerExchange + '</td>';
-        newHtml += '    <td align="center">' + fillingLevel + '[%]</td>';
-        newHtml += '    <td align="center">' + startDate + '</td>';
-        newHtml += '    <td align="center">' + endDate + '</td>';
-        newHtml += '    <td align="center">' + startPlant + '</td>';
-        newHtml += '    <td align="right">' + startWeight + '</td>';
-        newHtml += '    <td align="center">' + endPlant + '</td>';
-        newHtml += '    <td align="right">' + endWeight + '</td>';
-        newHtml += '    <td align="center">' + creationDate + '</td>';
-        newHtml += '    <td align="center">' + code + '</td>';
-        newHtml += '</tr>';
-
-        return newHtml;
-    }
-
-    function exportTableToExcel(tableID, filename = 'Report HTH & HTR') {
+    function exportTableToExcel(tableID, filename = 'Trailer Information History') {
 
         var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
         if (es_chrome) {
@@ -199,6 +70,7 @@
 
 </script>
 <div class="content-wrapper">
+
     <div id="contenido" class="content-body">
         <section id="dashboard-ecommerce" style="margin-top:150px;">
             <div class="row">
@@ -215,9 +87,10 @@
                                     </div>
                                     <!-- Filtros -->
                                     <div class="heading-elements">
-                                        
-                                        <ul class="list-inline mb-0">
-                                            <form method="get" action="@Url.Action("Datefilter", "Home")">
+
+
+                                        <form method="get" action="@Url.Action("Datefilter", "Home")">
+                                            <ul class="list-inline mb-0">
                                                 <li>
                                                     <fieldset class="has-icon-left">
                                                         <input type="text" id="inicio" name="inicio" value="@ViewBag.fin" class="form-control single-daterange" />
@@ -239,10 +112,17 @@
                                                         <button class="btn btn-primary ">Search</button>
                                                     </fieldset>
                                                 </li>
-                                            </form>
+                                            </ul>
+                                        </form>
+                                        <ul class="list-inline mb-0">
                                             <li>
-                                                <fieldset class="has-icon-left">
+                                                <fieldset class="has-icon-right">
                                                     <button class="btn btn-primary " onclick="javascript: Inicio();">Regresar</button>
+                                                </fieldset>
+                                            </li>
+                                            <li>
+                                                <fieldset class="has-icon-right">
+                                                    <button class="btn btn-primary" onclick="exportTableToExcel('table-marketing-campaigns')">Export to Excel</button>
                                                 </fieldset>
                                             </li>
                                         </ul>
@@ -272,10 +152,30 @@
                                             <th class="text-center">creationDate</th>
                                             <th class="text-center">code</th>
                                         </tr>
-                                    </thead>                                    
+                                    </thead>
                                     <tbody id="llenar_T">
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr style="font-size:12px;">
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.material)</td>
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.tolvaNumber)</td>
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.releaseMaterial)</td>
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.materialOnTheWay)</td>
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.mixedMaterial)</td>
+                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.reqTrailerExchange)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.fillingLevel)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.startDate) @String.Format("{0:T}", item.startDate)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.endDate) @String.Format("{0:T}", item.endDate)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.startPlant) @String.Format("{0:T}", item.startPlant)</td>
+                                                <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.startWeight)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:M/d/yyyy}", item.endPlant) @String.Format("{0:T}", item.endPlant)</td>
+                                                <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.endWeight)</td>
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:M/d/yyyy}", item.creationDate) @String.Format("{0:T}", item.creationDate)</td>
+                                                <td class="py-1 line-ellipsis text-center">@item.code</td>
+                                            </tr>
+                                        }
                                     </tbody>
-                                </table>     
+                                </table>
                                 <br />
                                 <br />
                                 <!-- table ends -->
