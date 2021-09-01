@@ -112,21 +112,18 @@
                                                         <button class="btn btn-primary ">Search</button>
                                                     </fieldset>
                                                 </li>
+                                                <li>
+                                                    <fieldset class="has-icon-right">
+                                                        <input type="button" class="btn btn-primary" onclick="javascript: Inicio();" value="Regresar">
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-right">
+                                                        <input type="button" class="btn btn-primary" onclick="exportTableToExcel('table-marketing-campaigns')" value="Export to Excel" />
+                                                    </fieldset>
+                                                </li>
                                             </ul>
                                         </form>
-                                        <ul class="list-inline mb-0">
-                                            <li>
-                                                <fieldset class="has-icon-right">
-                                                    <button class="btn btn-primary " onclick="javascript: Inicio();">Regresar</button>
-                                                </fieldset>
-                                            </li>
-                                            <li>
-                                                <fieldset class="has-icon-right">
-                                                    <button class="btn btn-primary" onclick="exportTableToExcel('table-marketing-campaigns')">Export to Excel</button>
-                                                </fieldset>
-                                            </li>
-                                        </ul>
-
                                     </div>
                                     <!-- Filtros -->
                                 </div>
@@ -157,12 +154,40 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr style="font-size:12px;">
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.material)</td>
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.tolvaNumber)</td>
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.releaseMaterial)</td>
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.materialOnTheWay)</td>
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.mixedMaterial)</td>
-                                                <td class="py-1 line-ellipsis text-center">@Html.DisplayFor(modelItem => item.reqTrailerExchange)</td>
+                                                <td class="py-1 line-ellipsis text-center">@item.material</td>
+                                                <td class="py-1 line-ellipsis text-center">@item.tolvaNumber</td>
+                                                @if (item.releaseMaterial)
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green.svg" /></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray.svg" /></td>
+                                                }
+                                                @if (item.materialOnTheWay)
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green.svg" /></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray.svg" /></td>
+                                                }
+                                                @if (item.mixedMaterial)
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green.svg" /></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray.svg" /></td>
+                                                }
+                                                @if (item.reqTrailerExchange)
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green.svg" /></td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray.svg" /></td>
+                                                }
                                                 <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.fillingLevel)</td>
                                                 <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.startDate) @String.Format("{0:T}", item.startDate)</td>
                                                 <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.endDate) @String.Format("{0:T}", item.endDate)</td>

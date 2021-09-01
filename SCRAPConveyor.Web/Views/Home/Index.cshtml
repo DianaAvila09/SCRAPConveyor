@@ -219,28 +219,28 @@
         newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td>';
-        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_1 + '.svg" />';
+        newHtml += '        <img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-' + color_1 + '.svg" />';
         newHtml += '    </td>';
         newHtml += '    <td>&nbsp;release material</td>';
         newHtml += '</tr>';
         newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td>';
-        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_2 + '.svg" />';
+        newHtml += '        <img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-' + color_2 + '.svg" />';
         newHtml += '    </td>';
         newHtml += '    <td>&nbsp;material on the way</td>';
         newHtml += '</tr>';
         newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td>';
-        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_3 + '.svg" />';
+        newHtml += '        <img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-' + color_3 + '.svg" />';
         newHtml += '    </td>';
         newHtml += '    <td>&nbsp;mixed material</td>';
         newHtml += '</tr>';
         newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td>';
-        newHtml += '        <img src="../app-assets/images/icon/circle-fill-' + color_4 + '.svg" />';
+        newHtml += '        <img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-' + color_4 + '.svg" />';
         newHtml += '    </td>';
         newHtml += '    <td>&nbsp;req. trailer exchange</td>';
         newHtml += '</tr>';
@@ -264,7 +264,8 @@
                     <!-- table start -->
                     <div class="row">
                         <div class="col-1" style="position: relative; top: 10px; left:10px; ">
-                            @Html.ActionLink("Historial", "History", "Home", new { @class = "btn btn-danger btn-sm glyphicon glyphicon-remove" })
+
+                            <input type="button" class="btn btn-primary" onclick="javascript: Historial();" value="Historial">
                         </div>
                         <div class="col-10">
                             <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">

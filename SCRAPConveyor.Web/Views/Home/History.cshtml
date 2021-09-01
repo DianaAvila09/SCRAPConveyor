@@ -215,9 +215,9 @@
                                     </div>
                                     <!-- Filtros -->
                                     <div class="heading-elements">
-                                        
-                                        <ul class="list-inline mb-0">
-                                            <form method="get" action="@Url.Action("Datefilter", "Home")">
+                                        <form method="get" action="@Url.Action("Datefilter", "Home")">
+                                            <ul class="list-inline mb-0">
+
                                                 <li>
                                                     <fieldset class="has-icon-left">
                                                         <input type="text" id="inicio" name="inicio" value="@ViewBag.fin" class="form-control single-daterange" />
@@ -239,14 +239,14 @@
                                                         <button class="btn btn-primary ">Search</button>
                                                     </fieldset>
                                                 </li>
-                                            </form>
-                                            <li>
-                                                <fieldset class="has-icon-left">
-                                                    <button class="btn btn-primary " onclick="javascript: Inicio();">Regresar</button>
-                                                </fieldset>
-                                            </li>
-                                        </ul>
+                                                <li>
+                                                    <fieldset class="has-icon-left">
+                                                        <input type="button" class="btn btn-primary" onclick="javascript: Inicio();" value="Regresar">
+                                                    </fieldset>
+                                                </li>
 
+                                            </ul>
+                                        </form>
                                     </div>
                                     <!-- Filtros -->
                                 </div>
