@@ -1258,7 +1258,9 @@
     <Content Include="app-assets\images\flags\fr.png" />
     <Content Include="app-assets\images\flags\pt.png" />
     <Content Include="app-assets\images\icon\bmw.jpg" />
+    <Content Include="app-assets\images\icon\circle-fill-gray12.svg" />
     <Content Include="app-assets\images\icon\circle-fill-gray.svg" />
+    <Content Include="app-assets\images\icon\circle-fill-green12.svg" />
     <Content Include="app-assets\images\icon\circle-fill-green.svg" />
     <Content Include="app-assets\images\icon\client-logo.png" />
     <Content Include="app-assets\images\icon\cup.png" />

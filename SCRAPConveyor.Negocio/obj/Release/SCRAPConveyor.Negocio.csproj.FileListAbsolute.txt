@@ -1,0 +1,7 @@
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.dll.config
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.dll
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.pdb
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.csprojAssemblyReference.cache
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.csproj.CoreCompileInputs.cache
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.dll
+D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.pdb

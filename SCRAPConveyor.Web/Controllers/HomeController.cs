@@ -40,7 +40,9 @@ namespace SCRAPConveyor.Web.Controllers
             DateTime inicio = today.AddDays(0);
             DateTime fin = today.AddDays(1);
 
-            return View();
+            ResultadoHistorico = Historico.get_HistoryTrailerInformation();
+
+            return View(ResultadoHistorico);
         }
 
         [HttpGet]
