@@ -264,8 +264,9 @@
                     <!-- table start -->
                     <div class="row">
                         <div class="col-1" style="position: relative; top: 10px; left:10px; ">
-
-                            <input type="button" class="btn btn-primary" onclick="javascript: Historial();" value="Historial">
+                            <form method="get" action="@Url.Action("History", "Home")">
+                                <button class="btn btn-primary ">Historial</button>
+                            </form>
                         </div>
                         <div class="col-10">
                             <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
