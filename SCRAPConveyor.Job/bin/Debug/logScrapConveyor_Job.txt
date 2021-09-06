@@ -1,0 +1,12 @@
+[06/09/2021 01:44:11 p. m.] - Main:
+An error occurred while updating the entries. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------
+[06/09/2021 04:03:41 p. m.] - Main:
+No es posible conectar con el servidor remoto
+----------------------------------------------------------------------------------------------------------------------
+[06/09/2021 04:09:11 p. m.] - Main:
+An error occurred while updating the entries. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------
+[06/09/2021 04:11:52 p. m.] - Main:
+An error occurred while updating the entries. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------

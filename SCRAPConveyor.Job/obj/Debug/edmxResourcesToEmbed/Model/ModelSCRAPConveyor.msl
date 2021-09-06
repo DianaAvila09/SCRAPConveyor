@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SCRAPConveyorModelStoreContainer" CdmEntityContainer="SCRAPConveyorEntities">
+    <EntitySetMapping Name="BasculaRevuelta">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
+        <MappingFragment StoreEntitySet="BasculaRevuelta">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="transportista" ColumnName="transportista" />
+          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+          <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+          <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+          <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+          <ScalarProperty Name="bascula" ColumnName="bascula" />
+          <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="factura" ColumnName="factura" />
+          <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

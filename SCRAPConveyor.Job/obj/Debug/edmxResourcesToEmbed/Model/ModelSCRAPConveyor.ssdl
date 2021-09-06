@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCRAPConveyorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BasculaRevuelta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="boleto" Type="int" />
+    <Property Name="placas" Type="varchar" MaxLength="50" />
+    <Property Name="chofer" Type="varchar" MaxLength="50" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" />
+    <Property Name="empresa" Type="varchar(max)" />
+    <Property Name="transportista" Type="varchar(max)" />
+    <Property Name="fechaHoraEntrada" Type="datetime" />
+    <Property Name="pesoEntrada" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="fechaHoraSalida" Type="datetime" />
+    <Property Name="pesoSalida" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="pesoTara" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="bascula" Type="int" />
+    <Property Name="tagCamion" Type="varchar" MaxLength="50" />
+    <Property Name="fechaCreacion" Type="datetime" />
+    <Property Name="factura" Type="bit" />
+    <Property Name="numFactura" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="SCRAPConveyorModelStoreContainer">
+    <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

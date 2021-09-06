@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCRAPConveyor.Web", "SCRAPC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCRAPConveyor.Negocio", "SCRAPConveyor.Negocio\SCRAPConveyor.Negocio.csproj", "{B4BD01BE-CD56-461F-8056-B71815327282}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCRAPConveyor.Job", "SCRAPConveyor.Job\SCRAPConveyor.Job.csproj", "{D939F02B-DAE3-4EA6-98DC-E0A1804BAD08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B4BD01BE-CD56-461F-8056-B71815327282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4BD01BE-CD56-461F-8056-B71815327282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4BD01BE-CD56-461F-8056-B71815327282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D939F02B-DAE3-4EA6-98DC-E0A1804BAD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D939F02B-DAE3-4EA6-98DC-E0A1804BAD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D939F02B-DAE3-4EA6-98DC-E0A1804BAD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D939F02B-DAE3-4EA6-98DC-E0A1804BAD08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,15 @@
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\SCRAPConveyor.Job.exe.config
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\SCRAPConveyor.Job.exe
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\SCRAPConveyor.Job.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\EntityFramework.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\HtmlAgilityPack.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\EntityFramework.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\bin\Debug\HtmlAgilityPack.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\obj\Debug\SCRAPConveyor.Job.csproj.CoreCompileInputs.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\obj\Debug\SCRAPConveyor.Job.csproj.CopyComplete
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\obj\Debug\SCRAPConveyor.Job.exe
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\obj\Debug\SCRAPConveyor.Job.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Job\obj\Debug\SCRAPConveyor.Job.csproj.AssemblyReference.cache
