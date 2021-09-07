@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0722e8d669034db8a9f5f493a60fb09c" Name="Diagram1">
-        <EntityTypeShape EntityType="SCRAPConveyorModel.BasculaRevuelta" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SCRAPConveyorModel.BasculaRevuelta" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

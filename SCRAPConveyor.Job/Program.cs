@@ -18,7 +18,7 @@ namespace SCRAPConveyor.Job
             try
             { 
                 string format = "dd/MMM/yyyy hh:mm tt";
-                CultureInfo culture = CultureInfo.CreateSpecificCulture("es-MX"); 
+                CultureInfo culture = CultureInfo.CreateSpecificCulture("es-MX");  
                 DateTimeStyles styles = DateTimeStyles.None;
                 Console.WriteLine("SCRAP Conveyor Job - Obteniendo información");
                 //string sUrl = "http://localhost:54828/test.html";
@@ -98,9 +98,10 @@ namespace SCRAPConveyor.Job
                                 pesoSalida = _Peso_2a_Pesada,
                                 pesoTara = _pesoTara,
                                 placas = row["Placas"].ToString(),
-                                tagCamion = row["Producto"].ToString(),
+                                producto = row["Producto"].ToString(),
                                 transportista = row["Transportista"].ToString(),
-                                usuario = row["Usuario"].ToString(),
+                                usuario = row["Usuario"].ToString()
+                                //tagCamion = ""
                             });
                         }
                         catch (Exception ex)
@@ -118,7 +119,7 @@ namespace SCRAPConveyor.Job
                     using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                     {
                         Int32 cont = 0;
-                        foreach (BasculaRevuelta i in lista)
+                        foreach (BasculaRevuelta i in lista.Where(x=>x.producto.ToUpper() == "SCRAP ALUMINIO").ToList())
                         {
                             try
                             {
@@ -139,7 +140,8 @@ namespace SCRAPConveyor.Job
                                 registro.tagCamion = i.tagCamion;
                                 registro.transportista = i.transportista;
                                 registro.usuario = i.usuario;
-                                db.Entry(registro).State = i.id > 0 ? System.Data.Entity.EntityState.Modified : System.Data.Entity.EntityState.Added;
+                                registro.producto = i.producto;
+                                db.Entry(registro).State = registro.id > 0 ? System.Data.Entity.EntityState.Modified : System.Data.Entity.EntityState.Added;
                                 cont++;
                             }
                             catch (Exception ex)

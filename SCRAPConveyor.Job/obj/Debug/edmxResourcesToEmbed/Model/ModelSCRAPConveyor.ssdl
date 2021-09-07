@@ -21,6 +21,7 @@
     <Property Name="fechaCreacion" Type="datetime" />
     <Property Name="factura" Type="bit" />
     <Property Name="numFactura" Type="varchar" MaxLength="50" />
+    <Property Name="producto" Type="varchar(max)" />
   </EntityType>
   <EntityContainer Name="SCRAPConveyorModelStoreContainer">
     <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />

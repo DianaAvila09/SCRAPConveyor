@@ -31,5 +31,6 @@ namespace SCRAPConveyor.Job.Model
         public Nullable<System.DateTime> fechaCreacion { get; set; }
         public Nullable<bool> factura { get; set; }
         public string numFactura { get; set; }
+        public string producto { get; set; }
     }
 }

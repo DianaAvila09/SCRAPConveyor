@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SCRAPConveyorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SCRAPConveyorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BasculaRevuelta">
           <Key>
             <PropertyRef Name="id" />
@@ -26,15 +26,18 @@
           <Property Name="fechaCreacion" Type="datetime" />
           <Property Name="factura" Type="bit" />
           <Property Name="numFactura" Type="varchar" MaxLength="50" />
+          <Property Name="producto" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="SCRAPConveyorModelStoreContainer">
           <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
+        </EntityContainer>
         <EntityType Name="BasculaRevuelta">
           <Key>
             <PropertyRef Name="id" />
@@ -56,10 +59,8 @@
           <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
           <Property Name="factura" Type="Boolean" />
           <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -69,23 +70,24 @@
           <EntitySetMapping Name="BasculaRevuelta">
             <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
               <MappingFragment StoreEntitySet="BasculaRevuelta">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="boleto" ColumnName="boleto" />
-                <ScalarProperty Name="placas" ColumnName="placas" />
-                <ScalarProperty Name="chofer" ColumnName="chofer" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="empresa" ColumnName="empresa" />
-                <ScalarProperty Name="transportista" ColumnName="transportista" />
-                <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
-                <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
-                <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
-                <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
-                <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
-                <ScalarProperty Name="bascula" ColumnName="bascula" />
-                <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
-                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
-                <ScalarProperty Name="factura" ColumnName="factura" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
                 <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+                <ScalarProperty Name="factura" ColumnName="factura" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+                <ScalarProperty Name="bascula" ColumnName="bascula" />
+                <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+                <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+                <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+                <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+                <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+                <ScalarProperty Name="transportista" ColumnName="transportista" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="chofer" ColumnName="chofer" />
+                <ScalarProperty Name="placas" ColumnName="placas" />
+                <ScalarProperty Name="boleto" ColumnName="boleto" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

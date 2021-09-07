@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
+  </EntityContainer>
   <EntityType Name="BasculaRevuelta">
     <Key>
       <PropertyRef Name="id" />
@@ -21,8 +24,6 @@
     <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
     <Property Name="factura" Type="Boolean" />
     <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" />
-  </EntityContainer>
 </Schema>
