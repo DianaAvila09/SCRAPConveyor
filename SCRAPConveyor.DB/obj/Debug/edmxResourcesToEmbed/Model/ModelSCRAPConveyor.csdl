@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TrailerInfoHistory" EntityType="SCRAPConveyorModel.TrailerInfoHistory" />
+    <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
+    <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
+    <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
+    <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
+    <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
+  </EntityContainer>
+  <EntityType Name="TrailerInfoHistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="releaseMaterial" Type="Boolean" />
+    <Property Name="materialOnTheWay" Type="Boolean" />
+    <Property Name="mixedMaterial" Type="Boolean" />
+    <Property Name="reqTrailerExchange" Type="Boolean" />
+    <Property Name="fillingLevel" Type="Int32" />
+    <Property Name="trailerNumber" Type="Int32" />
+    <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="invoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="invoiceDate" Type="DateTime" Precision="3" />
+    <Property Name="startPlant" Type="DateTime" Precision="3" />
+    <Property Name="startWeight" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="endPlant" Type="DateTime" Precision="3" />
+    <Property Name="endWeight" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="creationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TrailerInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="releaseMaterial" Type="Boolean" />
+    <Property Name="materialOnTheWay" Type="Boolean" />
+    <Property Name="mixedMaterial" Type="Boolean" />
+    <Property Name="reqTrailerExchange" Type="Boolean" />
+    <Property Name="fillingLevel" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="trailerNumber" Type="Int32" />
+    <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrailerFull" Type="Boolean" />
+    <Property Name="doorClosed" Type="Boolean" />
+    <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TypeMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typeMaterial1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="receta" Type="Int32" />
+  </EntityType>
+  <EntityType Name="BasculaRevuelta_Log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="boleto" Type="Int32" Nullable="false" />
+    <Property Name="bapi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ejecucion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BasculaRevuelta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="boleto" Type="Int32" />
+    <Property Name="placas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="chofer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="transportista" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fechaHoraEntrada" Type="DateTime" Precision="3" />
+    <Property Name="pesoEntrada" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="fechaHoraSalida" Type="DateTime" Precision="3" />
+    <Property Name="pesoSalida" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="pesoTara" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="bascula" Type="Int32" />
+    <Property Name="tagCamion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="factura" Type="Boolean" />
+    <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="Boolean" />
+    <Property Name="numDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaFactura" Type="DateTime" Precision="3" />
+    <Property Name="fechaDocumento" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PrecioSCRAP">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="año" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="activo" Type="Boolean" />
+    <Property Name="moneda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

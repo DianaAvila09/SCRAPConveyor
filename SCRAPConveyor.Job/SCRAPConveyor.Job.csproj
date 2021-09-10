@@ -55,52 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Log.cs" />
-    <Compile Include="Model\BasculaRevuelta.cs">
-      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ModelSCRAPConveyor.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSCRAPConveyor.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ModelSCRAPConveyor.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ModelSCRAPConveyor.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSCRAPConveyor.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model\ModelSCRAPConveyor.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelSCRAPConveyor.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="Model\ModelSCRAPConveyor.edmx.diagram">
-      <DependentUpon>ModelSCRAPConveyor.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\ModelSCRAPConveyor.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelSCRAPConveyor.Context.cs</LastGenOutput>
-      <DependentUpon>ModelSCRAPConveyor.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\ModelSCRAPConveyor.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSCRAPConveyor.edmx</DependentUpon>
-      <LastGenOutput>ModelSCRAPConveyor.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\SCRAPConveyor.DB\SCRAPConveyor.DB.csproj">
+      <Project>{7f0e149a-befa-42aa-b4f7-5376e6bee2d8}</Project>
+      <Name>SCRAPConveyor.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

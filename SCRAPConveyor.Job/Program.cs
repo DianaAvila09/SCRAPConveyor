@@ -1,5 +1,5 @@
 ﻿using HtmlAgilityPack;
-using SCRAPConveyor.Job.Model;
+using SCRAPConveyor.DB.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
