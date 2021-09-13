@@ -78,17 +78,26 @@
 
                            newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
 
+                           var material = 0;
+                           if (data[i].material != null)
+                               material = data[i].material;
                            if (trailerNumber == 1) {
+                               if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                                $('#llenar_T1').html(newHtml);
                            } else if (trailerNumber == 2) {
+                               if (material != '0') $('#T2').addClass('badge-success'); else $('#T2').removeClass('badge-success');
                                $('#llenar_T2').html(newHtml);
                            } else if (trailerNumber == 3) {
+                               if (material != '0') $('#T3').addClass('badge-success'); else $('#T3').removeClass('badge-success');
                                $('#llenar_T3').html(newHtml);
                            } else if (trailerNumber == 4) {
+                               if (material != '0') $('#T4').addClass('badge-success'); else $('#T4').removeClass('badge-success');
                                $('#llenar_T4').html(newHtml);
                            } else if (trailerNumber == 5) {
+                               if (material != '0') $('#T5').addClass('badge-success'); else $('#T5').removeClass('badge-success');
                                $('#llenar_T5').html(newHtml);
                            } else if (trailerNumber == 6) {
+                               if (material != '0') $('#T6').addClass('badge-success'); else $('#T6').removeClass('badge-success');
                                $('#llenar_T6').html(newHtml);
                            }
 
@@ -178,21 +187,30 @@
 
                         newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
 
+                        var material = 0;
+                        if (data[i].material != null)
+                            material = data[i].material; 
                         if (trailerNumber == 1) {
+                            if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                             $('#llenar_T1').html(newHtml);
                         } else if (trailerNumber == 2) {
+                            if (material != '0') $('#T2').addClass('badge-success'); else $('#T2').removeClass('badge-success');
                             $('#llenar_T2').html(newHtml);
                         } else if (trailerNumber == 3) {
+                            if (material != '0') $('#T3').addClass('badge-success'); else $('#T3').removeClass('badge-success');
                             $('#llenar_T3').html(newHtml);
                         } else if (trailerNumber == 4) {
+                            if (material != '0') $('#T4').addClass('badge-success'); else $('#T4').removeClass('badge-success');
                             $('#llenar_T4').html(newHtml);
                         } else if (trailerNumber == 5) {
+                            if (material != '0') $('#T5').addClass('badge-success'); else $('#T5').removeClass('badge-success');
                             $('#llenar_T5').html(newHtml);
                         } else if (trailerNumber == 6) {
+                            if (material != '0') $('#T6').addClass('badge-success'); else $('#T6').removeClass('badge-success');
                             $('#llenar_T6').html(newHtml);
                         }
 
-                    }
+                    } 
                     Desactivar();
                 },
                 error: function (ex) {
@@ -279,42 +297,42 @@
                                     <tr>
                                         <td style="width:43px;height:108px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T1" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T1">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:29px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T2" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T2">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:30px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T3" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T3">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:36px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T4" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T4">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:33px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T5" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T5">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:37px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table id="T6" width="100%" style="margin:3px;" border="0">
                                                 <tbody id="llenar_T6">
                                                 </tbody>
                                             </table>

@@ -8,7 +8,6 @@ D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAP
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug\SCRAPConveyor.Negocio.dll.config
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug\SCRAPConveyor.Negocio.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug\SCRAPConveyor.Negocio.pdb
-C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.csproj.AssemblyReference.cache
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.csproj.CoreCompileInputs.cache
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.pdb

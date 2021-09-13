@@ -28,7 +28,7 @@ namespace Operacion
             public decimal fillingLevel { get; set; }
             public int trailerNumber { get; set; }
             public string code { get; set; }
-
+            public string material { get; set; }
         }
 
         
@@ -56,7 +56,8 @@ namespace Operacion
                                     reqTrailerExchange = Convert.ToBoolean(row["reqTrailerExchange"]),
                                     fillingLevel = Convert.ToDecimal(row["fillingLevel"].ToString()),
                                     trailerNumber = Convert.ToInt32(row["trailerNumber"].ToString()),
-                                    code = row["code"].ToString()
+                                    code = row["materialType"].ToString(),
+                                    material = row["material"].ToString()
                                 }).ToList();
                 }
 
