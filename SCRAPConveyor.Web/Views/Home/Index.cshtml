@@ -76,11 +76,12 @@
                            if (data[i].code != null)
                                code_1 = data[i].code;
 
-                           newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
-
                            var material = 0;
                            if (data[i].material != null)
                                material = data[i].material;
+
+                           newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material);
+
                            if (trailerNumber == 1) {
                                if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                                $('#llenar_T1').html(newHtml);
@@ -185,11 +186,12 @@
                         if (data[i].code != null)
                             code_1 = data[i].code;
 
-                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
-
                         var material = 0;
                         if (data[i].material != null)
-                            material = data[i].material; 
+                            material = data[i].material;
+
+                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material);
+
                         if (trailerNumber == 1) {
                             if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                             $('#llenar_T1').html(newHtml);
@@ -223,15 +225,26 @@
         });
     }
 
-    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel) {
+    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel, trailerNumber, material) {
         var newHtml = '';
-
         newHtml = '<tr>'
-        newHtml += '    <td colspan = "2" align = "center" > <b>material type</b></td>';
+        newHtml += ' <td colspan="2" style"width:100%;">'
+        newHtml += '    <table id="T' + trailerNumber.toString() + '" width="100%" ' + (material != "0" ? 'class="badge-success"' : '') + '>'
+        newHtml += '        <tr>'
+        newHtml += '            <td colspan = "2" align = "center" > <b>material type</b></td>';
+        newHtml += '        </tr>';
+        newHtml += '        <tr>'
+        newHtml += '            <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
+        newHtml += '        </tr>';
+        newHtml += '    </table>'
+        newHtml += ' </td>'
         newHtml += '</tr>';
-        newHtml += '<tr>';
-        newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
-        newHtml += '</tr>';
+        ////////////////////newHtml = '<tr>'
+        ////////////////////newHtml += '    <td colspan = "2" align = "center" > <b>material type</b></td>';
+        ////////////////////newHtml += '</tr>';
+        ////////////////////newHtml += '<tr>';
+        ////////////////////newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
+        ////////////////////newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td colspan="2"><b>state:</b></td>';
         newHtml += '</tr>';
@@ -297,42 +310,42 @@
                                     <tr>
                                         <td style="width:43px;height:108px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T1" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T1">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:29px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T2" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T2">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:30px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T3" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T3">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:36px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T4" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T4">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:33px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T5" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T5">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:37px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table id="T6" width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T6">
                                                 </tbody>
                                             </table>

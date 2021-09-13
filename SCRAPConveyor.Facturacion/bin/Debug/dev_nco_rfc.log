@@ -126,3 +126,35 @@ SAP.Middleware.Connector.RfcCommunicationException: no SAP ErrInfo available
    en SAP.Middleware.Connector.RfcStatelessSessionState.GetConnection()
    en SAP.Middleware.Connector.RfcSessionManager.GetConnection(RfcDestination dest)
    en SAP.Middleware.Connector.RfcFunction.Invoke(RfcDestination destination)
+
+**** Log file opened by process 7116 at 2021-09-13 11:07:10 (UTC-05:00 Hora de verano central (México))
+
+SAP .NET Connector 3.0 with file version 3.0.17.0 running on 64-bit .NET Framework 4.0.30319.42000
+Program: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug\SCRAPConveyor.Facturacion.exe
+Working directory: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug
+Operating system: Windows 8 Professional 64-bit 
+Processor: 8x AMD64 (or x64)
+SAP release: 721, Kernel release: 721, Kernel patch level: 623
+Hostname: MROCHA, IP address: 10.32.154.87, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2021-09-13 11:07:10.640 [Thread 1]
+SAP.Middleware.Connector.RfcTypeConversionException: PARAMETER IT_ORD_VTA of FUNCTION ZFIFM_CREAR_FRA_SCRAP (SETTER): cannot convert String into TABLE WTYSC_VBELN_TAB []
+   en SAP.Middleware.Connector.RfcDataContainer`1.SetValue(Int32 index, String value)
+
+**** Log file opened by process 28740 at 2021-09-13 11:07:41 (UTC-05:00 Hora de verano central (México))
+
+SAP .NET Connector 3.0 with file version 3.0.17.0 running on 64-bit .NET Framework 4.0.30319.42000
+Program: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug\SCRAPConveyor.Facturacion.exe
+Working directory: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug
+Operating system: Windows 8 Professional 64-bit 
+Processor: 8x AMD64 (or x64)
+SAP release: 721, Kernel release: 721, Kernel patch level: 623
+Hostname: MROCHA, IP address: 10.32.154.87, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2021-09-13 11:07:41.805 [Thread 1]
+SAP.Middleware.Connector.RfcTypeConversionException: PARAMETER IT_ORD_VTA of FUNCTION ZFIFM_CREAR_FRA_SCRAP (SETTER): cannot convert String into TABLE WTYSC_VBELN_TAB []
+   en SAP.Middleware.Connector.RfcDataContainer`1.SetValue(Int32 index, String value)

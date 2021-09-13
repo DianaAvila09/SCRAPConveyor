@@ -128,11 +128,9 @@ namespace SCRAPConveyor.Job
                                 registro.bascula = i.bascula;
                                 registro.chofer = i.chofer;
                                 registro.empresa = i.empresa;
-                                registro.factura = i.factura;
                                 registro.fechaCreacion = i.fechaCreacion;
                                 registro.fechaHoraEntrada = i.fechaHoraEntrada;
                                 registro.fechaHoraSalida = i.fechaHoraSalida;
-                                registro.numFactura = i.numFactura;
                                 registro.pesoEntrada = i.pesoEntrada;
                                 registro.pesoSalida = i.pesoSalida;
                                 registro.pesoTara = i.pesoTara;
@@ -141,6 +139,12 @@ namespace SCRAPConveyor.Job
                                 registro.transportista = i.transportista;
                                 registro.usuario = i.usuario;
                                 registro.producto = i.producto;
+                                //registro.documento
+                                //registro.numDocumento
+                                //registro.fechaDocumento
+                                //registro.factura = i.factura;
+                                //registro.numFactura = i.numFactura;
+                                //registro.fechaFactura
                                 db.Entry(registro).State = registro.id > 0 ? System.Data.Entity.EntityState.Modified : System.Data.Entity.EntityState.Added;
                                 cont++;
                             }

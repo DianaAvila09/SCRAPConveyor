@@ -10,3 +10,6 @@ Error when starting a Remote Function Call (ACCEPT
 [09/09/2021 04:45:16 p. m.] - Main:
 no SAP ErrInfo available
 ----------------------------------------------------------------------------------------------------------------------
+[13/09/2021 11:07:20 a. m.] - Main:
+PARAMETER IT_ORD_VTA of FUNCTION ZFIFM_CREAR_FRA_SCRAP (SETTER): cannot convert String into TABLE WTYSC_VBELN_TAB []
+----------------------------------------------------------------------------------------------------------------------

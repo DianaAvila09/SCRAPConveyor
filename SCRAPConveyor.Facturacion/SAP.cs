@@ -52,7 +52,7 @@ namespace SCRAPConveyor.Facturacion
             return Tuple.Create(mensajes, E_DOCUMENTO);
         }
 
-        public Tuple<List<ET_MENSAJES>,List<ET_DOCUMENTOS>> ZFIFM_CREAR_FRA_SCRAP(string I_PLANTA, string IT_ORD_VTA)
+        public Tuple<List<ET_MENSAJES>,List<ET_DOCUMENTOS>> ZFIFM_CREAR_FRA_SCRAP(string I_PLANTA, List<String> documentos)
         {
             string strfecha = DateTime.Now.ToShortDateString();
             DateTime datevalue;
@@ -61,23 +61,32 @@ namespace SCRAPConveyor.Facturacion
             RfcRepository SapRfcRepository = SapRfcDestination.Repository;
             IRfcFunction Bapi = SapRfcRepository.CreateFunction("ZFIFM_CREAR_FRA_SCRAP");
             if (I_PLANTA != "") Bapi.SetValue("I_PLANTA", I_PLANTA);
-            if (IT_ORD_VTA != "") Bapi.SetValue("IT_ORD_VTA", IT_ORD_VTA);
+            if (documentos.Any())
+            {
+                IRfcTable IT_ORD_VTA = Bapi.GetTable("IT_ORD_VTA");
+                foreach (string documento in documentos)
+                {
+                    IT_ORD_VTA.Append();
+                    IT_ORD_VTA.SetValue("DOCUMENTO", documento);
+                }
+            }
+
 
             Bapi.Invoke(SapRfcDestination);
 
             IRfcTable ET_MENSAJES = Bapi.GetTable("ET_MENSAJES");
             IRfcTable ET_DOCUMENTOS = Bapi.GetTable("ET_DOCUMENTOS");
-            List<ET_MENSAJES> mensajes = new List<ET_MENSAJES>();
+            List<ET_MENSAJES> et_mensajes = new List<ET_MENSAJES>();
             foreach (var item in ET_MENSAJES.ToList())
             {
-                mensajes.Add(new ET_MENSAJES() { TYPE = item.GetString("TYPE"), NUMBER = item.GetString("NUMBER"), ID = item.GetString("ID"), MESSAGE = item.GetString("MESSAGE") });
+                et_mensajes.Add(new ET_MENSAJES() { TYPE = item.GetString("TYPE"), NUMBER = item.GetString("NUMBER"), ID = item.GetString("ID"), MESSAGE = item.GetString("MESSAGE") });
             }
-            List<ET_DOCUMENTOS> documentos = new List<ET_DOCUMENTOS>();
+            List<ET_DOCUMENTOS> et_documentos = new List<ET_DOCUMENTOS>();
             foreach (var item in ET_DOCUMENTOS.ToList())
             {
-                documentos.Add(new ET_DOCUMENTOS() { DOCUMENTO = item.GetString("DOCUMENTO"), POSICION = item.GetString("POSICION"), FACTURA = item.GetString("FACTURA"), MATERIAL = item.GetString("MATERIAL"), DESC_MAT = item.GetString("DESC_MAT")  });
+                et_documentos.Add(new ET_DOCUMENTOS() { DOCUMENTO = item.GetString("DOCUMENTO"), POSICION = item.GetString("POSICION"), FACTURA = item.GetString("FACTURA"), MATERIAL = item.GetString("MATERIAL"), DESC_MAT = item.GetString("DESC_MAT")  });
             }
-            return Tuple.Create(mensajes, documentos);
+            return Tuple.Create(et_mensajes, et_documentos);
         }
     }
 }

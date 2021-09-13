@@ -30,12 +30,12 @@ namespace SCRAPConveyor.Facturacion
                         cont++;
                         Console.WriteLine("Generando documento para boleto " + registro.boleto + ", registro " + cont.ToString() + " de " + registros.Count.ToString());
                         try
-                        {
+                        { 
                             using (SCRAPConveyorEntities ctx = new SCRAPConveyorEntities())
                             {
                                 bool errores = false;
                                 SAP sap = new SAP();
-                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10007", DateTime.Today.ToString("MMM-YY"), new List<IT_MATERIALES> { new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = "", MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 } });
+                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10007", DateTime.Today.ToString("MMM-yy"), new List<IT_MATERIALES> { new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.producto, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 } });
                                 if (documento != null && documento.Item1.Any())
                                 {
                                     List<BasculaRevuelta_Log> logs = new List<BasculaRevuelta_Log>();
@@ -96,7 +96,7 @@ namespace SCRAPConveyor.Facturacion
             {
                 using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                 {
-                    var registros = (from b in db.BasculaRevuelta.Where(x => x.factura != true && x.fechaHoraSalida != null && x.numDocumento != null) select b).ToList();
+                    var registros = (from b in db.BasculaRevuelta.Where(x => x.documento == true && x.factura != true && x.fechaHoraSalida != null && x.numDocumento != null) select b).ToList();
                     int cont = 0;
                     foreach (var registro in registros)
                     {
@@ -107,7 +107,7 @@ namespace SCRAPConveyor.Facturacion
                             {
                                 bool errores = false;
                                 SAP sap = new SAP();
-                                Tuple<List<ET_MENSAJES>, List<ET_DOCUMENTOS>> factura = sap.ZFIFM_CREAR_FRA_SCRAP("1841", registro.numDocumento);
+                                Tuple<List<ET_MENSAJES>, List<ET_DOCUMENTOS>> factura = sap.ZFIFM_CREAR_FRA_SCRAP("1841", new List<String>() { registro.numDocumento });
                                 if (factura != null && factura.Item1.Any())
                                 {
                                     List<BasculaRevuelta_Log> logs = new List<BasculaRevuelta_Log>();
@@ -123,7 +123,7 @@ namespace SCRAPConveyor.Facturacion
                                 if (!errores)
                                 {
                                     List<ET_DOCUMENTOS> documentos = new List<ET_DOCUMENTOS>();
-                                    foreach (var doc in documentos)
+                                    foreach (var doc in factura.Item2)
                                     {
                                         BasculaRevuelta bascula_revuelta = ctx.BasculaRevuelta.Where(x => x.boleto == registro.boleto).FirstOrDefault();
                                         bascula_revuelta.factura = true;
