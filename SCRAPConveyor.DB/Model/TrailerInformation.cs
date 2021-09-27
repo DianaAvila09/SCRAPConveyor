@@ -29,5 +29,6 @@ namespace SCRAPConveyor.DB.Model
         public Nullable<bool> TrailerFull { get; set; }
         public Nullable<bool> doorClosed { get; set; }
         public string materialType { get; set; }
+        public string tolva { get; set; }
     }
 }

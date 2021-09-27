@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using SCRAPConveyor.DB.Model;
@@ -23,9 +24,10 @@ namespace SCRAPConveyor.Facturacion
                 {
                     var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null)
                                      join p in db.PrecioSCRAP on b.producto equals p.tipo
-                                     select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda }).ToList();
+                                     join f in db.Factura on b.boleto equals f.boleto
+                                     select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).ToList();
                     int cont = 0;
-                    foreach (var registro in registros)
+                    foreach (var registro in registros) 
                     {
                         cont++;
                         Console.WriteLine("Generando documento para boleto " + registro.boleto + ", registro " + cont.ToString() + " de " + registros.Count.ToString());
@@ -35,7 +37,19 @@ namespace SCRAPConveyor.Facturacion
                             {
                                 bool errores = false;
                                 SAP sap = new SAP();
-                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10007", DateTime.Today.ToString("MMM-yy"), new List<IT_MATERIALES> { new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.producto, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 } });
+                                List<IT_MATERIALES> materiales = new List<IT_MATERIALES>();
+                                switch (ConfigurationManager.AppSettings["Entorno"].ToUpper())
+                                {
+                                    case "QAS":
+                                        materiales.Add(new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.tipoMaterial, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
+                                        break;
+                                    case "PRD":
+                                        materiales.Add(new IT_MATERIALES() { MATERIAL = registro.descSAP, CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.tipoMaterial, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10007", DateTime.Today.ToString("MMM-yy"), materiales);
                                 if (documento != null && documento.Item1.Any())
                                 {
                                     List<BasculaRevuelta_Log> logs = new List<BasculaRevuelta_Log>();

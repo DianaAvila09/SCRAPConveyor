@@ -43,6 +43,19 @@
           <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="5000" Nullable="false" />
         </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="tolva" Type="varchar" MaxLength="50" />
+          <Property Name="descSAP" Type="varchar" MaxLength="50" />
+          <Property Name="cortina" Type="varchar" MaxLength="50" />
+          <Property Name="facturado" Type="bit" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="boleto" Type="int" />
+        </EntityType>
         <EntityType Name="PrecioSCRAP">
           <Key>
             <PropertyRef Name="id" />
@@ -99,6 +112,7 @@
           <Property Name="TrailerFull" Type="bit" />
           <Property Name="doorClosed" Type="bit" />
           <Property Name="materialType" Type="varchar" MaxLength="50" />
+          <Property Name="tolva" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -113,6 +127,7 @@
         <EntityContainer Name="SCRAPConveyorModelStoreContainer">
           <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BasculaRevuelta_Log" EntityType="Self.BasculaRevuelta_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioSCRAP" EntityType="Self.PrecioSCRAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrailerInfoHistory" EntityType="Self.TrailerInfoHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrailerInformation" EntityType="Self.TrailerInformation" Schema="dbo" store:Type="Tables" />
@@ -129,6 +144,7 @@
           <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
           <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
           <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
+          <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
         </EntityContainer>
         <EntityType Name="TrailerInfoHistory">
           <Key>
@@ -172,6 +188,7 @@
           <Property Name="TrailerFull" Type="Boolean" />
           <Property Name="doorClosed" Type="Boolean" />
           <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -235,6 +252,19 @@
           <Property Name="activo" Type="Boolean" />
           <Property Name="moneda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descSAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cortina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="facturado" Type="Boolean" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="boleto" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -268,6 +298,7 @@
           <EntitySetMapping Name="TrailerInformation">
             <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
               <MappingFragment StoreEntitySet="TrailerInformation">
+                <ScalarProperty Name="tolva" ColumnName="tolva" />
                 <ScalarProperty Name="materialType" ColumnName="materialType" />
                 <ScalarProperty Name="doorClosed" ColumnName="doorClosed" />
                 <ScalarProperty Name="TrailerFull" ColumnName="TrailerFull" />
@@ -348,6 +379,20 @@
                 <ScalarProperty Name="mes" ColumnName="mes" />
                 <ScalarProperty Name="cliente" ColumnName="cliente" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="SCRAPConveyorModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="boleto" ColumnName="boleto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="facturado" ColumnName="facturado" />
+                <ScalarProperty Name="cortina" ColumnName="cortina" />
+                <ScalarProperty Name="descSAP" ColumnName="descSAP" />
+                <ScalarProperty Name="tolva" ColumnName="tolva" />
+                <ScalarProperty Name="tipoMaterial" ColumnName="tipoMaterial" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

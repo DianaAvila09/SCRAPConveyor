@@ -9,4 +9,3 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Debug\SCRA
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Debug\SCRAPConveyor.DB.csproj.CopyComplete
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Debug\SCRAPConveyor.DB.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Debug\SCRAPConveyor.DB.pdb
-C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Debug\SCRAPConveyor.DB.csproj.AssemblyReference.cache

@@ -38,6 +38,19 @@
     <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="message" Type="varchar" MaxLength="5000" Nullable="false" />
   </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoMaterial" Type="varchar" MaxLength="50" />
+    <Property Name="tolva" Type="varchar" MaxLength="50" />
+    <Property Name="descSAP" Type="varchar" MaxLength="50" />
+    <Property Name="cortina" Type="varchar" MaxLength="50" />
+    <Property Name="facturado" Type="bit" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="boleto" Type="int" />
+  </EntityType>
   <EntityType Name="PrecioSCRAP">
     <Key>
       <PropertyRef Name="id" />
@@ -94,6 +107,7 @@
     <Property Name="TrailerFull" Type="bit" />
     <Property Name="doorClosed" Type="bit" />
     <Property Name="materialType" Type="varchar" MaxLength="50" />
+    <Property Name="tolva" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -108,6 +122,7 @@
   <EntityContainer Name="SCRAPConveyorModelStoreContainer">
     <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BasculaRevuelta_Log" EntityType="Self.BasculaRevuelta_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrecioSCRAP" EntityType="Self.PrecioSCRAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrailerInfoHistory" EntityType="Self.TrailerInfoHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrailerInformation" EntityType="Self.TrailerInformation" Schema="dbo" store:Type="Tables" />

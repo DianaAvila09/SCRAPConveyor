@@ -31,5 +31,6 @@ namespace SCRAPConveyor.DB.Model
         public virtual DbSet<BasculaRevuelta_Log> BasculaRevuelta_Log { get; set; }
         public virtual DbSet<BasculaRevuelta> BasculaRevuelta { get; set; }
         public virtual DbSet<PrecioSCRAP> PrecioSCRAP { get; set; }
+        public virtual DbSet<Factura> Factura { get; set; }
     }
 }

@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="SCRAPConveyorModel.BasculaRevuelta" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="SCRAPConveyorModel.PrecioSCRAP" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SCRAPConveyorModel.Factura" Width="1.5" PointX="7.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

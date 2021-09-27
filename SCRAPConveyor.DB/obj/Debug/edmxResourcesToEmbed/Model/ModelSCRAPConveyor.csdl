@@ -7,6 +7,7 @@
     <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
     <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
     <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
+    <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
   </EntityContainer>
   <EntityType Name="TrailerInfoHistory">
     <Key>
@@ -50,6 +51,7 @@
     <Property Name="TrailerFull" Type="Boolean" />
     <Property Name="doorClosed" Type="Boolean" />
     <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -112,5 +114,18 @@
     <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
     <Property Name="activo" Type="Boolean" />
     <Property Name="moneda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descSAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cortina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="facturado" Type="Boolean" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="boleto" Type="Int32" />
   </EntityType>
 </Schema>

@@ -28,6 +28,7 @@
     <EntitySetMapping Name="TrailerInformation">
       <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
         <MappingFragment StoreEntitySet="TrailerInformation">
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
           <ScalarProperty Name="materialType" ColumnName="materialType" />
           <ScalarProperty Name="doorClosed" ColumnName="doorClosed" />
           <ScalarProperty Name="TrailerFull" ColumnName="TrailerFull" />
@@ -108,6 +109,20 @@
           <ScalarProperty Name="mes" ColumnName="mes" />
           <ScalarProperty Name="cliente" ColumnName="cliente" />
           <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="facturado" ColumnName="facturado" />
+          <ScalarProperty Name="cortina" ColumnName="cortina" />
+          <ScalarProperty Name="descSAP" ColumnName="descSAP" />
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
+          <ScalarProperty Name="tipoMaterial" ColumnName="tipoMaterial" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

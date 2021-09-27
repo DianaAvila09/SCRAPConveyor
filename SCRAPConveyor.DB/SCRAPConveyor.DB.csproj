@@ -55,6 +55,9 @@
     <Compile Include="Model\BasculaRevuelta_Log.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Factura.cs">
+      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ModelSCRAPConveyor.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
