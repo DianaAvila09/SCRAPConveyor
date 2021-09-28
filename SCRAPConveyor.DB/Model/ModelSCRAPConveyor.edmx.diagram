@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5966d3567c554d27ad4ada6de90f675f" Name="Diagram1">
-        <EntityTypeShape EntityType="SCRAPConveyorModel.TrailerInfoHistory" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SCRAPConveyorModel.TrailerInformation" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="SCRAPConveyorModel.TypeMaterial" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" Width="1.5" PointX="3.375" PointY="6.75" />

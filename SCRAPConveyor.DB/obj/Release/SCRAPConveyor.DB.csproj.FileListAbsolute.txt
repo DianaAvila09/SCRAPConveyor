@@ -1,0 +1,12 @@
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\SCRAPConveyor.DB.dll.config
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\SCRAPConveyor.DB.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\SCRAPConveyor.DB.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\EntityFramework.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\EntityFramework.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Release\SCRAPConveyor.DB.csproj.AssemblyReference.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Release\SCRAPConveyor.DB.csproj.CoreCompileInputs.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Release\SCRAPConveyor.DB.csproj.CopyComplete
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Release\SCRAPConveyor.DB.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.DB\obj\Release\SCRAPConveyor.DB.pdb

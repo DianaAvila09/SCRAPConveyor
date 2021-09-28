@@ -70,29 +70,6 @@
           <Property Name="activo" Type="bit" />
           <Property Name="moneda" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="TrailerInfoHistory">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="releaseMaterial" Type="bit" />
-          <Property Name="materialOnTheWay" Type="bit" />
-          <Property Name="mixedMaterial" Type="bit" />
-          <Property Name="reqTrailerExchange" Type="bit" />
-          <Property Name="fillingLevel" Type="int" />
-          <Property Name="trailerNumber" Type="int" />
-          <Property Name="tolvaNumber" Type="varchar" MaxLength="50" />
-          <Property Name="startDate" Type="datetime" />
-          <Property Name="endDate" Type="datetime" />
-          <Property Name="material" Type="varchar" MaxLength="50" />
-          <Property Name="invoiceNumber" Type="varchar" MaxLength="50" />
-          <Property Name="invoiceDate" Type="datetime" />
-          <Property Name="startPlant" Type="datetime" />
-          <Property Name="startWeight" Type="decimal" Precision="18" Scale="6" />
-          <Property Name="endPlant" Type="datetime" />
-          <Property Name="endWeight" Type="decimal" Precision="18" Scale="6" />
-          <Property Name="creationDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="TrailerInformation">
           <Key>
             <PropertyRef Name="id" />
@@ -113,6 +90,7 @@
           <Property Name="doorClosed" Type="bit" />
           <Property Name="materialType" Type="varchar" MaxLength="50" />
           <Property Name="tolva" Type="varchar" MaxLength="50" />
+          <Property Name="line" Type="int" />
         </EntityType>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -124,12 +102,15 @@
           <Property Name="code" Type="varchar" MaxLength="10" />
           <Property Name="receta" Type="int" />
         </EntityType>
+        <Function Name="sp_GetList_HistoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_inicio" Type="datetime" Mode="In" />
+          <Parameter Name="fecha_fin" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="SCRAPConveyorModelStoreContainer">
           <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BasculaRevuelta_Log" EntityType="Self.BasculaRevuelta_Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioSCRAP" EntityType="Self.PrecioSCRAP" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TrailerInfoHistory" EntityType="Self.TrailerInfoHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrailerInformation" EntityType="Self.TrailerInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeMaterial" EntityType="Self.TypeMaterial" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -138,37 +119,17 @@
     <edmx:ConceptualModels>
       <Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TrailerInfoHistory" EntityType="SCRAPConveyorModel.TrailerInfoHistory" />
           <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
           <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
           <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
           <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
           <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
           <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
+          <FunctionImport Name="sp_GetList_HistoryReport" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_HistoryReport_Result)">
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
-        <EntityType Name="TrailerInfoHistory">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="releaseMaterial" Type="Boolean" />
-          <Property Name="materialOnTheWay" Type="Boolean" />
-          <Property Name="mixedMaterial" Type="Boolean" />
-          <Property Name="reqTrailerExchange" Type="Boolean" />
-          <Property Name="fillingLevel" Type="Int32" />
-          <Property Name="trailerNumber" Type="Int32" />
-          <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="startDate" Type="DateTime" Precision="3" />
-          <Property Name="endDate" Type="DateTime" Precision="3" />
-          <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="invoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="invoiceDate" Type="DateTime" Precision="3" />
-          <Property Name="startPlant" Type="DateTime" Precision="3" />
-          <Property Name="startWeight" Type="Decimal" Precision="18" Scale="6" />
-          <Property Name="endPlant" Type="DateTime" Precision="3" />
-          <Property Name="endWeight" Type="Decimal" Precision="18" Scale="6" />
-          <Property Name="creationDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="TrailerInformation">
           <Key>
             <PropertyRef Name="id" />
@@ -189,6 +150,7 @@
           <Property Name="doorClosed" Type="Boolean" />
           <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="line" Type="Int32" />
         </EntityType>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -265,39 +227,29 @@
           <Property Name="fecha" Type="DateTime" Precision="3" />
           <Property Name="boleto" Type="Int32" />
         </EntityType>
+        <ComplexType Name="sp_GetList_HistoryReport_Result">
+          <Property Type="Int32" Name="boleto" Nullable="true" />
+          <Property Type="String" Name="tolva" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaHoraEntrada" Nullable="true" Precision="23" />
+          <Property Type="String" Name="cortina" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="fechaHoraLlenado" Nullable="true" />
+          <Property Type="Int32" Name="prensaOrigen" Nullable="true" />
+          <Property Type="Int32" Name="numeroParte" Nullable="true" />
+          <Property Type="Int32" Name="nivelLlenado" Nullable="true" />
+          <Property Type="String" Name="tipoAluminio" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaHoraSalida" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="peso" Nullable="true" Precision="19" Scale="4" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SCRAPConveyorModelStoreContainer" CdmEntityContainer="SCRAPConveyorEntities">
-          <EntitySetMapping Name="TrailerInfoHistory">
-            <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInfoHistory">
-              <MappingFragment StoreEntitySet="TrailerInfoHistory">
-                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
-                <ScalarProperty Name="endWeight" ColumnName="endWeight" />
-                <ScalarProperty Name="endPlant" ColumnName="endPlant" />
-                <ScalarProperty Name="startWeight" ColumnName="startWeight" />
-                <ScalarProperty Name="startPlant" ColumnName="startPlant" />
-                <ScalarProperty Name="invoiceDate" ColumnName="invoiceDate" />
-                <ScalarProperty Name="invoiceNumber" ColumnName="invoiceNumber" />
-                <ScalarProperty Name="material" ColumnName="material" />
-                <ScalarProperty Name="endDate" ColumnName="endDate" />
-                <ScalarProperty Name="startDate" ColumnName="startDate" />
-                <ScalarProperty Name="tolvaNumber" ColumnName="tolvaNumber" />
-                <ScalarProperty Name="trailerNumber" ColumnName="trailerNumber" />
-                <ScalarProperty Name="fillingLevel" ColumnName="fillingLevel" />
-                <ScalarProperty Name="reqTrailerExchange" ColumnName="reqTrailerExchange" />
-                <ScalarProperty Name="mixedMaterial" ColumnName="mixedMaterial" />
-                <ScalarProperty Name="materialOnTheWay" ColumnName="materialOnTheWay" />
-                <ScalarProperty Name="releaseMaterial" ColumnName="releaseMaterial" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TrailerInformation">
             <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
               <MappingFragment StoreEntitySet="TrailerInformation">
+                <ScalarProperty Name="line" ColumnName="line" />
                 <ScalarProperty Name="tolva" ColumnName="tolva" />
                 <ScalarProperty Name="materialType" ColumnName="materialType" />
                 <ScalarProperty Name="doorClosed" ColumnName="doorClosed" />
@@ -397,6 +349,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetList_HistoryReport" FunctionName="SCRAPConveyorModel.Store.sp_GetList_HistoryReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCRAPConveyorModel.sp_GetList_HistoryReport_Result">
+                <ScalarProperty Name="boleto" ColumnName="boleto" />
+                <ScalarProperty Name="tolva" ColumnName="tolva" />
+                <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+                <ScalarProperty Name="cortina" ColumnName="cortina" />
+                <ScalarProperty Name="fechaHoraLlenado" ColumnName="fechaHoraLlenado" />
+                <ScalarProperty Name="prensaOrigen" ColumnName="prensaOrigen" />
+                <ScalarProperty Name="numeroParte" ColumnName="numeroParte" />
+                <ScalarProperty Name="nivelLlenado" ColumnName="nivelLlenado" />
+                <ScalarProperty Name="tipoAluminio" ColumnName="tipoAluminio" />
+                <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -31,11 +31,11 @@ namespace RepositorioSQL
         /// Selecciona todos sus registros
         /// </summary>        
         /// <returns>Registro(s)</returns>
-        public DataSet Sel_HistoryTrailerInformation()
-        {
-            BD.SetCommand("SP_SelHistoryTrailerInformation");           
-            return BD.getDataSet();
-        }
+        //public DataSet Sel_HistoryTrailerInformation()
+        //{
+        //    BD.SetCommand("SP_SelHistoryTrailerInformation");           
+        //    return BD.getDataSet();
+        //}
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Historico.cls_Historico.HistoryTrailerInformation>
+﻿@model IEnumerable<SCRAPConveyor.DB.Model.sp_GetList_HistoryReport_Result>
 
 @{
     ViewBag.Title = "History Page";
@@ -62,7 +62,7 @@
             });
             navigator.msSaveOrOpenBlob(blob, filename);
         }
-
+         
 
 
     }
@@ -90,7 +90,7 @@
 
                                                 <li>
                                                     <fieldset class="has-icon-left">
-                                                        <input type="text" id="inicio" name="inicio" value="@ViewBag.fin" class="form-control single-daterange" />
+                                                        <input type="text" id="inicio" name="inicio" value="@ViewBag.inicio" class="form-control single-daterange" />
                                                         <div class="form-control-position">
                                                             <i class="bx bx-calendar font-medium-1"></i>
                                                         </div>
@@ -130,71 +130,35 @@
                                 <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
                                     <thead>
                                         <tr style="font-size:10px;">
-                                            <th class="text-center">material</th>
-                                            <th class="text-center">tolvaNumber</th>
-                                            <th class="text-center">releaseMaterial</th>
-                                            <th class="text-center">materialOnTheWay</th>
-                                            <th class="text-center">mixedMaterial</th>
-                                            <th class="text-center">reqTrailerExchange</th>
-                                            <th class="text-center">fillingLevel</th>
-                                            <th class="text-center">startDate</th>
-                                            <th class="text-center">endDate</th>
-                                            <th class="text-center">startPlant</th>
-                                            <th class="text-center">startWeight</th>
-                                            <th class="text-center">endPlant</th>
-                                            <th class="text-center">endWeight</th>
-                                            <th class="text-center">creationDate</th>
-                                            <th class="text-center">code</th>
+                                            @*<th class="text-center">boleto</th>
+                                            <th class="text-center">tolva</th>*@
+                                            <th class="text-center">fechaHoraEntrada</th>
+                                            <th class="text-center">cortina</th>
+                                            <th class="text-center">fechaHoraLlenado</th>
+                                            <th class="text-center">prensaOrigen</th>
+                                            <th class="text-center">numeroParte</th>
+                                            <th class="text-center">nivelLlenado</th>
+                                            <th class="text-center">tipoAluminio</th>
+                                            <th class="text-center">fechaHoraSalida</th>
+                                            <th class="text-center">peso</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr style="font-size:12px;">
-                                                <td class="py-1 line-ellipsis text-center">@item.material</td>
-                                                <td class="py-1 line-ellipsis text-center">@item.tolvaNumber</td>
-                                                @if (item.releaseMaterial)
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green12.svg" /></td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray12.svg" /></td>
-                                                }
-                                                @if (item.materialOnTheWay)
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green12.svg" /></td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray12.svg" /></td>
-                                                }
-                                                @if (item.mixedMaterial)
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green12.svg" /></td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray12.svg" /></td>
-                                                }
-                                                @if (item.reqTrailerExchange)
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-green.svg" /></td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="py-1 line-ellipsis text-center"><img src="../../SCRAPConveyor/app-assets/images/icon/circle-fill-gray.svg" /></td>
-                                                }
-                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.fillingLevel)</td>
-                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.startDate) @String.Format("{0:T}", item.startDate)</td>
-                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.endDate) @String.Format("{0:T}", item.endDate)</td>
-                                                <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.startPlant) @String.Format("{0:T}", item.startPlant)</td>
-                                                <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.startWeight)</td>
-                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:M/d/yyyy}", item.endPlant) @String.Format("{0:T}", item.endPlant)</td>
-                                                <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.endWeight)</td>
-                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:M/d/yyyy}", item.creationDate) @String.Format("{0:T}", item.creationDate)</td>
-                                                <td class="py-1 line-ellipsis text-center">@item.code</td>
-                                            </tr>
+                                        <tr style="font-size:12px;">
+                                            @*<td class="py-1 line-ellipsis text-center">@item.boleto</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.tolva</td>*@
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraEntrada) @String.Format("{0:T}", item.fechaHoraEntrada)</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.cortina)</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraLlenado) @String.Format("{0:T}", item.fechaHoraLlenado)</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.prensaOrigen</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.numeroParte</td>
+                                            <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.nivelLlenado)</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.tipoAluminio</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
+                                            <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.peso)</td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SCRAPConveyorModelStoreContainer" CdmEntityContainer="SCRAPConveyorEntities">
+    <EntitySetMapping Name="TrailerInformation">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
+        <MappingFragment StoreEntitySet="TrailerInformation">
+          <ScalarProperty Name="line" ColumnName="line" />
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
+          <ScalarProperty Name="materialType" ColumnName="materialType" />
+          <ScalarProperty Name="doorClosed" ColumnName="doorClosed" />
+          <ScalarProperty Name="TrailerFull" ColumnName="TrailerFull" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="tolvaNumber" ColumnName="tolvaNumber" />
+          <ScalarProperty Name="trailerNumber" ColumnName="trailerNumber" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="fillingLevel" ColumnName="fillingLevel" />
+          <ScalarProperty Name="reqTrailerExchange" ColumnName="reqTrailerExchange" />
+          <ScalarProperty Name="mixedMaterial" ColumnName="mixedMaterial" />
+          <ScalarProperty Name="materialOnTheWay" ColumnName="materialOnTheWay" />
+          <ScalarProperty Name="releaseMaterial" ColumnName="releaseMaterial" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeMaterial">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.TypeMaterial">
+        <MappingFragment StoreEntitySet="TypeMaterial">
+          <ScalarProperty Name="receta" ColumnName="receta" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="typeMaterial1" ColumnName="typeMaterial" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasculaRevuelta_Log">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta_Log">
+        <MappingFragment StoreEntitySet="BasculaRevuelta_Log">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="fecha_ejecucion" ColumnName="fecha_ejecucion" />
+          <ScalarProperty Name="bapi" ColumnName="bapi" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasculaRevuelta">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
+        <MappingFragment StoreEntitySet="BasculaRevuelta">
+          <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
+          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+          <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+          <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+          <ScalarProperty Name="factura" ColumnName="factura" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+          <ScalarProperty Name="bascula" ColumnName="bascula" />
+          <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+          <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+          <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+          <ScalarProperty Name="transportista" ColumnName="transportista" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrecioSCRAP">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.PrecioSCRAP">
+        <MappingFragment StoreEntitySet="PrecioSCRAP">
+          <ScalarProperty Name="moneda" ColumnName="moneda" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="año" ColumnName="año" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="cliente" ColumnName="cliente" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Factura">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="facturado" ColumnName="facturado" />
+          <ScalarProperty Name="cortina" ColumnName="cortina" />
+          <ScalarProperty Name="descSAP" ColumnName="descSAP" />
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
+          <ScalarProperty Name="tipoMaterial" ColumnName="tipoMaterial" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetList_HistoryReport" FunctionName="SCRAPConveyorModel.Store.sp_GetList_HistoryReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SCRAPConveyorModel.sp_GetList_HistoryReport_Result">
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
+          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+          <ScalarProperty Name="cortina" ColumnName="cortina" />
+          <ScalarProperty Name="fechaHoraLlenado" ColumnName="fechaHoraLlenado" />
+          <ScalarProperty Name="prensaOrigen" ColumnName="prensaOrigen" />
+          <ScalarProperty Name="numeroParte" ColumnName="numeroParte" />
+          <ScalarProperty Name="nivelLlenado" ColumnName="nivelLlenado" />
+          <ScalarProperty Name="tipoAluminio" ColumnName="tipoAluminio" />
+          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

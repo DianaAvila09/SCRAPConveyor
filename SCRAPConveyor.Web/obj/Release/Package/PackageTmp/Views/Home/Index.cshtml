@@ -76,19 +76,29 @@
                            if (data[i].code != null)
                                code_1 = data[i].code;
 
-                           newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
+                           var material = 0;
+                           if (data[i].material != null)
+                               material = data[i].material;
+
+                           newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material);
 
                            if (trailerNumber == 1) {
+                               if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                                $('#llenar_T1').html(newHtml);
                            } else if (trailerNumber == 2) {
+                               if (material != '0') $('#T2').addClass('badge-success'); else $('#T2').removeClass('badge-success');
                                $('#llenar_T2').html(newHtml);
                            } else if (trailerNumber == 3) {
+                               if (material != '0') $('#T3').addClass('badge-success'); else $('#T3').removeClass('badge-success');
                                $('#llenar_T3').html(newHtml);
                            } else if (trailerNumber == 4) {
+                               if (material != '0') $('#T4').addClass('badge-success'); else $('#T4').removeClass('badge-success');
                                $('#llenar_T4').html(newHtml);
                            } else if (trailerNumber == 5) {
+                               if (material != '0') $('#T5').addClass('badge-success'); else $('#T5').removeClass('badge-success');
                                $('#llenar_T5').html(newHtml);
                            } else if (trailerNumber == 6) {
+                               if (material != '0') $('#T6').addClass('badge-success'); else $('#T6').removeClass('badge-success');
                                $('#llenar_T6').html(newHtml);
                            }
 
@@ -176,23 +186,33 @@
                         if (data[i].code != null)
                             code_1 = data[i].code;
 
-                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1);
+                        var material = 0;
+                        if (data[i].material != null)
+                            material = data[i].material;
+
+                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material);
 
                         if (trailerNumber == 1) {
+                            if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
                             $('#llenar_T1').html(newHtml);
                         } else if (trailerNumber == 2) {
+                            if (material != '0') $('#T2').addClass('badge-success'); else $('#T2').removeClass('badge-success');
                             $('#llenar_T2').html(newHtml);
                         } else if (trailerNumber == 3) {
+                            if (material != '0') $('#T3').addClass('badge-success'); else $('#T3').removeClass('badge-success');
                             $('#llenar_T3').html(newHtml);
                         } else if (trailerNumber == 4) {
+                            if (material != '0') $('#T4').addClass('badge-success'); else $('#T4').removeClass('badge-success');
                             $('#llenar_T4').html(newHtml);
                         } else if (trailerNumber == 5) {
+                            if (material != '0') $('#T5').addClass('badge-success'); else $('#T5').removeClass('badge-success');
                             $('#llenar_T5').html(newHtml);
                         } else if (trailerNumber == 6) {
+                            if (material != '0') $('#T6').addClass('badge-success'); else $('#T6').removeClass('badge-success');
                             $('#llenar_T6').html(newHtml);
                         }
 
-                    }
+                    } 
                     Desactivar();
                 },
                 error: function (ex) {
@@ -205,15 +225,26 @@
         });
     }
 
-    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel) {
+    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel, trailerNumber, material) {
         var newHtml = '';
-
         newHtml = '<tr>'
-        newHtml += '    <td colspan = "2" align = "center" > <b>material type</b></td>';
+        newHtml += ' <td colspan="2" style"width:100%;">'
+        newHtml += '    <table id="T' + trailerNumber.toString() + '" width="100%" ' + (material != "0" ? 'class="badge-success"' : '') + '>'
+        newHtml += '        <tr>'
+        newHtml += '            <td colspan = "2" align = "center" > <b>material type</b></td>';
+        newHtml += '        </tr>';
+        newHtml += '        <tr>'
+        newHtml += '            <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
+        newHtml += '        </tr>';
+        newHtml += '    </table>'
+        newHtml += ' </td>'
         newHtml += '</tr>';
-        newHtml += '<tr>';
-        newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
-        newHtml += '</tr>';
+        ////////////////////newHtml = '<tr>'
+        ////////////////////newHtml += '    <td colspan = "2" align = "center" > <b>material type</b></td>';
+        ////////////////////newHtml += '</tr>';
+        ////////////////////newHtml += '<tr>';
+        ////////////////////newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
+        ////////////////////newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td colspan="2"><b>state:</b></td>';
         newHtml += '</tr>';
@@ -264,8 +295,9 @@
                     <!-- table start -->
                     <div class="row">
                         <div class="col-1" style="position: relative; top: 10px; left:10px; ">
-
-                            <input type="button" class="btn btn-primary" onclick="javascript: Historial();" value="Historial">
+                            <form method="get" action="@Url.Action("History", "Home")">
+                                <button class="btn btn-primary ">Historial</button>
+                            </form>
                         </div>
                         <div class="col-10">
                             <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
@@ -278,42 +310,42 @@
                                     <tr>
                                         <td style="width:43px;height:108px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T1">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:29px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T2">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:30px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T3">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:36px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T4">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:33px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T5">
                                                 </tbody>
                                             </table>
                                         </td>
                                         <td style="width:37px;"></td>
                                         <td style="width:117px;" valign="top">
-                                            <table width="100%" style="margin:3px;" border="0">
+                                            <table width="100%" style="margin:1px;" border="0">
                                                 <tbody id="llenar_T6">
                                                 </tbody>
                                             </table>

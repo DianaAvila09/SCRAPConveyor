@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Operacion;
 using Historico;
-
+using SCRAPConveyor.DB.Model;
 
 namespace SCRAPConveyor.Web.Controllers
 {
@@ -15,7 +15,7 @@ namespace SCRAPConveyor.Web.Controllers
         cls_Historico Historico = new cls_Historico();
 
         List<cls_Operacion.TrailerInformation> Resultado = new List<cls_Operacion.TrailerInformation>();
-        List<cls_Historico.HistoryTrailerInformation> ResultadoHistorico = new List<cls_Historico.HistoryTrailerInformation>();
+        List<sp_GetList_HistoryReport_Result> ResultadoHistorico = new List<sp_GetList_HistoryReport_Result>();
 
 
         public ActionResult Index()
@@ -36,13 +36,16 @@ namespace SCRAPConveyor.Web.Controllers
                 
         public ActionResult History()
         {
+            SCRAPConveyorEntities db = new SCRAPConveyorEntities();
             var today = DateTime.Today;
-            DateTime inicio = today.AddDays(0);
-            DateTime fin = today.AddDays(1);
-
-            ResultadoHistorico = Historico.get_HistoryTrailerInformation();
-
-            return View(ResultadoHistorico);
+            DateTime inicio = today.AddDays(-7);
+            DateTime fin = today.AddDays(0);
+            ViewBag.inicio = inicio.ToString("MM/dd/yyyy");
+            ViewBag.fin = fin.ToString("MM/dd/yyyy"); 
+             
+            //ResultadoHistorico = Historico.get_HistoryTrailerInformation();
+            List<sp_GetList_HistoryReport_Result> result = db.sp_GetList_HistoryReport(inicio, fin).ToList();
+            return View(result);
         }
 
         [HttpGet]
@@ -52,22 +55,23 @@ namespace SCRAPConveyor.Web.Controllers
             DateTime inicio = today.AddDays(0);
             DateTime fin = today.AddDays(1);
 
-            ResultadoHistorico = Historico.get_HistoryTrailerInformation();
+            //ResultadoHistorico = Historico.get_HistoryTrailerInformation();
             var respuesta = Json(ResultadoHistorico, JsonRequestBehavior.AllowGet);
             return (respuesta);
         }
 
         public ActionResult Datefilter(DateTime inicio, DateTime fin)
         {
-
-            ViewBag.inicio = inicio.Month.ToString() + "/" + inicio.Day.ToString() + "/" + inicio.Year.ToString();
-            ViewBag.fin = fin.Month.ToString() + "/" + fin.Day.ToString() + "/" + fin.Year.ToString();            
+            SCRAPConveyorEntities db = new SCRAPConveyorEntities();
+            ViewBag.inicio = inicio.ToString("MM/dd/yyyy");
+            ViewBag.fin = fin.ToString("MM/dd/yyyy");
             fin = fin.AddHours(23);
             fin = fin.AddMinutes(59);
 
-            ResultadoHistorico = Historico.get_HistoryTrailerInformation();
+            //ResultadoHistorico = Historico.get_HistoryTrailerInformation();
+            List<sp_GetList_HistoryReport_Result> result = db.sp_GetList_HistoryReport(inicio, fin).ToList();
 
-            var result = ResultadoHistorico.Where(a => a.creationDate >= inicio && a.creationDate <= fin).OrderBy(b => b.creationDate).ToList();
+            //var result = ResultadoHistorico.Where(a => a.creationDate >= inicio && a.creationDate <= fin).OrderBy(b => b.creationDate).ToList();
 
             return View(result);
         }

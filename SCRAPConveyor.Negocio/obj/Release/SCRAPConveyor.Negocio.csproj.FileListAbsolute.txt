@@ -5,3 +5,10 @@ D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCR
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.csproj.CoreCompileInputs.cache
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.dll
 D:\Sistemas\Web\Magna\GitHub\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.dll.config
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Release\SCRAPConveyor.Negocio.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.csproj.AssemblyReference.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Release\SCRAPConveyor.Negocio.pdb

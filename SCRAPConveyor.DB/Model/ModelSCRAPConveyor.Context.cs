@@ -12,6 +12,8 @@ namespace SCRAPConveyor.DB.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SCRAPConveyorEntities : DbContext
     {
@@ -25,12 +27,24 @@ namespace SCRAPConveyor.DB.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TrailerInfoHistory> TrailerInfoHistory { get; set; }
         public virtual DbSet<TrailerInformation> TrailerInformation { get; set; }
         public virtual DbSet<TypeMaterial> TypeMaterial { get; set; }
         public virtual DbSet<BasculaRevuelta_Log> BasculaRevuelta_Log { get; set; }
         public virtual DbSet<BasculaRevuelta> BasculaRevuelta { get; set; }
         public virtual DbSet<PrecioSCRAP> PrecioSCRAP { get; set; }
         public virtual DbSet<Factura> Factura { get; set; }
+    
+        public virtual ObjectResult<sp_GetList_HistoryReport_Result> sp_GetList_HistoryReport(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
+        {
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetList_HistoryReport_Result>("sp_GetList_HistoryReport", fecha_inicioParameter, fecha_finParameter);
+        }
     }
 }

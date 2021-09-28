@@ -40,53 +40,53 @@ namespace Historico
 
         }
 
-        public List<HistoryTrailerInformation> get_HistoryTrailerInformation(string pCode = "", int pTrailerNumber = 0)
-        {
-            List<HistoryTrailerInformation> lTrailerInformation = new List<HistoryTrailerInformation>();
-            oDs = cls_RepositorioSQL.Sel_HistoryTrailerInformation();
+        //public List<HistoryTrailerInformation> get_HistoryTrailerInformation(string pCode = "", int pTrailerNumber = 0)
+        //{
+        //    List<HistoryTrailerInformation> lTrailerInformation = new List<HistoryTrailerInformation>();
+        //    oDs = cls_RepositorioSQL.Sel_HistoryTrailerInformation();
 
 
-            try
-            {
-                if (oDs.Tables[0].Rows.Count > 0)
-                {
-                    DataTable dt = new DataTable();
-                    dt = oDs.Tables[0];
+        //    try
+        //    {
+        //        if (oDs.Tables[0].Rows.Count > 0)
+        //        {
+        //            DataTable dt = new DataTable();
+        //            dt = oDs.Tables[0];
 
-                    lTrailerInformation = (from DataRow row in dt.Rows
-                                           select new HistoryTrailerInformation
-                                           {
-                                               material = row["material"].ToString(),
-                                               tolvaNumber = row["tolvaNumber"].ToString(),
+        //            lTrailerInformation = (from DataRow row in dt.Rows
+        //                                   select new HistoryTrailerInformation
+        //                                   {
+        //                                       material = row["material"].ToString(),
+        //                                       tolvaNumber = row["tolvaNumber"].ToString(),
 
-                                               releaseMaterial = Convert.ToBoolean(row["releaseMaterial"]),
-                                               materialOnTheWay = Convert.ToBoolean(row["materialOnTheWay"]),
-                                               mixedMaterial = Convert.ToBoolean(row["mixedMaterial"]),
-                                               reqTrailerExchange = Convert.ToBoolean(row["reqTrailerExchange"]),
-                                               fillingLevel = Convert.ToDouble(row["fillingLevel"].ToString()),
+        //                                       releaseMaterial = Convert.ToBoolean(row["releaseMaterial"]),
+        //                                       materialOnTheWay = Convert.ToBoolean(row["materialOnTheWay"]),
+        //                                       mixedMaterial = Convert.ToBoolean(row["mixedMaterial"]),
+        //                                       reqTrailerExchange = Convert.ToBoolean(row["reqTrailerExchange"]),
+        //                                       fillingLevel = Convert.ToDouble(row["fillingLevel"].ToString()),
 
-                                               startDate = Convert.ToDateTime(row["startDate"]),
-                                               endDate = Convert.ToDateTime(row["endDate"]),
-                                               startPlant = Convert.ToDateTime(row["startPlant"]),                                               
-                                               //endPlant = Convert.ToDateTime(row["endPlant"]),
-                                               startWeight = Convert.ToDecimal(row["startWeight"].ToString()),
-                                               //endWeight = Convert.ToDecimal(row["endWeight"].ToString()),
-                                               creationDate = Convert.ToDateTime(row["creationDate"].ToString()),
+        //                                       startDate = Convert.ToDateTime(row["startDate"]),
+        //                                       endDate = Convert.ToDateTime(row["endDate"]),
+        //                                       startPlant = Convert.ToDateTime(row["startPlant"]),                                               
+        //                                       //endPlant = Convert.ToDateTime(row["endPlant"]),
+        //                                       startWeight = Convert.ToDecimal(row["startWeight"].ToString()),
+        //                                       //endWeight = Convert.ToDecimal(row["endWeight"].ToString()),
+        //                                       creationDate = Convert.ToDateTime(row["creationDate"].ToString()),
 
-                                               code = row["code"].ToString()
-                                           }).ToList();
-                }
+        //                                       code = row["code"].ToString()
+        //                                   }).ToList();
+        //        }
 
-                oDs.Dispose();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+        //        oDs.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
 
-            return lTrailerInformation;
+        //    return lTrailerInformation;
 
-        }
+        //}
 
     }
 }

@@ -1,37 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="TrailerInfoHistory" EntityType="SCRAPConveyorModel.TrailerInfoHistory" />
     <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
     <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
     <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
     <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
     <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
     <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
+    <FunctionImport Name="sp_GetList_HistoryReport" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_HistoryReport_Result)">
+      <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
-  <EntityType Name="TrailerInfoHistory">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="releaseMaterial" Type="Boolean" />
-    <Property Name="materialOnTheWay" Type="Boolean" />
-    <Property Name="mixedMaterial" Type="Boolean" />
-    <Property Name="reqTrailerExchange" Type="Boolean" />
-    <Property Name="fillingLevel" Type="Int32" />
-    <Property Name="trailerNumber" Type="Int32" />
-    <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="startDate" Type="DateTime" Precision="3" />
-    <Property Name="endDate" Type="DateTime" Precision="3" />
-    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="invoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="invoiceDate" Type="DateTime" Precision="3" />
-    <Property Name="startPlant" Type="DateTime" Precision="3" />
-    <Property Name="startWeight" Type="Decimal" Precision="18" Scale="6" />
-    <Property Name="endPlant" Type="DateTime" Precision="3" />
-    <Property Name="endWeight" Type="Decimal" Precision="18" Scale="6" />
-    <Property Name="creationDate" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="TrailerInformation">
     <Key>
       <PropertyRef Name="id" />
@@ -52,6 +32,7 @@
     <Property Name="doorClosed" Type="Boolean" />
     <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="line" Type="Int32" />
   </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -128,4 +109,17 @@
     <Property Name="fecha" Type="DateTime" Precision="3" />
     <Property Name="boleto" Type="Int32" />
   </EntityType>
+  <ComplexType Name="sp_GetList_HistoryReport_Result">
+    <Property Type="Int32" Name="boleto" Nullable="true" />
+    <Property Type="String" Name="tolva" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaHoraEntrada" Nullable="true" Precision="23" />
+    <Property Type="String" Name="cortina" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="fechaHoraLlenado" Nullable="true" />
+    <Property Type="Int32" Name="prensaOrigen" Nullable="true" />
+    <Property Type="Int32" Name="numeroParte" Nullable="true" />
+    <Property Type="Int32" Name="nivelLlenado" Nullable="true" />
+    <Property Type="String" Name="tipoAluminio" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaHoraSalida" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="peso" Nullable="true" Precision="19" Scale="4" />
+  </ComplexType>
 </Schema>
