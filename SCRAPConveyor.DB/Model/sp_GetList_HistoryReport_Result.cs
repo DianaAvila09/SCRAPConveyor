@@ -18,7 +18,7 @@ namespace SCRAPConveyor.DB.Model
         public Nullable<System.DateTime> fechaHoraEntrada { get; set; }
         public string cortina { get; set; }
         public Nullable<int> fechaHoraLlenado { get; set; }
-        public Nullable<int> prensaOrigen { get; set; }
+        public string prensaOrigen { get; set; }
         public Nullable<int> numeroParte { get; set; }
         public Nullable<int> nivelLlenado { get; set; }
         public string tipoAluminio { get; set; }
