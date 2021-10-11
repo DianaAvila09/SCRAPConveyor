@@ -158,3 +158,158 @@ Default trace level: None
 >> Error entry 2021-09-13 11:07:41.805 [Thread 1]
 SAP.Middleware.Connector.RfcTypeConversionException: PARAMETER IT_ORD_VTA of FUNCTION ZFIFM_CREAR_FRA_SCRAP (SETTER): cannot convert String into TABLE WTYSC_VBELN_TAB []
    en SAP.Middleware.Connector.RfcDataContainer`1.SetValue(Int32 index, String value)
+
+**** Log file opened by process 21692 at 2021-10-11 10:01:01 (UTC-05:00 Hora de verano central (México))
+
+SAP .NET Connector 3.0 with file version 3.0.17.0 running on 64-bit .NET Framework 4.0.30319.42000
+Program: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug\SCRAPConveyor.Facturacion.exe
+Working directory: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug
+Operating system: Windows 8 Professional 64-bit 
+Processor: 8x AMD64 (or x64)
+SAP release: 721, Kernel release: 721, Kernel patch level: 623
+Hostname: MROCHA, IP address: 10.32.155.132, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2021-10-11 10:01:01.189 [Thread 1]
+Failure to create pool for destination QAS (ORIGINAL) [USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+>> Error entry 2021-10-11 10:01:01.191 [Thread 1]
+[USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+>> Error entry 2021-10-11 10:01:01.192 [Thread 1]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+   en SAP.Middleware.Connector.RfcDestination.get_SystemAttributes()
+   en SAP.Middleware.Connector.RfcRepository.GetRepositoryForDestination(RfcDestination destination)
+
+**** Log file opened by process 19332 at 2021-10-11 10:02:02 (UTC-05:00 Hora de verano central (México))
+
+SAP .NET Connector 3.0 with file version 3.0.17.0 running on 64-bit .NET Framework 4.0.30319.42000
+Program: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug\SCRAPConveyor.Facturacion.exe
+Working directory: C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Facturacion\bin\Debug
+Operating system: Windows 8 Professional 64-bit 
+Processor: 8x AMD64 (or x64)
+SAP release: 721, Kernel release: 721, Kernel patch level: 623
+Hostname: MROCHA, IP address: 10.32.155.132, IP_v6 address: 
+
+Default trace level: None
+
+>> Error entry 2021-10-11 10:02:03.019 [Thread 1]
+Failure to create pool for destination QAS (ORIGINAL) [USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+>> Error entry 2021-10-11 10:02:03.023 [Thread 1]
+[USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+>> Error entry 2021-10-11 10:02:03.023 [Thread 1]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+   en SAP.Middleware.Connector.RfcDestination.get_SystemAttributes()
+   en SAP.Middleware.Connector.RfcRepository.GetRepositoryForDestination(RfcDestination destination)
+>> Error entry 2021-10-11 10:02:11.080 [Thread 1]
+Failure to create pool for destination QAS (ORIGINAL) [USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+>> Error entry 2021-10-11 10:02:11.081 [Thread 1]
+[USER=mijimenez PASSWD=******** CLIENT=100 LANG=EN ASHOST=10.12.0.18 SYSNR=00 MAX_POOL_SIZE=10 IDLE_TIMEOUT=30 NAME=QAS]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+>> Error entry 2021-10-11 10:02:11.081 [Thread 1]
+SAP.Middleware.Connector.RfcLogonException: Password logon no longer possible - too many failed attempts ---> SAP.Middleware.Connector.RfcAbapMessageException: Password logon no longer possible - too many failed attempts
+   en SAP.Middleware.Connector.RfcConnection.ThrowRfcErrorMsg()
+   en SAP.Middleware.Connector.RfcConnection.ReadBytes(Byte* buffer, Int32 count)
+   en SAP.Middleware.Connector.RfcConnection.ReadRfcIDBegin(Int32& length)
+   en SAP.Middleware.Connector.RfcConnection.ReadUpTo(RFCGET readState, RfcFunction function, RFCID toRid)
+   en SAP.Middleware.Connector.RfcConnection.RfcReceive(RfcFunction function)
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en SAP.Middleware.Connector.RfcConnection.ConnectAsClient(RfcDestination destination, Boolean forRepository)
+   en SAP.Middleware.Connector.RfcConnectionPool..ctor(RfcDestination destination, Boolean forRepositoryCalls)
+   en SAP.Middleware.Connector.RfcConnectionPool.GetPool(RfcDestination destination, Boolean forRepository, Boolean create)
+   en SAP.Middleware.Connector.RfcDestination.GetClient(Boolean forRepository)
+   en SAP.Middleware.Connector.RfcDestination.SetAttributeValues(RfcSystemAttributes attribs)
+   en SAP.Middleware.Connector.RfcDestination.get_SystemAttributes()
+   en SAP.Middleware.Connector.RfcRepository.GetRepositoryForDestination(RfcDestination destination)
