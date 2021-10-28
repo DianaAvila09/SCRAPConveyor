@@ -41,7 +41,7 @@ namespace SCRAPConveyor.Facturacion
                                 switch (ConfigurationManager.AppSettings["Entorno"].ToUpper())
                                 {
                                     case "QAS":
-                                        materiales.Add(new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.tipoMaterial, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
+                                        materiales.Add(new IT_MATERIALES() { MATERIAL = registro.descSAP, CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.tipoMaterial, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
                                         break;
                                     case "PRD":
                                         materiales.Add(new IT_MATERIALES() { MATERIAL = registro.descSAP, CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = registro.tipoMaterial, MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
