@@ -24,11 +24,11 @@ namespace Security
         /// Cadena de Conexión
         /// </summary>
         /// <returns></returns>
-        public string CadenaDeConexion()
+        public string CadenaDeConexion() 
         {
 
             string strConnection = ConfigurationManager.AppSettings["connectionString"];
-            string strSeguridad = ConfigurationManager.AppSettings["SQLKey"];
+            string strSeguridad = "";// ConfigurationManager.AppSettings["SQLKey"];
             if (!strConnection.EndsWith(";"))
             { strConnection += ";"; }
             if (strSeguridad.Length > 0)
