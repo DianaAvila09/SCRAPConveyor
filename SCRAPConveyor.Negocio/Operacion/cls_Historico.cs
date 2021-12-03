@@ -28,7 +28,7 @@ namespace Historico
             public bool mixedMaterial { get; set; }
             public bool reqTrailerExchange { get; set; }
             public double fillingLevel { get; set; }
-            public DateTime startDate { get; set; }
+            public DateTime startDate { get; set; } 
             public DateTime endDate { get; set; }
             public DateTime startPlant { get; set; }
             public DateTime? endPlant { get; set; }
