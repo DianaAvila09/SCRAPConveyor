@@ -49,7 +49,7 @@ namespace SCRAPConveyor.Facturacion
                                     default:
                                         break;
                                 }
-                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10007", DateTime.Today.ToString("MMM-yy"), materiales);
+                                Tuple<List<ET_MENSAJES>, string> documento = sap.ZFIFM_CREAR_PED_SCRAP("1841", "20", "20", "10767", DateTime.Today.ToString("MMM-yy"), materiales);
                                 if (documento != null && documento.Item1.Any())
                                 {
                                     List<BasculaRevuelta_Log> logs = new List<BasculaRevuelta_Log>();
