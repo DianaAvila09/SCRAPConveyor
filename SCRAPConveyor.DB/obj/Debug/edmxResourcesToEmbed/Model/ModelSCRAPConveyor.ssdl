@@ -50,6 +50,9 @@
     <Property Name="facturado" Type="bit" />
     <Property Name="fecha" Type="datetime" />
     <Property Name="boleto" Type="int" />
+    <Property Name="idLinea" Type="int" />
+    <Property Name="material" Type="varchar" MaxLength="50" />
+    <Property Name="material2" Type="int" />
   </EntityType>
   <EntityType Name="PrecioSCRAP">
     <Key>
@@ -86,6 +89,7 @@
     <Property Name="materialType" Type="varchar" MaxLength="50" />
     <Property Name="tolva" Type="varchar" MaxLength="50" />
     <Property Name="line" Type="int" />
+    <Property Name="boleto" Type="int" />
   </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -96,6 +100,7 @@
     <Property Name="material" Type="varchar" MaxLength="50" />
     <Property Name="code" Type="varchar" MaxLength="10" />
     <Property Name="receta" Type="int" />
+    <Property Name="materialSAP" Type="varchar" MaxLength="50" />
   </EntityType>
   <Function Name="sp_GetList_HistoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_inicio" Type="datetime" Mode="In" />

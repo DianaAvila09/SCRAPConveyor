@@ -19,5 +19,6 @@ namespace SCRAPConveyor.DB.Model
         public string material { get; set; }
         public string code { get; set; }
         public Nullable<int> receta { get; set; }
+        public string materialSAP { get; set; }
     }
 }

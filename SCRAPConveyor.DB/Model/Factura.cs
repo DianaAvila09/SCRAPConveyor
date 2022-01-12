@@ -22,5 +22,8 @@ namespace SCRAPConveyor.DB.Model
         public Nullable<bool> facturado { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public Nullable<int> boleto { get; set; }
+        public Nullable<int> idLinea { get; set; }
+        public string material { get; set; }
+        public Nullable<int> material2 { get; set; }
     }
 }

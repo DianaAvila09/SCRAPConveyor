@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SCRAPConveyorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
     <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
     <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
     <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
@@ -11,29 +10,8 @@
       <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
       <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
   </EntityContainer>
-  <EntityType Name="TrailerInformation">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="releaseMaterial" Type="Boolean" />
-    <Property Name="materialOnTheWay" Type="Boolean" />
-    <Property Name="mixedMaterial" Type="Boolean" />
-    <Property Name="reqTrailerExchange" Type="Boolean" />
-    <Property Name="fillingLevel" Type="Int32" />
-    <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="trailerNumber" Type="Int32" />
-    <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="startDate" Type="DateTime" Precision="3" />
-    <Property Name="endDate" Type="DateTime" Precision="3" />
-    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TrailerFull" Type="Boolean" />
-    <Property Name="doorClosed" Type="Boolean" />
-    <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="line" Type="Int32" />
-  </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
       <PropertyRef Name="id" />
@@ -43,6 +21,7 @@
     <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="receta" Type="Int32" />
+    <Property Name="materialSAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="BasculaRevuelta_Log">
     <Key>
@@ -108,6 +87,9 @@
     <Property Name="facturado" Type="Boolean" />
     <Property Name="fecha" Type="DateTime" Precision="3" />
     <Property Name="boleto" Type="Int32" />
+    <Property Name="idLinea" Type="Int32" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="material2" Type="Int32" />
   </EntityType>
   <ComplexType Name="sp_GetList_HistoryReport_Result">
     <Property Type="Int32" Name="boleto" Nullable="true" />
@@ -122,4 +104,27 @@
     <Property Type="DateTime" Name="fechaHoraSalida" Nullable="true" Precision="23" />
     <Property Type="Decimal" Name="peso" Nullable="true" Precision="19" Scale="4" />
   </ComplexType>
+  <EntityType Name="TrailerInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="releaseMaterial" Type="Boolean" />
+    <Property Name="materialOnTheWay" Type="Boolean" />
+    <Property Name="mixedMaterial" Type="Boolean" />
+    <Property Name="reqTrailerExchange" Type="Boolean" />
+    <Property Name="fillingLevel" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="trailerNumber" Type="Int32" />
+    <Property Name="tolvaNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrailerFull" Type="Boolean" />
+    <Property Name="doorClosed" Type="Boolean" />
+    <Property Name="materialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="line" Type="Int32" />
+    <Property Name="boleto" Type="Int32" />
+  </EntityType>
 </Schema>

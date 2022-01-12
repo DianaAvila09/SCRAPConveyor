@@ -31,5 +31,6 @@ namespace SCRAPConveyor.DB.Model
         public string materialType { get; set; }
         public string tolva { get; set; }
         public Nullable<int> line { get; set; }
+        public Nullable<int> boleto { get; set; }
     }
 }
