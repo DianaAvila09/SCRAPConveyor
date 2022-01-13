@@ -22,18 +22,14 @@ namespace SCRAPConveyor.Facturacion
             {
                 using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                 {
-                    //facturacion scrap viejo
-                    var registrosViejo = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.factura == null)
-                                          join t in db.TrailerInformation on b.boleto equals t.boleto into ps
-                                          from t in ps.DefaultIfEmpty().Where(y => y.trailerNumber == null)
-                                          join p in db.PrecioSCRAP on b.producto equals p.tipo
-                                          select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda }).ToList();
+
 
 
                     var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null)
                                      join p in db.PrecioSCRAP on b.producto equals p.tipo
                                      join f in db.Factura on b.boleto equals f.boleto
                                      select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).ToList();
+
 
 
 
@@ -91,6 +87,13 @@ namespace SCRAPConveyor.Facturacion
                             Log.LogException("Main", ex.Message);
                         }
                     }
+                    //facturacion scrap viejo
+                    var registrosViejo = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.factura == null)
+                                          join t in db.TrailerInformation on b.boleto equals t.boleto into ps
+                                          from t in ps.DefaultIfEmpty().Where(y => y.trailerNumber == null)
+                                          join p in db.PrecioSCRAP on b.producto equals p.tipo
+                                          select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda }).ToList();
+
 
                     foreach (var registro in registrosViejo)
                     {
