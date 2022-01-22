@@ -26,10 +26,9 @@ namespace SCRAPConveyor.Facturacion
 
 
                     var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null)
-                                     join p in db.PrecioSCRAP on b.producto equals p.tipo
                                      join f in db.Factura on b.boleto equals f.boleto
+                                     join p in db.PrecioSCRAP on f.tipoMaterial equals p.tipo
                                      select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).ToList();
-
 
 
 
@@ -95,12 +94,18 @@ namespace SCRAPConveyor.Facturacion
                                           select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda }).ToList();
 
 
+
+
                     foreach (var registro in registrosViejo)
                     {
+
                         cont++;
                         Console.WriteLine("Generando documento para boleto " + registro.boleto + ", registro " + cont.ToString() + " de " + registros.Count.ToString());
                         try
                         {
+
+
+
                             using (SCRAPConveyorEntities ctx = new SCRAPConveyorEntities())
                             {
                                 bool errores = false;
@@ -108,10 +113,13 @@ namespace SCRAPConveyor.Facturacion
                                 List<IT_MATERIALES> materiales = new List<IT_MATERIALES>();
                                 switch (ConfigurationManager.AppSettings["Entorno"].ToUpper())
                                 {
+
+
                                     case "QAS":
                                         materiales.Add(new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = "MATERIAL MIXTO", MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
                                         break;
-                                    case "PRD":
+                                    case "PRD"://Math.Round(decimalValue, 2)
+                                               //   decimal info = Math.Round(item.CANTIDAD, 2);
                                         materiales.Add(new IT_MATERIALES() { MATERIAL = "SCRAPAL", CANTIDAD = registro.cantidad ?? 0, DESCRIPCION = "MATERIAL MIXTO", MONEDA = registro.moneda, PRECIO = Math.Round(registro.precio ?? 0, 2), UNIDAD_PRECIO = 1000 });
                                         break;
                                     default:
@@ -172,6 +180,7 @@ namespace SCRAPConveyor.Facturacion
                 System.Threading.Thread.Sleep(2000);
             }
         }
+
 
 
         protected static void facturas()
