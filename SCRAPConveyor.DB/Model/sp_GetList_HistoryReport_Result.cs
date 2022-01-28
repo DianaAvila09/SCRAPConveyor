@@ -24,5 +24,8 @@ namespace SCRAPConveyor.DB.Model
         public string tipoAluminio { get; set; }
         public Nullable<System.DateTime> fechaHoraSalida { get; set; }
         public Nullable<decimal> peso { get; set; }
+        public string factura { get; set; }
+        public string documento { get; set; }
+        public string Cliente { get; set; }
     }
 }

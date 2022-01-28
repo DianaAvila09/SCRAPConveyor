@@ -77,6 +77,9 @@
     <Compile Include="Model\PrecioSCRAP.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\sp_GetList_BasculasFactura_Result.cs">
+      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\sp_GetList_HistoryReport_Result.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>

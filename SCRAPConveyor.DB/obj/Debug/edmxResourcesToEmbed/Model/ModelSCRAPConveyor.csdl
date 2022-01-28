@@ -11,6 +11,13 @@
       <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
     </FunctionImport>
     <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
+    <FunctionImport Name="spSendMail_SCRAPConveyor_FacturaAutomatica" ReturnType="Collection(String)">
+      <Parameter Name="boleto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetList_BasculasFactura" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_BasculasFactura_Result)">
+      <Parameter Name="boleto" Mode="In" Type="Int32" />
+      <Parameter Name="idLinea" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -103,6 +110,9 @@
     <Property Type="String" Name="tipoAluminio" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="fechaHoraSalida" Nullable="true" Precision="23" />
     <Property Type="Decimal" Name="peso" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="factura" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="documento" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Cliente" Nullable="true" />
   </ComplexType>
   <EntityType Name="TrailerInformation">
     <Key>
@@ -127,4 +137,37 @@
     <Property Name="line" Type="Int32" />
     <Property Name="boleto" Type="Int32" />
   </EntityType>
+  <ComplexType Name="sp_GetList_BasculasFactura_Result">
+    <Property Type="Int64" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="boleto" Nullable="true" />
+    <Property Type="String" Name="placas" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="chofer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="usuario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="empresa" Nullable="true" />
+    <Property Type="String" Name="transportista" Nullable="true" />
+    <Property Type="DateTime" Name="fechaHoraEntrada" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="pesoEntrada" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="DateTime" Name="fechaHoraSalida" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="pesoSalida" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="pesoTara" Nullable="true" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="bascula" Nullable="true" />
+    <Property Type="String" Name="tagCamion" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaCreacion" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="factura" Nullable="true" />
+    <Property Type="String" Name="numFactura" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="producto" Nullable="true" />
+    <Property Type="Boolean" Name="documento" Nullable="true" />
+    <Property Type="String" Name="numDocumento" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fechaFactura" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fechaDocumento" Nullable="true" Precision="23" />
+    <Property Type="String" Name="tipoMaterial" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tolva" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="descSAP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cortina" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="idLinea" Nullable="true" />
+    <Property Type="String" Name="material" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="material2" Nullable="true" />
+    <Property Type="String" Name="Linea" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

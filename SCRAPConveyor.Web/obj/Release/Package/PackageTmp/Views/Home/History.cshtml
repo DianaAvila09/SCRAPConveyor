@@ -130,34 +130,58 @@
                                 <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
                                     <thead>
                                         <tr style="font-size:10px;">
-                                            <th class="text-center">boleto</th>
-                                            <th class="text-center">tolva</th>
-                                            <th class="text-center">fechaHoraEntrada</th>
-                                            <th class="text-center">cortina</th>
-                                            <th class="text-center">fechaHoraLlenado</th>
-                                            <th class="text-center">prensaOrigen</th>
-                                            <th class="text-center">numeroParte</th>
-                                            <th class="text-center">nivelLlenado</th>
-                                            <th class="text-center">tipoAluminio</th>
-                                            <th class="text-center">fechaHoraSalida</th>
-                                            <th class="text-center">peso</th>
+                                            <th class="text-center">BOLETO</th>
+                                            <th class="text-center">DOCUMENTO</th>
+                                            <th class="text-center">FACTURA</th>
+                                            <th class="text-center">TOLVA</th>
+                                            <th class="text-center">PESO</th>
+                                            <th class="text-center">TIPOALUMINIO</th>
+                                            <th class="text-center">CORTINA</th>
+                                            <th class="text-center">FECHAHORAENTRADA</th>
+                                            <th class="text-center">FECHAHORASALIDA</th>
+                                            <th class="text-center">PRENSAORIGEN</th>
+                                            @*<th class="text-center">NUMEROPARTE</th>
+                                            <th class="text-center">NIVELLENADO</th>*@
+                                            <th class="text-center">CLIENTE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
+                                            var variable = item.tipoAluminio;
+                                            var cortina = item.cortina;
                                         <tr style="font-size:12px;">
                                             <td class="py-1 line-ellipsis text-center">@item.boleto</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.documento</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.factura</td>
                                             <td class="py-1 line-ellipsis text-center">@item.tolva</td>
-                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraEntrada) @String.Format("{0:T}", item.fechaHoraEntrada)</td>
-                                            <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.cortina)</td>
-                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraLlenado) @String.Format("{0:T}", item.fechaHoraLlenado)</td>
-                                            <td class="py-1 line-ellipsis text-center">@item.prensaOrigen</td>
-                                            <td class="py-1 line-ellipsis text-center">@item.numeroParte</td>
-                                            <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.nivelLlenado)</td>
-                                            <td class="py-1 line-ellipsis text-center">@item.tipoAluminio</td>
-                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
                                             <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.peso)</td>
+                                            @if (variable == null)
+                                            {
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("Mixto")</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td class="py-1 line-ellipsis text-center">@item.tipoAluminio</td>
+                                            }
+                                            @if (cortina == null)
+                                            {
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("0")</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.cortina)</td>
+                                            }
+                                            
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraEntrada) @String.Format("{0:T}", item.fechaHoraEntrada)</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.prensaOrigen</td>
+                                            @*<td class="py-1 line-ellipsis text-center">@item.numeroParte</td>
+        <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.nivelLlenado)</td>*@
+                                            <td class="py-1 line-ellipsis text-center">@item.Cliente</td>
+
                                         </tr>
                                         }
                                     </tbody>

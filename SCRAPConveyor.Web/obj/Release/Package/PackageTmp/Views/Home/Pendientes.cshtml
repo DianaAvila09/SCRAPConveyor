@@ -1,0 +1,180 @@
+﻿@model IEnumerable<SCRAPConveyor.DB.Model.sp_GetList_BasculasFactura_Result>
+
+@{
+    ViewBag.Title = "Facturas Page";
+}
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        pantalla = document.getElementById("screen");
+    }
+</script>
+<script src="~/app-assets/js/core/libraries/jquery.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+    function exportTableToExcel(tableID, filename = 'Report Facturas') {
+
+        var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+        if (es_chrome) {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect = document.getElementById(tableID);
+            var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+            // Create download link element
+            downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+
+        }
+        else
+            var downloadLink;
+        var dataType = 'application/ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace('%20', 'ufeff');
+
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+        // Create download link element
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        }
+         
+
+
+    }
+
+</script>
+<div class="content-wrapper">
+    <div id="contenido" class="content-body">
+        <section id="dashboard-ecommerce" style="margin-top:150px;">
+            <div class="row">
+                <div class="col">
+                    <div class="col-xl-12 " style="position: relative;
+                                top: -150px;
+                                color: black;">
+                        <div class="card marketing-campaigns">
+                            <div class="card-header d-flex justify-content-between  pb-1">
+                                <div class="card-header">
+                                    <!-- head -->
+                                    <div>
+                                        <h5 class="card-title">Facturas</h5>
+                                    </div>
+                                    <!-- Filtros -->
+                                    <div class="heading-elements">
+                                        <form method="get" action="@Url.Action("Pendientes", "Home")">
+                                            <ul class="list-inline mb-0">
+                                                <li>
+                                                    <fieldset class="has-icon-left">
+                                                        <input type="text" id="boleto" name="boleto" value="@ViewBag.boleto" class="form-control" placeholder="Boleto" />
+
+                                                        <div class="form-control-position">
+                                                            <i class="font-small-1">Boleto</i>
+                                                        </div>
+                                                    </fieldset>
+                                                </li>
+                                                <li style="display:none;">
+                                                    <fieldset class="has-icon-left">
+                                                        <input type="text" id="idLinea" value="@ViewBag.idLinea" name="idLinea" class="form-control" placeholder="" />
+                                                        <div class="form-control-position">
+
+                                                        </div>
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-left">
+                                                        <button class="btn btn-primary ">Search</button>
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-left">
+                                                        <input type="button" class="btn btn-primary" onclick="javascript: Pendientes();" value="Limpiar Filtro">
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-right">
+                                                        <input type="button" class="btn btn-primary" onclick="exportTableToExcel('table-marketing-campaigns')" value="Export to Excel" />
+                                                    </fieldset>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                    <!-- Filtros -->
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <!-- table start -->
+                                <table id="table-marketing-campaigns" class="table table-borderless table-marketing-campaigns mb-0">
+                                    <thead>
+                                        <tr style="font-size:10px;"> 
+                                            <th class="text-center">BOLETO</th>
+                                            <th class="text-center">TOLVA</th>
+                                            <th class="text-center">TIPO ALUMINIO</th>
+                                            <th class="text-center">CORTINA</th>
+                                            <th class="text-center">FECHA-HORA ENTRADA</th>
+                                            <th class="text-center">FECHA-HORA SALIDA</th>
+                                            <th class="text-center">PRENSA ORIGEN</th>
+                                            <th class="text-center">CLIENTE</th>
+                                            <th class="text-center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                        <tr style="font-size:12px;">
+                                            <td class="py-1 line-ellipsis text-center">@item.boleto</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.tolva</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.tipoMaterial</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.cortina)</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraEntrada) @String.Format("{0:T}", item.fechaHoraEntrada)</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.Linea</td>
+                                            <td class="py-1 line-ellipsis text-center">@item.empresa</td>
+                                            <td>@Html.ActionLink("Imprimir", "ImprimirRemision", "Home", new { boleto = item.boleto, idLinea = (item.idLinea ?? 0)  }, new { target = "_blank" })</td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <br />
+                                <br />
+                                <!-- table ends -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+<script>
+    @*var IdLinea = "" + @ViewBag.IdLinea;
+    if (IdLinea != 0)
+        document.getElementById("IdLinea").value = IdLinea;*@
+</script>
+
+
+

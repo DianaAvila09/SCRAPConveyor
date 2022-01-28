@@ -25,7 +25,7 @@ namespace SCRAPConveyor.Facturacion
 
 
 
-                    var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null)
+                    var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.producto.ToUpper() == "SCRAP ALUMINIO")
                                      join f in db.Factura on b.boleto equals f.boleto
                                      join p in db.PrecioSCRAP on f.tipoMaterial equals p.tipo
                                      select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).ToList();
@@ -87,7 +87,7 @@ namespace SCRAPConveyor.Facturacion
                         }
                     }
                     //facturacion scrap viejo
-                    var registrosViejo = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.factura == null)
+                    var registrosViejo = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.factura == null && x.producto.ToUpper() == "SCRAP ALUMINIO")
                                           join t in db.TrailerInformation on b.boleto equals t.boleto into ps
                                           from t in ps.DefaultIfEmpty().Where(y => y.trailerNumber == null)
                                           join p in db.PrecioSCRAP on b.producto equals p.tipo
@@ -189,7 +189,7 @@ namespace SCRAPConveyor.Facturacion
             {
                 using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                 {
-                    var registros = (from b in db.BasculaRevuelta.Where(x => x.documento == true && x.factura != true && x.fechaHoraSalida != null && x.numDocumento != null) select b).ToList();
+                    var registros = (from b in db.BasculaRevuelta.Where(x => x.documento == true && x.factura != true && x.fechaHoraSalida != null && x.numDocumento != null && x.producto.ToUpper() == "SCRAP ALUMINIO") select b).ToList();
                     int cont = 0;
                     foreach (var registro in registros)
                     {
@@ -224,6 +224,14 @@ namespace SCRAPConveyor.Facturacion
                                         bascula_revuelta.fechaFactura = DateTime.Now;
                                         ctx.Entry(bascula_revuelta).State = System.Data.Entity.EntityState.Modified;
                                         ctx.SaveChanges();
+                                        try
+                                        {
+                                            db.spSendMail_SCRAPConveyor_FacturaAutomatica(bascula_revuelta.boleto);
+                                        }
+                                        catch (Exception)
+                                        {
+
+                                        }
                                     }
                                 }
                             }

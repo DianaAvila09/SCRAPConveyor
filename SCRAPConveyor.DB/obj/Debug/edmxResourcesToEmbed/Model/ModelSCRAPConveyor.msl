@@ -99,6 +99,9 @@
           <ScalarProperty Name="tipoAluminio" ColumnName="tipoAluminio" />
           <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
           <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="factura" ColumnName="factura" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -126,5 +129,43 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spSendMail_SCRAPConveyor_FacturaAutomatica" FunctionName="SCRAPConveyorModel.Store.spSendMail_SCRAPConveyor_FacturaAutomatica" />
+    <FunctionImportMapping FunctionImportName="sp_GetList_BasculasFactura" FunctionName="SCRAPConveyorModel.Store.sp_GetList_BasculasFactura">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SCRAPConveyorModel.sp_GetList_BasculasFactura_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="transportista" ColumnName="transportista" />
+          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+          <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+          <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+          <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+          <ScalarProperty Name="bascula" ColumnName="bascula" />
+          <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="factura" ColumnName="factura" />
+          <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
+          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+          <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
+          <ScalarProperty Name="tipoMaterial" ColumnName="tipoMaterial" />
+          <ScalarProperty Name="tolva" ColumnName="tolva" />
+          <ScalarProperty Name="descSAP" ColumnName="descSAP" />
+          <ScalarProperty Name="cortina" ColumnName="cortina" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idLinea" ColumnName="idLinea" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="material2" ColumnName="material2" />
+          <ScalarProperty Name="Linea" ColumnName="Linea" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

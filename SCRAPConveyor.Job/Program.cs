@@ -119,7 +119,8 @@ namespace SCRAPConveyor.Job
                     using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                     {
                         Int32 cont = 0;
-                        foreach (BasculaRevuelta i in lista.Where(x=>x.producto.ToUpper() == "SCRAP ALUMINIO").ToList())
+                        //foreach (BasculaRevuelta i in lista.Where(x=>x.producto.ToUpper() == "SCRAP ALUMINIO").ToList())
+                        foreach (BasculaRevuelta i in lista.ToList())//Req.: Quitar filtro de SCRAP ALUMINIO 28/ene/2022 - dianavil
                         {
                             try
                             {

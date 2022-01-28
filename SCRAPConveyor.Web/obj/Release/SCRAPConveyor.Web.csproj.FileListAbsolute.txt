@@ -169,3 +169,10 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\S
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\SCRAPConveyor.Web.csproj.CopyComplete
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\SCRAPConveyor.Web.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\SCRAPConveyor.Web.pdb
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Formatos\remision.rdlc
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\RdlCompile.cache
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\RdlCompile.compiled
