@@ -89,6 +89,22 @@
                                             <ul class="list-inline mb-0">
                                                 <li>
                                                     <fieldset class="has-icon-left">
+                                                        <input type="text" id="inicio" name="inicio" value="@ViewBag.inicio" class="form-control single-daterange" />
+                                                        <div class="form-control-position">
+                                                            <i class="bx bx-calendar font-medium-1"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-left">
+                                                        <input type="text" id="fin" value="@ViewBag.fin" name="fin" class="form-control single-daterange" />
+                                                        <div class="form-control-position">
+                                                            <i class="bx bx-calendar font-medium-1"></i>
+                                                        </div>
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <fieldset class="has-icon-left">
                                                         <input type="text" id="boleto" name="boleto" value="@ViewBag.boleto" class="form-control" placeholder="Boleto" />
 
                                                         <div class="form-control-position">
@@ -153,7 +169,7 @@
                                             <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
                                             <td class="py-1 line-ellipsis text-center">@item.Linea</td>
                                             <td class="py-1 line-ellipsis text-center">@item.empresa</td>
-                                            <td>@Html.ActionLink("Imprimir", "ImprimirRemision", "Home", new { boleto = item.boleto, idLinea = (item.idLinea ?? 0)  }, new { target = "_blank" })</td>
+                                            <td>@Html.ActionLink("Imprimir", "ImprimirRemision", "Home", new { boleto = item.boleto, idLinea = (item.idLinea ?? 0), inicio = ViewBag.inicio, fin = ViewBag.fin  }, new { target = "_blank" })</td>
                                         </tr>
                                         }
                                     </tbody>

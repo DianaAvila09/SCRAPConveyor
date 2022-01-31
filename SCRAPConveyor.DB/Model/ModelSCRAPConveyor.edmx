@@ -110,6 +110,8 @@
         <Function Name="sp_GetList_BasculasFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="boleto" Type="int" Mode="In" />
           <Parameter Name="idLinea" Type="int" Mode="In" />
+          <Parameter Name="fecha_inicio" Type="datetime" Mode="In" />
+          <Parameter Name="fecha_fin" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_GetList_HistoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_inicio" Type="datetime" Mode="In" />
@@ -147,6 +149,8 @@
           <FunctionImport Name="sp_GetList_BasculasFactura" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_BasculasFactura_Result)">
             <Parameter Name="boleto" Mode="In" Type="Int32" />
             <Parameter Name="idLinea" Mode="In" Type="Int32" />
+            <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="TypeMaterial">
@@ -290,7 +294,7 @@
           <Property Type="String" Name="numDocumento" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="fechaFactura" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fechaDocumento" Nullable="true" Precision="23" />
-          <Property Type="String" Name="tipoMaterial" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="tipoMaterial" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="tolva" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="descSAP" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="cortina" Nullable="true" MaxLength="50" />

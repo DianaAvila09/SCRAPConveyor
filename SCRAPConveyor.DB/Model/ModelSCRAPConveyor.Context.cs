@@ -56,7 +56,7 @@ namespace SCRAPConveyor.DB.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spSendMail_SCRAPConveyor_FacturaAutomatica", boletoParameter);
         }
     
-        public virtual ObjectResult<sp_GetList_BasculasFactura_Result> sp_GetList_BasculasFactura(Nullable<int> boleto, Nullable<int> idLinea)
+        public virtual ObjectResult<sp_GetList_BasculasFactura_Result> sp_GetList_BasculasFactura(Nullable<int> boleto, Nullable<int> idLinea, Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
         {
             var boletoParameter = boleto.HasValue ?
                 new ObjectParameter("boleto", boleto) :
@@ -66,7 +66,15 @@ namespace SCRAPConveyor.DB.Model
                 new ObjectParameter("idLinea", idLinea) :
                 new ObjectParameter("idLinea", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetList_BasculasFactura_Result>("sp_GetList_BasculasFactura", boletoParameter, idLineaParameter);
+            var fecha_inicioParameter = fecha_inicio.HasValue ?
+                new ObjectParameter("fecha_inicio", fecha_inicio) :
+                new ObjectParameter("fecha_inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetList_BasculasFactura_Result>("sp_GetList_BasculasFactura", boletoParameter, idLineaParameter, fecha_inicioParameter, fecha_finParameter);
         }
     }
 }

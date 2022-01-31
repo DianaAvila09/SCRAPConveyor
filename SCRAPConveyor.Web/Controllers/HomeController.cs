@@ -91,59 +91,34 @@ namespace SCRAPConveyor.Web.Controllers
             return View();
         }
 
-        public ActionResult Pendientes(Int32 boleto = 0, Int32 idLinea = 0)
+        public ActionResult Pendientes(Int32 boleto = 0, Int32 idLinea = 0, DateTime? inicio = null, DateTime? fin = null)
         {
             SCRAPConveyorEntities db = new SCRAPConveyorEntities();
+            inicio = inicio.HasValue ? inicio.Value : DateTime.Today.AddDays(-7);
+            fin = fin.HasValue ? fin.Value : DateTime.Today;
+            ViewBag.inicio = inicio.Value.ToString("MM/dd/yyyy");
+            ViewBag.fin = fin.Value.ToString("MM/dd/yyyy");
             ViewBag.boleto = boleto;
             ViewBag.idLinea = idLinea;
-            List<sp_GetList_BasculasFactura_Result> result = db.sp_GetList_BasculasFactura(boleto, idLinea).ToList();
+            List<sp_GetList_BasculasFactura_Result> result = db.sp_GetList_BasculasFactura(boleto, idLinea, inicio, fin).ToList();
             return View(result);
         }
 
-        public ActionResult ImprimirRemision(int boleto, int idLinea)
+        public ActionResult ImprimirRemision(int boleto, int idLinea, DateTime? inicio = null, DateTime? fin = null)
         {
             using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
             {
-                var grupo = db.sp_GetList_BasculasFactura(boleto, idLinea);
+                var grupo = db.sp_GetList_BasculasFactura(boleto, idLinea, inicio, fin);
                 if (grupo != null)
                 {
-                    //declarar el objeto de la clase LocalReport
-                    LocalReport localReport = new LocalReport();
-                    localReport.ReportPath = Server.MapPath("~/Formatos/remision.rdlc");
-                    //Llenar los 4 parámetros que creamos en el reporte
-                    //ReportParameter[] parametros = new ReportParameter[4];
-                    //parametros[0] = new ReportParameter("ProgramaEducativo", grupo.Cuatrimestre.ProgramaEducativo.NombreCorto.Trim());
-                    //parametros[1] = new ReportParameter("Cuatrimestre", grupo.Cuatrimestre.PeriodoInicio.Trim() + " - " +
-                    //grupo.Cuatrimestre.PeriodoFin.Trim() + " " + grupo.Cuatrimestre.Anio);
-                    //parametros[2] = new ReportParameter("Grupo", grupo.Nombre.Trim());
-                    //parametros[3] = new ReportParameter("Tutor", grupo.Tutor.Nombre.Trim() + " " + grupo.Tutor.Apellidos.Trim());
-                    ////agregar los parámetros al reporte
-                    //localReport.SetParameters(parametros);
-                    //Preparar el DataSource del reporte
-                    //aquí invocamos al método ListaAlumnos que agregamos a la clase Alumno
-                    //pasandole como valor de parámetro el id del grupo que se quiere imprimir
-                    //No hemos hablado de vistas o procedimientos almacenados, sino, aquí se invocarían directamente
+                    LocalReport localReport = new LocalReport() { ReportPath = Server.MapPath("~/Formatos/remision.rdlc")};
                     ReportDataSource reportDataSource = new ReportDataSource("BasculaFactura", grupo);
-                    //Ahora pasamos los datos al reporte
                     localReport.DataSources.Add(reportDataSource);
-                    //declaramos las variables de configuración para el reporte
-                    string reportType = "PDF";
-                    string mimeType;
-                    string encoding;
-                    string fileNameExtension;
-                    //En la configuración del reporte debe especificarse para el tipo de reporte
-                    //consulte el sitio para más información
-                    //http://msdn2.microsoft.com/en-us/library/ms155397.aspx
+                    string reportType = "PDF", mimeType, encoding, fileNameExtension;
                     Warning[] warnings;
                     string[] streams;
                     byte[] renderedBytes;
-                    //Transformar el reporte a bytes para transferirlo como flujo
-                    renderedBytes = localReport.Render(reportType, null, out mimeType,
-                    out encoding,
-                    out fileNameExtension,
-                    out streams,
-                    out warnings);
-                    //enviar el archivo al cliente (navegador)
+                    renderedBytes = localReport.Render(reportType, null, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
                     return File(renderedBytes, mimeType);
                 }
                 else
