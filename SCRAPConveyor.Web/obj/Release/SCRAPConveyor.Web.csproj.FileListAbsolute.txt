@@ -176,3 +176,8 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Microsoft
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\Formatos\remision.rdlc
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\RdlCompile.cache
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\obj\Release\RdlCompile.compiled
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\x64\pdfium.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\BouncyCastle.Crypto.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\PdfiumViewer.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\PdfiumViewer.xml
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\nl\PdfiumViewer.resources.dll

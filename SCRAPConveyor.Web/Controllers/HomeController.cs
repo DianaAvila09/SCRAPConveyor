@@ -7,6 +7,10 @@ using Operacion;
 using Historico;
 using SCRAPConveyor.DB.Model;
 using Microsoft.Reporting.WebForms;
+using System.Runtime.InteropServices;
+using System.IO;
+using System.Drawing.Printing;
+using System.Configuration;
 
 namespace SCRAPConveyor.Web.Controllers
 {
@@ -108,21 +112,133 @@ namespace SCRAPConveyor.Web.Controllers
         {
             using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
             {
-                var grupo = db.sp_GetList_BasculasFactura(boleto, idLinea, inicio, fin);
-                if (grupo != null)
+                try
                 {
-                    LocalReport localReport = new LocalReport() { ReportPath = Server.MapPath("~/Formatos/remision.rdlc")};
-                    ReportDataSource reportDataSource = new ReportDataSource("BasculaFactura", grupo);
-                    localReport.DataSources.Add(reportDataSource);
-                    string reportType = "PDF", mimeType, encoding, fileNameExtension;
-                    Warning[] warnings;
-                    string[] streams;
-                    byte[] renderedBytes;
-                    renderedBytes = localReport.Render(reportType, null, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
-                    return File(renderedBytes, mimeType);
+                    String Impresora = ConfigurationManager.AppSettings["Impresora"].ToString();
+                    var grupo = db.sp_GetList_BasculasFactura(boleto, idLinea, inicio, fin);
+                    if (Impresora != "" && grupo != null)
+                    {
+                        string directorio = Server.MapPath("~/Temp/");
+                        string archivo = Server.MapPath("~/Temp/remision.PDF");
+                        LocalReport localReport = new LocalReport() { ReportPath = Server.MapPath("~/Formatos/remision.rdlc") };
+                        ReportDataSource reportDataSource = new ReportDataSource("BasculaFactura", grupo);
+                        localReport.DataSources.Add(reportDataSource);
+                        string reportType = "PDF", mimeType, encoding, fileNameExtension;
+                        Warning[] warnings;
+                        string[] streams;
+                        byte[] renderedBytes;
+                        renderedBytes = localReport.Render(reportType, null, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+
+                        try
+                        {
+                            if (!Directory.Exists(directorio))
+                            {
+                                Directory.CreateDirectory(directorio);
+                            }
+                            if (System.IO.File.Exists(archivo))
+                            {
+                                System.IO.File.Delete(archivo);
+                            }
+                            foreach (string item in Directory.GetFiles(directorio))
+                            {
+                                System.IO.File.Delete(item);
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
+
+                        using (FileStream fs = new FileStream(archivo, FileMode.Create))
+                        {
+                            fs.Write(renderedBytes, 0, renderedBytes.Length);
+                            fs.Close();
+                            fs.Dispose();
+                        }
+                        
+
+                        PrintPDF(Impresora, "Carta", archivo, 1);
+                        //System.Drawing.Printing.PageSettings stt = new System.Drawing.Printing.PageSettings();
+                        //stt.PrinterSettings.PrinterName = "Samsung M2070 Series";
+                        //localReport.Print(stt);
+                        //return File(renderedBytes, mimeType);
+
+                        return RedirectToAction("Pendientes");
+                        /*---------------*/
+                        //byte[] result;
+                        //using (var renderer = new WebReportRenderer("~/Formatos/remision.rdlc", "Report.pdf"))
+                        //{
+                        //    renderer.ReportInstance.DataSources.Add(new ReportDataSource("BasculaFactura", grupo));
+                        //    result = renderer.RenderToBytesPDF();
+                        //}
+                        //File(result, "application/pdf", "Report.pdf");
+                        //IntPtr ptr = new IntPtr(0);
+                        //ptr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(result.Length);
+                        //System.Runtime.InteropServices.Marshal.Copy(result, 0, ptr, result.Length);
+                        ////RawPrinterHelper.SendBytesToPrinter("Samsung M2070 Series", ptr, renderedBytes.Length);
+                        //RawPrinterHelper.SendBytesToPrinter("Microsoft Print to PDF", ptr, renderedBytes.Length);
+                    }
+                    else
+                        return View("Error");
                 }
-                else
+                catch (Exception ex)
+                {
+                    
                     return View("Error");
+                    
+                }
+                finally
+                {
+                    GC.Collect();
+                }
+            }
+        }
+
+        public bool PrintPDF( string printer, string paperName, string filename, int copies)
+        {
+            try
+            {
+                // Create the printer settings for our printer
+                var printerSettings = new PrinterSettings
+                {
+                    PrinterName = printer,
+                    Copies = (short)copies,
+                };
+
+                // Create our page settings for the paper size selected
+                var pageSettings = new PageSettings(printerSettings)
+                {
+                    Margins = new Margins(0, 0, 0, 0),
+                };
+                foreach (PaperSize paperSize in printerSettings.PaperSizes)
+                {
+                    if (paperSize.PaperName == paperName)
+                    {
+                        pageSettings.PaperSize = paperSize;
+                        break;
+                    }
+                }
+                // Now print the PDF document
+
+                using (var document = PdfiumViewer.PdfDocument.Load(filename))
+                {
+                    using (var printDocument = document.CreatePrintDocument())
+                    {
+                        printDocument.PrinterSettings = printerSettings;
+                        printDocument.DefaultPageSettings = pageSettings;
+                        printDocument.PrintController = new StandardPrintController();
+                        printDocument.Print();
+                        printDocument.Dispose();
+                    }
+                    document.Dispose();
+                    
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
 

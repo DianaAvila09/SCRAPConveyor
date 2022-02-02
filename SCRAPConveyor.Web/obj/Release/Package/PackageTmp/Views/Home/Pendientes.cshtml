@@ -169,7 +169,7 @@
                                             <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
                                             <td class="py-1 line-ellipsis text-center">@item.Linea</td>
                                             <td class="py-1 line-ellipsis text-center">@item.empresa</td>
-                                            <td>@Html.ActionLink("Imprimir", "ImprimirRemision", "Home", new { boleto = item.boleto, idLinea = (item.idLinea ?? 0), inicio = ViewBag.inicio, fin = ViewBag.fin  }, new { target = "_blank" })</td>
+                                            <td>@Html.ActionLink("Imprimir", "ImprimirRemision", "Home", new { boleto = item.boleto, idLinea = (item.idLinea ?? 0), inicio = ViewBag.inicio, fin = ViewBag.fin  }, null)</td>
                                         </tr>
                                         }
                                     </tbody>
