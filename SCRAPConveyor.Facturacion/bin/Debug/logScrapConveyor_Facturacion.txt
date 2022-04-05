@@ -1,0 +1,54 @@
+[05/04/2022 09:09:21 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:09:21 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:09:21 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:19 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:21 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:23 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:40 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:42 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:11:44 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:13:55 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:13:57 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:13:59 a. m.] - Main:
+The data reader returned by the store data provider does not have enough columns for the query requested.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:15:35 a. m.] - Main:
+The data reader is incompatible with the specified 'SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result'. A member of the type, 'Column1', does not have a corresponding column in the data reader with the same name.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:15:37 a. m.] - Main:
+The data reader is incompatible with the specified 'SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result'. A member of the type, 'Column1', does not have a corresponding column in the data reader with the same name.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:15:39 a. m.] - Main:
+The data reader is incompatible with the specified 'SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result'. A member of the type, 'Column1', does not have a corresponding column in the data reader with the same name.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:17:55 a. m.] - Main:
+An error occurred while starting a transaction on the provider connection. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:17:57 a. m.] - Main:
+An error occurred while starting a transaction on the provider connection. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------
+[05/04/2022 09:17:59 a. m.] - Main:
+An error occurred while starting a transaction on the provider connection. See the inner exception for details.
+----------------------------------------------------------------------------------------------------------------------

@@ -56,6 +56,9 @@
     <Compile Include="Model\BasculaRevuelta_Log.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CorreosEnviados.cs">
+      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Factura.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>
@@ -75,6 +78,9 @@
       <DependentUpon>ModelSCRAPConveyor.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\PrecioSCRAP.cs">
+      <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\spSendMail_SCRAPConveyor_FacturaAutomatica_Result.cs">
       <DependentUpon>ModelSCRAPConveyor.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sp_GetList_BasculasFactura_Result.cs">

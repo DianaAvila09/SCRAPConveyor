@@ -29,10 +29,11 @@ namespace SCRAPConveyor.DB.Model
     
         public virtual DbSet<TypeMaterial> TypeMaterial { get; set; }
         public virtual DbSet<BasculaRevuelta_Log> BasculaRevuelta_Log { get; set; }
-        public virtual DbSet<BasculaRevuelta> BasculaRevuelta { get; set; }
         public virtual DbSet<PrecioSCRAP> PrecioSCRAP { get; set; }
         public virtual DbSet<Factura> Factura { get; set; }
         public virtual DbSet<TrailerInformation> TrailerInformation { get; set; }
+        public virtual DbSet<BasculaRevuelta> BasculaRevuelta { get; set; }
+        public virtual DbSet<CorreosEnviados> CorreosEnviados { get; set; }
     
         public virtual ObjectResult<sp_GetList_HistoryReport_Result> sp_GetList_HistoryReport(Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)
         {
@@ -47,13 +48,13 @@ namespace SCRAPConveyor.DB.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetList_HistoryReport_Result>("sp_GetList_HistoryReport", fecha_inicioParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<string> spSendMail_SCRAPConveyor_FacturaAutomatica(Nullable<int> boleto)
+        public virtual ObjectResult<spSendMail_SCRAPConveyor_FacturaAutomatica_Result> spSendMail_SCRAPConveyor_FacturaAutomatica(Nullable<int> boleto)
         {
             var boletoParameter = boleto.HasValue ?
                 new ObjectParameter("boleto", boleto) :
                 new ObjectParameter("boleto", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spSendMail_SCRAPConveyor_FacturaAutomatica", boletoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spSendMail_SCRAPConveyor_FacturaAutomatica_Result>("spSendMail_SCRAPConveyor_FacturaAutomatica", boletoParameter);
         }
     
         public virtual ObjectResult<sp_GetList_BasculasFactura_Result> sp_GetList_BasculasFactura(Nullable<int> boleto, Nullable<int> idLinea, Nullable<System.DateTime> fecha_inicio, Nullable<System.DateTime> fecha_fin)

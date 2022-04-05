@@ -25,34 +25,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BasculaRevuelta">
-      <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
-        <MappingFragment StoreEntitySet="BasculaRevuelta">
-          <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
-          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
-          <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
-          <ScalarProperty Name="documento" ColumnName="documento" />
-          <ScalarProperty Name="producto" ColumnName="producto" />
-          <ScalarProperty Name="numFactura" ColumnName="numFactura" />
-          <ScalarProperty Name="factura" ColumnName="factura" />
-          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
-          <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
-          <ScalarProperty Name="bascula" ColumnName="bascula" />
-          <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
-          <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
-          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
-          <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
-          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
-          <ScalarProperty Name="transportista" ColumnName="transportista" />
-          <ScalarProperty Name="empresa" ColumnName="empresa" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-          <ScalarProperty Name="chofer" ColumnName="chofer" />
-          <ScalarProperty Name="placas" ColumnName="placas" />
-          <ScalarProperty Name="boleto" ColumnName="boleto" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PrecioSCRAP">
       <EntityTypeMapping TypeName="SCRAPConveyorModel.PrecioSCRAP">
         <MappingFragment StoreEntitySet="PrecioSCRAP">
@@ -108,6 +80,7 @@
     <EntitySetMapping Name="TrailerInformation">
       <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
         <MappingFragment StoreEntitySet="TrailerInformation">
+          <ScalarProperty Name="receta" ColumnName="receta" />
           <ScalarProperty Name="boleto" ColumnName="boleto" />
           <ScalarProperty Name="line" ColumnName="line" />
           <ScalarProperty Name="tolva" ColumnName="tolva" />
@@ -129,7 +102,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="spSendMail_SCRAPConveyor_FacturaAutomatica" FunctionName="SCRAPConveyorModel.Store.spSendMail_SCRAPConveyor_FacturaAutomatica" />
+    <FunctionImportMapping FunctionImportName="spSendMail_SCRAPConveyor_FacturaAutomatica" FunctionName="SCRAPConveyorModel.Store.spSendMail_SCRAPConveyor_FacturaAutomatica">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result">
+          <ScalarProperty Name="ENVIADO" ColumnName="ENVIADO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_GetList_BasculasFactura" FunctionName="SCRAPConveyorModel.Store.sp_GetList_BasculasFactura">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SCRAPConveyorModel.sp_GetList_BasculasFactura_Result">
@@ -167,5 +146,45 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="BasculaRevuelta">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
+        <MappingFragment StoreEntitySet="BasculaRevuelta">
+          <ScalarProperty Name="generar_factura" ColumnName="generar_factura" />
+          <ScalarProperty Name="correo_enviado" ColumnName="correo_enviado" />
+          <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
+          <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+          <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+          <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+          <ScalarProperty Name="factura" ColumnName="factura" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+          <ScalarProperty Name="bascula" ColumnName="bascula" />
+          <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+          <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+          <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+          <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+          <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+          <ScalarProperty Name="transportista" ColumnName="transportista" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="chofer" ColumnName="chofer" />
+          <ScalarProperty Name="placas" ColumnName="placas" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CorreosEnviados">
+      <EntityTypeMapping TypeName="SCRAPConveyorModel.CorreosEnviados">
+        <MappingFragment StoreEntitySet="CorreosEnviados">
+          <ScalarProperty Name="recipientes" ColumnName="recipientes" />
+          <ScalarProperty Name="html" ColumnName="html" />
+          <ScalarProperty Name="enviado" ColumnName="enviado" />
+          <ScalarProperty Name="boleto" ColumnName="boleto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

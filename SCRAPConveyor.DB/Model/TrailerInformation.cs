@@ -32,5 +32,6 @@ namespace SCRAPConveyor.DB.Model
         public string tolva { get; set; }
         public Nullable<int> line { get; set; }
         public Nullable<int> boleto { get; set; }
+        public Nullable<int> receta { get; set; }
     }
 }

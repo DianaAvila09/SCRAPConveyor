@@ -36,5 +36,7 @@ namespace SCRAPConveyor.DB.Model
         public string numDocumento { get; set; }
         public Nullable<System.DateTime> fechaFactura { get; set; }
         public Nullable<System.DateTime> fechaDocumento { get; set; }
+        public Nullable<bool> correo_enviado { get; set; }
+        public Nullable<bool> generar_factura { get; set; }
     }
 }

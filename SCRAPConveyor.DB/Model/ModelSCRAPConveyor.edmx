@@ -31,6 +31,8 @@
           <Property Name="numDocumento" Type="varchar" MaxLength="50" />
           <Property Name="fechaFactura" Type="datetime" />
           <Property Name="fechaDocumento" Type="datetime" />
+          <Property Name="correo_enviado" Type="bit" />
+          <Property Name="generar_factura" Type="bit" />
         </EntityType>
         <EntityType Name="BasculaRevuelta_Log">
           <Key>
@@ -42,6 +44,15 @@
           <Property Name="fecha_ejecucion" Type="datetime" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="message" Type="varchar" MaxLength="5000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CorreosEnviados">
+          <Key>
+            <PropertyRef Name="boleto" />
+          </Key>
+          <Property Name="boleto" Type="int" Nullable="false" />
+          <Property Name="enviado" Type="bit" Nullable="false" />
+          <Property Name="html" Type="varchar(max)" Nullable="false" />
+          <Property Name="recipientes" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Factura">
           <Key>
@@ -95,6 +106,7 @@
           <Property Name="tolva" Type="varchar" MaxLength="50" />
           <Property Name="line" Type="int" />
           <Property Name="boleto" Type="int" />
+          <Property Name="receta" Type="int" />
         </EntityType>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -123,6 +135,7 @@
         <EntityContainer Name="SCRAPConveyorModelStoreContainer">
           <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BasculaRevuelta_Log" EntityType="Self.BasculaRevuelta_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorreosEnviados" EntityType="Self.CorreosEnviados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrecioSCRAP" EntityType="Self.PrecioSCRAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrailerInformation" EntityType="Self.TrailerInformation" Schema="dbo" store:Type="Tables" />
@@ -135,7 +148,6 @@
         <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
           <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
-          <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
           <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
           <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
           <FunctionImport Name="sp_GetList_HistoryReport" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_HistoryReport_Result)">
@@ -143,7 +155,7 @@
             <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
-          <FunctionImport Name="spSendMail_SCRAPConveyor_FacturaAutomatica" ReturnType="Collection(String)">
+          <FunctionImport Name="spSendMail_SCRAPConveyor_FacturaAutomatica" ReturnType="Collection(SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result)">
           <Parameter Name="boleto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetList_BasculasFactura" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_BasculasFactura_Result)">
@@ -152,6 +164,8 @@
             <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
             <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
+          <EntitySet Name="CorreosEnviados" EntityType="SCRAPConveyorModel.CorreosEnviados" />
         </EntityContainer>
         <EntityType Name="TypeMaterial">
           <Key>
@@ -174,33 +188,6 @@
           <Property Name="fecha_ejecucion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="message" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="BasculaRevuelta">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="boleto" Type="Int32" />
-          <Property Name="placas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="chofer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="transportista" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="fechaHoraEntrada" Type="DateTime" Precision="3" />
-          <Property Name="pesoEntrada" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="fechaHoraSalida" Type="DateTime" Precision="3" />
-          <Property Name="pesoSalida" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="pesoTara" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="bascula" Type="Int32" />
-          <Property Name="tagCamion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
-          <Property Name="factura" Type="Boolean" />
-          <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="documento" Type="Boolean" />
-          <Property Name="numDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fechaFactura" Type="DateTime" Precision="3" />
-          <Property Name="fechaDocumento" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PrecioSCRAP">
           <Key>
@@ -270,6 +257,7 @@
           <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="line" Type="Int32" />
           <Property Name="boleto" Type="Int32" />
+          <Property Name="receta" Type="Int32" />
         </EntityType>
         <ComplexType Name="sp_GetList_BasculasFactura_Result">
           <Property Type="Int64" Name="id" Nullable="false" />
@@ -304,6 +292,47 @@
           <Property Type="Int32" Name="material2" Nullable="true" />
           <Property Type="String" Name="Linea" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="BasculaRevuelta">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="boleto" Type="Int32" />
+          <Property Name="placas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chofer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="transportista" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fechaHoraEntrada" Type="DateTime" Precision="3" />
+          <Property Name="pesoEntrada" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="fechaHoraSalida" Type="DateTime" Precision="3" />
+          <Property Name="pesoSalida" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="pesoTara" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="bascula" Type="Int32" />
+          <Property Name="tagCamion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="factura" Type="Boolean" />
+          <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="Boolean" />
+          <Property Name="numDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaFactura" Type="DateTime" Precision="3" />
+          <Property Name="fechaDocumento" Type="DateTime" Precision="3" />
+          <Property Name="correo_enviado" Type="Boolean" />
+          <Property Name="generar_factura" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CorreosEnviados">
+          <Key>
+            <PropertyRef Name="boleto" />
+          </Key>
+          <Property Name="boleto" Type="Int32" Nullable="false" />
+          <Property Name="enviado" Type="Boolean" Nullable="false" />
+          <Property Name="html" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="recipientes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="spSendMail_SCRAPConveyor_FacturaAutomatica_Result">
+        <Property Type="Int32" Name="ENVIADO" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -329,34 +358,6 @@
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="fecha_ejecucion" ColumnName="fecha_ejecucion" />
                 <ScalarProperty Name="bapi" ColumnName="bapi" />
-                <ScalarProperty Name="boleto" ColumnName="boleto" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BasculaRevuelta">
-            <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
-              <MappingFragment StoreEntitySet="BasculaRevuelta">
-                <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
-                <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
-                <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
-                <ScalarProperty Name="documento" ColumnName="documento" />
-                <ScalarProperty Name="producto" ColumnName="producto" />
-                <ScalarProperty Name="numFactura" ColumnName="numFactura" />
-                <ScalarProperty Name="factura" ColumnName="factura" />
-                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
-                <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
-                <ScalarProperty Name="bascula" ColumnName="bascula" />
-                <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
-                <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
-                <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
-                <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
-                <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
-                <ScalarProperty Name="transportista" ColumnName="transportista" />
-                <ScalarProperty Name="empresa" ColumnName="empresa" />
-                <ScalarProperty Name="usuario" ColumnName="usuario" />
-                <ScalarProperty Name="chofer" ColumnName="chofer" />
-                <ScalarProperty Name="placas" ColumnName="placas" />
                 <ScalarProperty Name="boleto" ColumnName="boleto" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -417,6 +418,7 @@
           <EntitySetMapping Name="TrailerInformation">
             <EntityTypeMapping TypeName="SCRAPConveyorModel.TrailerInformation">
               <MappingFragment StoreEntitySet="TrailerInformation">
+                <ScalarProperty Name="receta" ColumnName="receta" />
                 <ScalarProperty Name="boleto" ColumnName="boleto" />
                 <ScalarProperty Name="line" ColumnName="line" />
                 <ScalarProperty Name="tolva" ColumnName="tolva" />
@@ -438,7 +440,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spSendMail_SCRAPConveyor_FacturaAutomatica" FunctionName="SCRAPConveyorModel.Store.spSendMail_SCRAPConveyor_FacturaAutomatica" />
+          <FunctionImportMapping FunctionImportName="spSendMail_SCRAPConveyor_FacturaAutomatica" FunctionName="SCRAPConveyorModel.Store.spSendMail_SCRAPConveyor_FacturaAutomatica" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result">
+              <ScalarProperty Name="ENVIADO" ColumnName="ENVIADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_GetList_BasculasFactura" FunctionName="SCRAPConveyorModel.Store.sp_GetList_BasculasFactura">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SCRAPConveyorModel.sp_GetList_BasculasFactura_Result">
@@ -476,6 +484,46 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="BasculaRevuelta">
+            <EntityTypeMapping TypeName="SCRAPConveyorModel.BasculaRevuelta">
+              <MappingFragment StoreEntitySet="BasculaRevuelta">
+                <ScalarProperty Name="generar_factura" ColumnName="generar_factura" />
+                <ScalarProperty Name="correo_enviado" ColumnName="correo_enviado" />
+                <ScalarProperty Name="fechaDocumento" ColumnName="fechaDocumento" />
+                <ScalarProperty Name="fechaFactura" ColumnName="fechaFactura" />
+                <ScalarProperty Name="numDocumento" ColumnName="numDocumento" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="numFactura" ColumnName="numFactura" />
+                <ScalarProperty Name="factura" ColumnName="factura" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="tagCamion" ColumnName="tagCamion" />
+                <ScalarProperty Name="bascula" ColumnName="bascula" />
+                <ScalarProperty Name="pesoTara" ColumnName="pesoTara" />
+                <ScalarProperty Name="pesoSalida" ColumnName="pesoSalida" />
+                <ScalarProperty Name="fechaHoraSalida" ColumnName="fechaHoraSalida" />
+                <ScalarProperty Name="pesoEntrada" ColumnName="pesoEntrada" />
+                <ScalarProperty Name="fechaHoraEntrada" ColumnName="fechaHoraEntrada" />
+                <ScalarProperty Name="transportista" ColumnName="transportista" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="chofer" ColumnName="chofer" />
+                <ScalarProperty Name="placas" ColumnName="placas" />
+                <ScalarProperty Name="boleto" ColumnName="boleto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorreosEnviados">
+            <EntityTypeMapping TypeName="SCRAPConveyorModel.CorreosEnviados">
+              <MappingFragment StoreEntitySet="CorreosEnviados">
+                <ScalarProperty Name="recipientes" ColumnName="recipientes" />
+                <ScalarProperty Name="html" ColumnName="html" />
+                <ScalarProperty Name="enviado" ColumnName="enviado" />
+                <ScalarProperty Name="boleto" ColumnName="boleto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

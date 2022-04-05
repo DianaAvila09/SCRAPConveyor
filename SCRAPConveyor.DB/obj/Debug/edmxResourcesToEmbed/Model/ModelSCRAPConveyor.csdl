@@ -3,7 +3,6 @@
   <EntityContainer Name="SCRAPConveyorEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TypeMaterial" EntityType="SCRAPConveyorModel.TypeMaterial" />
     <EntitySet Name="BasculaRevuelta_Log" EntityType="SCRAPConveyorModel.BasculaRevuelta_Log" />
-    <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
     <EntitySet Name="PrecioSCRAP" EntityType="SCRAPConveyorModel.PrecioSCRAP" />
     <EntitySet Name="Factura" EntityType="SCRAPConveyorModel.Factura" />
     <FunctionImport Name="sp_GetList_HistoryReport" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_HistoryReport_Result)">
@@ -11,7 +10,7 @@
       <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
     </FunctionImport>
     <EntitySet Name="TrailerInformation" EntityType="SCRAPConveyorModel.TrailerInformation" />
-    <FunctionImport Name="spSendMail_SCRAPConveyor_FacturaAutomatica" ReturnType="Collection(String)">
+    <FunctionImport Name="spSendMail_SCRAPConveyor_FacturaAutomatica" ReturnType="Collection(SCRAPConveyorModel.spSendMail_SCRAPConveyor_FacturaAutomatica_Result)">
       <Parameter Name="boleto" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_GetList_BasculasFactura" ReturnType="Collection(SCRAPConveyorModel.sp_GetList_BasculasFactura_Result)">
@@ -20,6 +19,8 @@
       <Parameter Name="fecha_inicio" Mode="In" Type="DateTime" />
       <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="BasculaRevuelta" EntityType="SCRAPConveyorModel.BasculaRevuelta" />
+    <EntitySet Name="CorreosEnviados" EntityType="SCRAPConveyorModel.CorreosEnviados" />
   </EntityContainer>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -42,33 +43,6 @@
     <Property Name="fecha_ejecucion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="message" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="BasculaRevuelta">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="boleto" Type="Int32" />
-    <Property Name="placas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="chofer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="transportista" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="fechaHoraEntrada" Type="DateTime" Precision="3" />
-    <Property Name="pesoEntrada" Type="Decimal" Precision="18" Scale="4" />
-    <Property Name="fechaHoraSalida" Type="DateTime" Precision="3" />
-    <Property Name="pesoSalida" Type="Decimal" Precision="18" Scale="4" />
-    <Property Name="pesoTara" Type="Decimal" Precision="18" Scale="4" />
-    <Property Name="bascula" Type="Int32" />
-    <Property Name="tagCamion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
-    <Property Name="factura" Type="Boolean" />
-    <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="documento" Type="Boolean" />
-    <Property Name="numDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fechaFactura" Type="DateTime" Precision="3" />
-    <Property Name="fechaDocumento" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="PrecioSCRAP">
     <Key>
@@ -138,6 +112,7 @@
     <Property Name="tolva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="line" Type="Int32" />
     <Property Name="boleto" Type="Int32" />
+    <Property Name="receta" Type="Int32" />
   </EntityType>
   <ComplexType Name="sp_GetList_BasculasFactura_Result">
     <Property Type="Int64" Name="id" Nullable="false" />
@@ -171,5 +146,46 @@
     <Property Type="String" Name="material" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="material2" Nullable="true" />
     <Property Type="String" Name="Linea" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="BasculaRevuelta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="boleto" Type="Int32" />
+    <Property Name="placas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="chofer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="transportista" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fechaHoraEntrada" Type="DateTime" Precision="3" />
+    <Property Name="pesoEntrada" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="fechaHoraSalida" Type="DateTime" Precision="3" />
+    <Property Name="pesoSalida" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="pesoTara" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="bascula" Type="Int32" />
+    <Property Name="tagCamion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="factura" Type="Boolean" />
+    <Property Name="numFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="documento" Type="Boolean" />
+    <Property Name="numDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaFactura" Type="DateTime" Precision="3" />
+    <Property Name="fechaDocumento" Type="DateTime" Precision="3" />
+    <Property Name="correo_enviado" Type="Boolean" />
+    <Property Name="generar_factura" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CorreosEnviados">
+    <Key>
+      <PropertyRef Name="boleto" />
+    </Key>
+    <Property Name="boleto" Type="Int32" Nullable="false" />
+    <Property Name="enviado" Type="Boolean" Nullable="false" />
+    <Property Name="html" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="recipientes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="spSendMail_SCRAPConveyor_FacturaAutomatica_Result">
+    <Property Type="Int32" Name="ENVIADO" Nullable="false" />
   </ComplexType>
 </Schema>

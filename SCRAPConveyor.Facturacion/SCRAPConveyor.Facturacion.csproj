@@ -39,10 +39,10 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="sapnco">
-      <HintPath>..\..\..\..\Librerias SAP x64\sapnco.dll</HintPath>
+      <HintPath>..\..\..\..\PROYECTOS\Librerias SAP x64\sapnco.dll</HintPath>
     </Reference>
     <Reference Include="sapnco_utils">
-      <HintPath>..\..\..\..\Librerias SAP x64\sapnco_utils.dll</HintPath>
+      <HintPath>..\..\..\..\PROYECTOS\Librerias SAP x64\sapnco_utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
