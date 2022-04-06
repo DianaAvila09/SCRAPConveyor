@@ -23,7 +23,7 @@ namespace SCRAPConveyor.Facturacion
             {
                 using (SCRAPConveyorEntities db = new SCRAPConveyorEntities())
                 {
-                    List<BasculaRevuelta> registros = db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.correo_enviado != true).ToList();
+                    List<BasculaRevuelta> registros = db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.correo_enviado != true && x.producto.ToUpper() == "SCRAP ALUMINIO").ToList();
                     int cont = 0;
                     foreach (BasculaRevuelta registro in registros)
                     {
