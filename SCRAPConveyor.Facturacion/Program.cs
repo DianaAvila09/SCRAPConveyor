@@ -73,13 +73,15 @@ namespace SCRAPConveyor.Facturacion
 
 
 
+                    //var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.empresa.ToUpper() == "OMNISOURCE MEXICO" && x.producto.ToUpper() == "SCRAP ALUMINIO" && x.generar_factura == true)
+                    //                 join p in db.PrecioSCRAP on b.producto equals p.tipo
+                    //                 join f in db.Factura on b.boleto equals f.boleto
+                    //                 select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).Take(1).ToList();
+
                     var registros = (from b in db.BasculaRevuelta.Where(x => x.documento != true && x.fechaHoraSalida != null && x.empresa.ToUpper() == "OMNISOURCE MEXICO" && x.producto.ToUpper() == "SCRAP ALUMINIO" && x.generar_factura == true)
-                                     join p in db.PrecioSCRAP on b.producto equals p.tipo
                                      join f in db.Factura on b.boleto equals f.boleto
+                                     join p in db.PrecioSCRAP on f.tipoMaterial equals p.tipo
                                      select new { b.boleto, b.producto, cantidad = b.pesoSalida - b.pesoTara, p.precio, p.moneda, f.tipoMaterial, f.descSAP }).Take(1).ToList();
-
-
-
 
 
                     int cont = 0;
