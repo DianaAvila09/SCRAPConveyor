@@ -26,6 +26,8 @@
     <Property Name="numDocumento" Type="varchar" MaxLength="50" />
     <Property Name="fechaFactura" Type="datetime" />
     <Property Name="fechaDocumento" Type="datetime" />
+    <Property Name="correo_enviado" Type="bit" />
+    <Property Name="generar_factura" Type="bit" />
   </EntityType>
   <EntityType Name="BasculaRevuelta_Log">
     <Key>
@@ -37,6 +39,15 @@
     <Property Name="fecha_ejecucion" Type="datetime" Nullable="false" />
     <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="message" Type="varchar" MaxLength="5000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CorreosEnviados">
+    <Key>
+      <PropertyRef Name="boleto" />
+    </Key>
+    <Property Name="boleto" Type="int" Nullable="false" />
+    <Property Name="enviado" Type="bit" Nullable="false" />
+    <Property Name="html" Type="varchar(max)" Nullable="false" />
+    <Property Name="recipientes" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Factura">
     <Key>
@@ -90,6 +101,7 @@
     <Property Name="tolva" Type="varchar" MaxLength="50" />
     <Property Name="line" Type="int" />
     <Property Name="boleto" Type="int" />
+    <Property Name="receta" Type="int" />
   </EntityType>
   <EntityType Name="TypeMaterial">
     <Key>
@@ -118,6 +130,7 @@
   <EntityContainer Name="SCRAPConveyorModelStoreContainer">
     <EntitySet Name="BasculaRevuelta" EntityType="Self.BasculaRevuelta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BasculaRevuelta_Log" EntityType="Self.BasculaRevuelta_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CorreosEnviados" EntityType="Self.CorreosEnviados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrecioSCRAP" EntityType="Self.PrecioSCRAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrailerInformation" EntityType="Self.TrailerInformation" Schema="dbo" store:Type="Tables" />

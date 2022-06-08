@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\mrocha\Desktop\Publish SCRAPConveyor</_PublishTargetUrl>
-    <History>True|2022-02-02T16:33:18.2478816Z;True|2022-01-28T15:21:49.0389918-06:00;</History>
+    <History>True|2022-06-08T21:58:08.2921348Z;True|2022-02-02T10:33:18.2478816-06:00;True|2022-01-28T15:21:49.0389918-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="app-assets/css-rtl/bootstrap-extended.css">
@@ -5268,28 +5268,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/06/2021 10:24:07</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.DB.dll">
-      <publishTime>01/31/2022 13:03:15</publishTime>
+      <publishTime>06/08/2022 16:57:50</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.DB.dll.config">
       <publishTime>12/03/2021 11:49:15</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.DB.pdb">
-      <publishTime>01/31/2022 13:03:15</publishTime>
+      <publishTime>06/08/2022 16:57:50</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.Negocio.dll">
-      <publishTime>01/28/2022 15:21:35</publishTime>
+      <publishTime>06/08/2022 16:57:50</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.Negocio.dll.config">
       <publishTime>09/28/2021 13:48:24</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.Negocio.pdb">
-      <publishTime>01/28/2022 15:21:35</publishTime>
+      <publishTime>06/08/2022 16:57:50</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.Web.dll">
-      <publishTime>02/02/2022 12:27:36</publishTime>
+      <publishTime>06/08/2022 16:57:51</publishTime>
     </File>
     <File Include="bin/SCRAPConveyor.Web.pdb">
-      <publishTime>02/02/2022 12:27:36</publishTime>
+      <publishTime>06/08/2022 16:57:51</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/06/2021 10:24:04</publishTime>
@@ -6318,7 +6318,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/14/2022 10:47:10</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/13/2021 13:43:36</publishTime>
+      <publishTime>06/08/2022 16:33:06</publishTime>
     </File>
     <File Include="Views/Home/Pendientes.cshtml">
       <publishTime>02/01/2022 12:58:47</publishTime>
@@ -6336,7 +6336,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/06/2021 10:23:58</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/02/2022 12:27:41</publishTime>
+      <publishTime>06/08/2022 16:57:56</publishTime>
     </File>
     <File Include="x64/pdfium.dll">
       <publishTime>04/07/2018 23:08:44</publishTime>

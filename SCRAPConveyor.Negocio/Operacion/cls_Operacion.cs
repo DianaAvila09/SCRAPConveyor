@@ -29,6 +29,7 @@ namespace Operacion
             public int trailerNumber { get; set; }
             public string code { get; set; }
             public string material { get; set; }
+            public string tolva { get; set; }
         }
 
         
@@ -57,7 +58,8 @@ namespace Operacion
                                     fillingLevel = Convert.ToDecimal(row["fillingLevel"].ToString()),
                                     trailerNumber = Convert.ToInt32(row["trailerNumber"].ToString()),
                                     code = row["materialType"].ToString(),
-                                    material = row["material"].ToString()
+                                    material = row["material"].ToString(),
+                                    tolva = row["tolva"].ToString()
                                 }).ToList();
                 }
 
