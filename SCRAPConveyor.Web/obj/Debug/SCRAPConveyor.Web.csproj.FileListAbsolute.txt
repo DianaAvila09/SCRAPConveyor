@@ -181,3 +181,4 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\roslyn\vb
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\roslyn\vbc.rsp
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\app-assets\images\pages\bg-cajas-trailers.jpg

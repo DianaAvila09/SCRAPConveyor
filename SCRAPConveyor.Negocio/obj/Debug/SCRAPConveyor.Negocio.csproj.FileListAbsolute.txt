@@ -11,4 +11,3 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\bin\Debug
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.csproj.CoreCompileInputs.cache
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.pdb
-C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Negocio\obj\Debug\SCRAPConveyor.Negocio.csproj.AssemblyReference.cache

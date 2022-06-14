@@ -181,3 +181,4 @@ C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\BouncyCas
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\PdfiumViewer.dll
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\PdfiumViewer.xml
 C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\nl\PdfiumViewer.resources.dll
+C:\Users\mrocha\Documents\repo\emm\SCRAPConveyor\SCRAPConveyor.Web\bin\app-assets\images\pages\bg-cajas-trailers.jpg
