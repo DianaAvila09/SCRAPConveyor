@@ -84,7 +84,11 @@
                      if (data[i].tolva != null)
                          tolva = data[i].tolva;
 
-                     newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material, tolva);
+                     var fechaHoraEntrada = '';
+                     if (data[i].fechaHoraEntrada != null)
+                         fechaHoraEntrada = data[i].fechaHoraEntrada;
+
+                     newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material, tolva, fechaHoraEntrada);
 
                      if (trailerNumber == 1) {
                          if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
@@ -198,7 +202,11 @@
                         if (data[i].tolva != null)
                             tolva = data[i].tolva;
 
-                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material, tolva);
+                        var fechaHoraEntrada = '';
+                        if (data[i].fechaHoraEntrada != null)
+                            fechaHoraEntrada = data[i].fechaHoraEntrada;
+
+                        newHtml = CreaHTML(code_1, color_1_1, color_1_2, color_1_3, color_1_4, fillingLevel_1, trailerNumber, material, tolva, fechaHoraEntrada);
 
                         if (trailerNumber == 1) {
                             if (material != '0') $('#T1').addClass('badge-success'); else $('#T1').removeClass('badge-success');
@@ -233,7 +241,7 @@
         });
     }
 
-    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel, trailerNumber, material, tolva) {
+    function CreaHTML(code, color_1, color_2, color_3, color_4, fillingLevel, trailerNumber, material, tolva, fechaHoraEntrada) {
         var newHtml = '';
         newHtml = '<tr>'
         newHtml += ' <td colspan="2" style"width:100%;">'
@@ -256,6 +264,9 @@
         ////////////////////newHtml += '<tr>';
         ////////////////////newHtml += '    <td colspan="2" align="center" valign="top" height="20px">' + code + '</td>';
         ////////////////////newHtml += '</tr>';
+        newHtml += '<tr>';
+        newHtml += '    <td colspan="2"><b>entrada:</b><br/> ' + fechaHoraEntrada + '</td>';
+        newHtml += '</tr>';
         newHtml += '<tr>';
         newHtml += '    <td colspan="2"><b>state:</b></td>';
         newHtml += '</tr>';
@@ -310,7 +321,7 @@
                         </form>
                     </div>
                     <div class="col-10">
-                        <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0">
+                        <table id="table-marketing-campaigns" class="tablebgimage" style="width:942px;height:665px;" border="0" cellpadding="0" cellspacing="0">
                             <thead>
                                 <tr style="height:513px;">
                                     <th colspan="3"></th>

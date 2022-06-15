@@ -30,6 +30,7 @@ namespace Operacion
             public string code { get; set; }
             public string material { get; set; }
             public string tolva { get; set; }
+            public string fechaHoraEntrada { get; set; }
         }
 
         
@@ -59,7 +60,8 @@ namespace Operacion
                                     trailerNumber = Convert.ToInt32(row["trailerNumber"].ToString()),
                                     code = row["materialType"].ToString(),
                                     material = row["material"].ToString(),
-                                    tolva = row["tolva"].ToString()
+                                    tolva = row["tolva"].ToString(),
+                                    fechaHoraEntrada = row["fechaHoraEntrada"].ToString()
                                 }).ToList();
                 }
 
