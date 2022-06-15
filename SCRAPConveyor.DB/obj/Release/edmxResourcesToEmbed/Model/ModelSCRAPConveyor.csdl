@@ -79,7 +79,7 @@
     <Property Type="String" Name="tolva" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="fechaHoraEntrada" Nullable="true" Precision="23" />
     <Property Type="String" Name="cortina" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="fechaHoraLlenado" Nullable="true" />
+    <Property Type="DateTime" Name="fechaHoraLlenado" Nullable="true" Precision="23" />
     <Property Type="String" Name="prensaOrigen" Nullable="false" MaxLength="7" />
     <Property Type="Int32" Name="numeroParte" Nullable="true" />
     <Property Type="Int32" Name="nivelLlenado" Nullable="true" />

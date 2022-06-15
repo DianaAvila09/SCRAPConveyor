@@ -140,8 +140,9 @@
                                             <th class="text-center">FECHAHORAENTRADA</th>
                                             <th class="text-center">FECHAHORASALIDA</th>
                                             <th class="text-center">PRENSAORIGEN</th>
+                                            <th class="text-center">FECHAHORALLENADO</th>
                                             @*<th class="text-center">NUMEROPARTE</th>
-                                            <th class="text-center">NIVELLENADO</th>*@
+        <th class="text-center">NIVELLENADO</th>*@
                                             <th class="text-center">CLIENTE</th>
                                         </tr>
                                     </thead>
@@ -174,10 +175,11 @@
                                             {
                                                 <td class="py-1 line-ellipsis text-center">@String.Format("{0:n0}", item.cortina)</td>
                                             }
-                                            
+
                                             <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraEntrada) @String.Format("{0:T}", item.fechaHoraEntrada)</td>
                                             <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraSalida) @String.Format("{0:T}", item.fechaHoraSalida)</td>
                                             <td class="py-1 line-ellipsis text-center">@item.prensaOrigen</td>
+                                            <td class="py-1 line-ellipsis text-center">@String.Format(" {0:M /d/yyyy}", item.fechaHoraLlenado) @String.Format("{0:T}", item.fechaHoraLlenado)</td>
                                             @*<td class="py-1 line-ellipsis text-center">@item.numeroParte</td>
         <td class="py-1 line-ellipsis text-right">@String.Format("{0:n2}", item.nivelLlenado)</td>*@
                                             <td class="py-1 line-ellipsis text-center">@item.Cliente</td>

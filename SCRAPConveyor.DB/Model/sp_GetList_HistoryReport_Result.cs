@@ -17,7 +17,7 @@ namespace SCRAPConveyor.DB.Model
         public string tolva { get; set; }
         public Nullable<System.DateTime> fechaHoraEntrada { get; set; }
         public string cortina { get; set; }
-        public Nullable<int> fechaHoraLlenado { get; set; }
+        public Nullable<System.DateTime> fechaHoraLlenado { get; set; }
         public string prensaOrigen { get; set; }
         public Nullable<int> numeroParte { get; set; }
         public Nullable<int> nivelLlenado { get; set; }
